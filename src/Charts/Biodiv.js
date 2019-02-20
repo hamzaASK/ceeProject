@@ -7,20 +7,20 @@ class Biodiv extends Component {
     getState(status) {
         switch (status) {
             case "En danger":
-            return 'limegreen'
+                return 'limegreen'
             case "Vulnérable":
-            return 'orangered'
+                return 'orangered'
             case "Préoccupation mineur":
-            return 'red'
+                return 'red'
             default:
-            return 'whitesmoke'
+                return 'whitesmoke'
         }
     }
 
     render() {
         return (
             <MDBCol>
-                <MDBCard style={{ height: 520, width: "22rem", borderRadius: 10 }}>
+                <MDBCard style={{ height: 510, width: "22rem", margin: 5, borderRadius: 10 }}>
                     <MDBCardImage className="img-fluid" src={this.props.image} />
                     <MDBCardBody>
                         <State>

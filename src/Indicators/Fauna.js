@@ -69,9 +69,10 @@ class Fauna extends Component {
         const settings = {
             infinite: true,
             speed: 1500,
-            slidesToShow: 1,
+            slidesToShow: 4,
             slidesToScroll: 1,
-            adaptiveHeight: true
+            autoplay: true,
+            autoplaySpeed: 3000,
         }
         return (
             <div className="indicator" >
@@ -79,7 +80,7 @@ class Fauna extends Component {
                     title="Indicateur de la faune"
                     description="Description ... "
                 />
-                <div style={{ flex: 1, flexDirection: 'row', display: 'flex', padding: 10, marginTop: 10, backgroundColor: 'orange' }} >
+                <div style={{ flexDirection: 'row', display: 'flex', padding: 10, margin: 10 }} >
                     {/* <div style={{ flex: 1 }} />
                     {
                         this.state.biodiv.map((x, i) => {
@@ -103,14 +104,12 @@ class Fauna extends Component {
                         {
                             this.state.biodiv.map((x) => {
                                 return (
-                                    <div style={{ width: 200, height: 200, backgroundColor: 'tomato' }}>
-                                        <Biodiv
-                                            title={x[1]}
-                                            image={x[2]}
-                                            text={x[3]}
-                                            status={x[4]}
-                                        />
-                                    </div>
+                                    <Biodiv
+                                        title={x[1]}
+                                        image={x[2]}
+                                        text={x[3]}
+                                        status={x[4]}
+                                    />
                                 )
                             })
                         }

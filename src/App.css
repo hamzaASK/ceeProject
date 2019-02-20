@@ -1,6 +1,6 @@
 .viewport {
   margin: auto;
-  width: 100%;
+  width: 99.9%;
   min-width: 360px;
   min-height: 100vh;
   display: flex;
@@ -14,4 +14,8 @@
   display: flex;
 }
 
-
+.slick-alter {
+  width: 1500px;
+  height: 520px;
+  margin: auto;
+}
