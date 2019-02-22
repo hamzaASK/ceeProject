@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-// import {
-//     MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView
-// } from
-//     "mdbreact";
-
+import Slider from "react-slick";
 import { URL } from '../Settings/Server'
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
@@ -21,13 +17,14 @@ import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/acti
 
 let timer = 0
 
-class Flora extends Component {
+class Fauna extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             count: 0,
-            biodiv: []
+            biodiv: [],
+            biostat: []
         }
     }
 
@@ -43,17 +40,21 @@ class Flora extends Component {
             });
     }
 
-    updateView() {
-        let count = this.state.count
-        count = count < this.state.biodiv.length ? this.state.count + 4 : 0
-        // console.log(count)
-        this.setState({ count })
-        timer = setTimeout(() => this.updateView(), 20000)
+    getStatFlora() {
+        const url = `${URL}/bio/getStatFlora.php`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((biostat) => {
+                this.setState({ biostat })
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
     componentDidMount() {
         this.getFlora()
-        this.updateView()
+        this.getStatFlora()
     }
 
     componentWillUnmount() {
@@ -61,53 +62,45 @@ class Flora extends Component {
     }
 
     render() {
+        const settings = {
+            infinite: true,
+            speed: 1000,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: Timers.indicItems / 10,
+        }
         return (
             <div className="indicator" >
                 <Identity
-                    title="Indicateur de la flore"
-                    description="Description ..."
+                    title="Indicateur de la Faune"
+                    description="Description ... "
                 />
-                {/* <MDBCarousel activeItem={1} length={this.state.biodiv.length} showControls={false} showIndicators={false} style={{ margin: 5, borderRadius: 10 }} interval={Timers.indicItems / 3} >
-                    <MDBCarouselInner>
+                <div style={{ flexDirection: 'row', display: 'flex', padding: 5, marginTop: 5 }} >
+                    <Slider {...settings} >
                         {
                             this.state.biodiv.map((x) => {
                                 return (
-                                    <MDBCarouselItem itemId={x.id} key={x.id}>
-                                        <MDBView>
-                                        </MDBView>
-                                    </MDBCarouselItem>
-                                )
-                            })
-                        }
-                    </MDBCarouselInner>
-                </MDBCarousel> */}
-                <div style={{ flexDirection: 'row', display: 'flex', padding: 10, marginTop: 10 }} >
-                    <div style={{ flex: 1 }} />
-                    {
-                        this.state.biodiv.map((x, i) => {
-                            let count = this.state.count
-                            if (i >= count && i < count + 4) {
-                                console.log('i = ' + i + ', count = ' + count)
-                                return (
                                     <Biodiv
                                         title={x[1]}
-                                        image={x[2]}
+                                        title_ar={x[5]}
+                                        image={URL + '/' + x[2]}
                                         text={x[3]}
+                                        text_ar={x[6]}
                                         status={x[4]}
                                     />
                                 )
-                            }
-                        })
-                    }
-                    <div style={{ flex: 1 }} />
+                            })
+                        }
+                    </Slider>
                 </div>
 
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Especes menacés"
+                        <Card title="Espèces à préoccupation mineur"
                             content={
                                 <Information
-                                    info={"value"}
+                                    info={this.state.biostat[0]}
                                     icon={"/images/splash.png"}
                                     measure={true}
                                 />
@@ -118,7 +111,7 @@ class Flora extends Component {
                         <Card title="Especes en vulnérabilité"
                             content={
                                 <Information
-                                    info={"value"}
+                                    info={this.state.biostat[1]}
                                     icon={"/images/splash.png"}
                                     measure={true}
                                 />
@@ -126,10 +119,10 @@ class Flora extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Préoccupation mineur"
+                        <Card title="Especes menacés"
                             content={
                                 <Information
-                                    info={"value"}
+                                    info={this.state.biostat[2]}
                                     icon={"/images/splash.png"}
                                     measure={true}
                                 />
@@ -142,7 +135,7 @@ class Flora extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Flora)
+export default connect(mapStateToProps, mapDispatchToProps)(Fauna)
 
 
 

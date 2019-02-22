@@ -19,12 +19,17 @@ export const lang = [
             desc: "",
             indic_1: {
                 title: "",
-                unit: "" 
+                unit: ""
             },
             indic_1: {
                 title: "",
-                unit: "" 
+                unit: ""
             },
+        },
+        indicators: {
+            biodiv: {
+                state_1: 'Vulnérable',
+            }
         }
     },
     {
@@ -36,6 +41,11 @@ export const lang = [
                 { label: "التقارير" },
                 { label: "اتصل بنا" },
             ]
+        },
+        indicators: {
+            biodiv: {
+                state_1: 'مهدد بالانقراض',
+            }
         }
     },
 ]

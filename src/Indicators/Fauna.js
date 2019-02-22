@@ -1,22 +1,13 @@
 import React, { Component } from "react";
-// import {
-//     MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView
-// } from
-//     "mdbreact";
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { URL } from '../Settings/Server'
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
-// import '../Style/slick.css'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 import Information from '../Charts/Information'
 
 import Biodiv from '../Charts/Biodiv'
-
-import Slick from './Slider'
 
 import { Timers } from '../Settings/Timers'
 
@@ -32,7 +23,8 @@ class Fauna extends Component {
         super(props)
         this.state = {
             count: 0,
-            biodiv: []
+            biodiv: [],
+            biostat: []
         }
     }
 
@@ -48,17 +40,21 @@ class Fauna extends Component {
             });
     }
 
-    updateView() {
-        let count = this.state.count
-        count = count < this.state.biodiv.length ? this.state.count + 4 : 0
-        // console.log(count)
-        this.setState({ count })
-        timer = setTimeout(() => this.updateView(), 20000)
+    getStatFauna() {
+        const url = `${URL}/bio/getStatFauna.php`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((biostat) => {
+                this.setState({ biostat })
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
     componentDidMount() {
         this.getFauna()
-        // this.updateView()
+        this.getStatFauna()
     }
 
     componentWillUnmount() {
@@ -68,46 +64,29 @@ class Fauna extends Component {
     render() {
         const settings = {
             infinite: true,
-            speed: 1500,
+            speed: 1000,
             slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 3000,
+            autoplaySpeed: Timers.indicItems / 100,
         }
         return (
             <div className="indicator" >
                 <Identity
-                    title="Indicateur de la faune"
+                    title="Indicateur de la Faune"
                     description="Description ... "
                 />
-                <div style={{ flexDirection: 'row', display: 'flex', padding: 10, margin: 10 }} >
-                    {/* <div style={{ flex: 1 }} />
-                    {
-                        this.state.biodiv.map((x, i) => {
-                            let count = this.state.count
-                            if (i >= count && i < count + 4) {
-                                console.log('i = ' + i + ', count = ' + count)
-                                return (
-                                    <Biodiv
-                                        title={x[1]}
-                                        image={x[2]}
-                                        text={x[3]}
-                                        status={x[4]}
-                                    />
-                                )
-                            }
-                        })
-                    }
-                    <div style={{ flex: 1 }} /> */}
-
+                <div style={{ flexDirection: 'row', display: 'flex', padding: 5, marginTop: 5 }} >
                     <Slider {...settings} >
                         {
                             this.state.biodiv.map((x) => {
                                 return (
                                     <Biodiv
                                         title={x[1]}
-                                        image={x[2]}
+                                        title_ar={x[5]}
+                                        image={URL + '/' + x[2]}
                                         text={x[3]}
+                                        text_ar={x[6]}
                                         status={x[4]}
                                     />
                                 )
@@ -118,10 +97,10 @@ class Fauna extends Component {
 
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Especes menacés"
+                        <Card title="Espèces à préoccupation mineur"
                             content={
                                 <Information
-                                    info={"value"}
+                                    info={this.state.biostat[0]}
                                     icon={"/images/splash.png"}
                                     measure={true}
                                 />
@@ -132,7 +111,7 @@ class Fauna extends Component {
                         <Card title="Especes en vulnérabilité"
                             content={
                                 <Information
-                                    info={"value"}
+                                    info={this.state.biostat[1]}
                                     icon={"/images/splash.png"}
                                     measure={true}
                                 />
@@ -140,10 +119,10 @@ class Fauna extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Préoccupation mineur"
+                        <Card title="Especes menacés"
                             content={
                                 <Information
-                                    info={"value"}
+                                    info={this.state.biostat[2]}
                                     icon={"/images/splash.png"}
                                     measure={true}
                                 />

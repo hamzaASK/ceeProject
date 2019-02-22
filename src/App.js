@@ -31,7 +31,7 @@ class App extends Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
-    timer = setInterval(() => this.props.lang === 'fr' ? this.props.AR() : this.props.FR(), Timers.lang)
+    timer = setInterval(() => this.props.lang === 'fr' ? this.props.AR() : this.props.FR(), Timers.lang / 10)
   }
 
   componentWillUnmount() {

@@ -62,12 +62,12 @@ class Indicators extends Component {
                     content: <Carbon />,
                 },
                 {
-                    delay: 7, key: 7, label: "Faune",
+                    delay: 12, key: 7, label: "Faune",
                     icon: "/images/indicators/indic_fauna.png",
                     content: <Fauna />,
                 },
                 {
-                    delay: 7, key: 8, label: "Flore",
+                    delay: 12, key: 8, label: "Flore",
                     icon: "/images/indicators/indic_flora.png",
                     content: <Flora />,
                 },

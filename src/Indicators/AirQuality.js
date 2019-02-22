@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 
-export default class IndicAirQuality extends Component {
+export default class AirQuality extends Component {
 
     constructor(props) {
         super(props)
@@ -143,7 +143,6 @@ export default class IndicAirQuality extends Component {
         )
     }
 
-
     render() {
         return (
             <div className="indicator">
@@ -151,10 +150,9 @@ export default class IndicAirQuality extends Component {
                     title="Indicateur de la Qualité d'air"
                     description="L'indicateur de la qualité d'air affiche les différentes valeurs mesurées et instantanées de la température, de l'humidité et de la quantité des particules CO2 dans l'air, ainsi que les variations de ces paramétres dans les diverses périodes souhaitées"
                 />
-
                 <div className="row-1" >
-                    {this.renderSpace("Hall d'accueil", 18, null, 55)}
-                    {this.renderSpace("Espace bureaux", 21, 350, 60)}
+                    {this.renderSpace("Extérieur", 18, 600, 55)}
+                    {this.renderSpace("Mezzanine", 21, 350, 60)}
                 </div>
                 <div className="row-1" >
                     {this.renderSpace("Classe verte", 23, 400, null)}

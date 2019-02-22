@@ -1,5 +1,5 @@
 
-const coef = 1000
+const coef = 300
 
 export const Timers = {
     lang: 200 * coef, // language alternance
@@ -16,3 +16,4 @@ export const Timers = {
 // images
 // -- lang activation
 // -- 
+

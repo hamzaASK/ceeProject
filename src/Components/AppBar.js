@@ -181,7 +181,9 @@ class PrimarySearchAppBar extends React.Component {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'dodgerblue' }} >
                     <Toolbar variant="dense" disableGutters={true} >
-                        <img src="/images/intellcap.png" alt="INTELLCAP" height={20} width={110} style={{ margin: 10 }} />
+                        <img src="/images/intellcap.png" alt="INTELLCAP" height={20} width={120}
+                            style={{ margin: 5, marginLeft: 20 }}
+                        />
                         <Typography className={classes.title} variant="caption" color="inherit" noWrap style={{ marginLeft: 20, opacity: .5 }}>
                             CEE Monitor v1.0 (AutoDisplay Mode)
                         </Typography>
