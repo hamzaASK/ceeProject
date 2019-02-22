@@ -101,7 +101,7 @@ class Fauna extends Component {
                             content={
                                 <Information
                                     info={this.state.biostat[0]}
-                                    icon={"/images/splash.png"}
+                                    icon={"/images/indicators/biodiv/good.png"}
                                     measure={true}
                                 />
                             }
@@ -112,7 +112,7 @@ class Fauna extends Component {
                             content={
                                 <Information
                                     info={this.state.biostat[1]}
-                                    icon={"/images/splash.png"}
+                                    icon={"/images/indicators/biodiv/bad.png"}
                                     measure={true}
                                 />
                             }
@@ -123,7 +123,7 @@ class Fauna extends Component {
                             content={
                                 <Information
                                     info={this.state.biostat[2]}
-                                    icon={"/images/splash.png"}
+                                    icon={"/images/indicators/biodiv/danger.png"}
                                     measure={true}
                                 />
                             }

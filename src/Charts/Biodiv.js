@@ -49,7 +49,7 @@ class Biodiv extends Component {
                             </div>
                         </State>
                         <MDBCardTitle>{x ? this.props.title : this.props.title_ar}</MDBCardTitle>
-                        <MDBCardText>
+                        <MDBCardText className="biodiv-text">
                             {x ? this.props.text : this.props.text_ar}
                         </MDBCardText>
                     </MDBCardBody>

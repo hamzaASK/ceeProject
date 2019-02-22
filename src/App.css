@@ -25,3 +25,7 @@
   flex-direction: row;
 } */
 
+.biodiv-text {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}

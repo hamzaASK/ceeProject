@@ -28,7 +28,9 @@ export const lang = [
         },
         indicators: {
             biodiv: {
+                state_0: 'Préoccupation mineur',
                 state_1: 'Vulnérable',
+                state_2: 'En danger',
             }
         }
     },
@@ -44,7 +46,9 @@ export const lang = [
         },
         indicators: {
             biodiv: {
-                state_1: 'مهدد بالانقراض',
+                state_0: 'غير مهدد بالانقراض',
+                state_1: 'معرض للانقراض',
+                state_2: 'معرض للخطر للغاية',
             }
         }
     },
