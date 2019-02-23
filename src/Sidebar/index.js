@@ -4,13 +4,12 @@ import Information from '../Charts/Information'
 import { URL } from '../Settings/Server'
 
 import { connect } from 'react-redux'
-// import { lang } from '../Settings/Lang'
+import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
 import Card from '../Components/Card'
 
 import Progress from './Progress'
-import { get } from 'https';
 
 var timer = 10
 
@@ -190,7 +189,8 @@ class Sidebar extends Component {
     }
 
     render() {
-        return (
+        // let x = this.props.lang === 'fr' ? 0 : 1
+                return (
             <Container>
                 <div style={{ display: 'flex' }} >
                     <Card title={"Performances environnementales"}
@@ -248,7 +248,6 @@ height: inherit;
 display: flex;
 flex-direction: column;
 `;
-// background: linear-gradient(to bottom, dodgerblue, white);
 
 const Content = styled.div`
 flex: 1;

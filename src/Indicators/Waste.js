@@ -201,7 +201,7 @@ class Waste extends Component {
                             content={
                                 <Information
                                     info={this.state.totalRecycledLevel + " m3"}
-                                    icon="/images/splash.png"
+                                    icon="/images/indicators/waste/level.png"
                                     measure={true}
                                 />
                             }
