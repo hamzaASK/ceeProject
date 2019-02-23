@@ -10,7 +10,7 @@ import Information from '../Charts/Information'
 import ReactSpeedometer from "react-d3-speedometer"
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
-import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
+import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
 class Water extends Component {
 
