@@ -12,7 +12,7 @@ import Biodiv from '../Charts/Biodiv'
 import { Timers } from '../Settings/Timers'
 
 import { connect } from 'react-redux'
-import lang from '../Settings/Lang'
+import {lang} from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
 let timer = 0
@@ -62,7 +62,8 @@ class Fauna extends Component {
     }
 
     render() {
-        const settings = {
+        // let x = this.props.lang === 'fr' ? 0 : 1
+                const settings = {
             infinite: true,
             speed: 1000,
             slidesToShow: 4,

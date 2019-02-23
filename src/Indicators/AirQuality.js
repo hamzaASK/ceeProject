@@ -4,8 +4,11 @@ import '../Style/custom/indic-dynamic.css'
 import styled from 'styled-components'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
+import { connect } from 'react-redux'
+import { lang } from './Settings/Lang'
+import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
-export default class AirQuality extends Component {
+class AirQuality extends Component {
 
     constructor(props) {
         super(props)
@@ -14,7 +17,7 @@ export default class AirQuality extends Component {
     }
 
     renderSpace(title, temp, co2, humid) { // Space could be a hallway, a room or an open area
-
+        let x = this.props.lang === 'fr' ? 0 : 1
         var bghumid = '/images/indicators/air/humidopt.png'
         var bgtemp = '/images/indicators/air/AirQtempopt.png'
         var bgco2 = '/images/indicators/air/air60.png'
@@ -144,6 +147,7 @@ export default class AirQuality extends Component {
     }
 
     render() {
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator">
                 <Identity
@@ -162,6 +166,8 @@ export default class AirQuality extends Component {
         );
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(AirQuality)
 
 const Element = styled.div`
 Flex: ${props => props.big ? '2' : '1'};

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Slider from './Slider'
-import Card from '../Components/Card'
 import { Timers } from '../Settings/Timers'
 
 let timer = 0

@@ -7,8 +7,11 @@ import Card from '../Components/Card'
 import Information from '../Charts/Information'
 import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
+import { connect } from 'react-redux'
+import { lang } from './Settings/Lang'
+import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
-export default class Carbon extends Component {
+class Carbon extends Component {
 
     constructor(props) {
         super(props)
@@ -162,6 +165,7 @@ export default class Carbon extends Component {
     // }
 
     render() {
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator" >
                 <Identity
@@ -239,3 +243,5 @@ export default class Carbon extends Component {
         );
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Carbon)

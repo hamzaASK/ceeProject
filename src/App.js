@@ -4,8 +4,10 @@ import styled from 'styled-components'
 import { Route, HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { lang } from './Settings/Lang'
-import { Timers } from './Settings/Timers'
 import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
+// let x = this.props.lang === 'fr' ? 0 : 1
+// export default connect(mapStateToProps, mapDispatchToProps)(App)
+import { Timers } from './Settings/Timers'
 
 import AppBar from './Components/AppBar'
 import Header from './Components/Header'

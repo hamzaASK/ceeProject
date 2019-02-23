@@ -7,8 +7,11 @@ import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
 import PieChart from '../Charts/PieChart'
 import ReactSpeedometer from "react-d3-speedometer"
+import { connect } from 'react-redux'
+import { lang } from './Settings/Lang'
+import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
-export default class Energy extends Component {
+class Energy extends Component {
 
     constructor(props) {
         super(props)
@@ -175,6 +178,7 @@ export default class Energy extends Component {
     // }
 
     render() {
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator">
                 <Identity
@@ -264,3 +268,4 @@ export default class Energy extends Component {
     }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(Energy)

@@ -7,8 +7,11 @@ import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
 import BarChart from '../Charts/BarChart'
 import Information from '../Charts/Information'
+import { connect } from 'react-redux'
+import { lang } from './Settings/Lang'
+import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
-export default class Recycled extends Component {
+class Recycled extends Component {
 
     constructor(props) {
         super(props)
@@ -50,60 +53,60 @@ export default class Recycled extends Component {
         return dates;
     }
 
-    getWasteWeightSolid(d0, d1) {
-        // Weights
-        const urlW = `${URL}/dechets/getWasteWeightSolid.php?dateStart=${d1}&dateEnd=${d0}`;
-        return fetch(urlW)
-            .then(res => res.json())
-            .then((res) => {
-                var weightsSolid = []
-                res.map((i) => (i == null) ? weightsSolid.push(0) : weightsSolid.push(i))
-                this.setState({ weightsSolid })
-                console.log(res)
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+    // getWasteWeightSolid(d0, d1) {
+    //     // Weights
+    //     const urlW = `${URL}/dechets/getWasteWeightSolid.php?dateStart=${d1}&dateEnd=${d0}`;
+    //     return fetch(urlW)
+    //         .then(res => res.json())
+    //         .then((res) => {
+    //             var weightsSolid = []
+    //             res.map((i) => (i == null) ? weightsSolid.push(0) : weightsSolid.push(i))
+    //             this.setState({ weightsSolid })
+    //             console.log(res)
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         });
+    // }
 
-    getWasteWeightComposte(d0, d1) {
-        // Weights
-        const urlW = `${URL}/dechets/getWasteWeightComposte.php?dateStart=${d1}&dateEnd=${d0}`;
-        return fetch(urlW)
-            .then(res => res.json())
-            .then((res) => {
-                var weightsComposte = []
-                res.map((i) => (i == null) ? weightsComposte.push(0) : weightsComposte.push(i))
-                this.setState({ weightsComposte })
-                console.log(res)
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+    // getWasteWeightComposte(d0, d1) {
+    //     // Weights
+    //     const urlW = `${URL}/dechets/getWasteWeightComposte.php?dateStart=${d1}&dateEnd=${d0}`;
+    //     return fetch(urlW)
+    //         .then(res => res.json())
+    //         .then((res) => {
+    //             var weightsComposte = []
+    //             res.map((i) => (i == null) ? weightsComposte.push(0) : weightsComposte.push(i))
+    //             this.setState({ weightsComposte })
+    //             console.log(res)
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         });
+    // }
 
-    getLevels() {
-        var levels = [
-            { value: 0, title: 'Verre', capacity: 5 },
-            { value: 0, title: 'Métal', capacity: 5 },
-            { value: 0, title: 'Plastique', capacity: 5 },
-            { value: 0, title: 'Organique', capacity: 5 },
-            { value: 0, title: 'Papier', capacity: 5 },
-            { value: 0, title: 'Dangereux', capacity: 5 },
-            { value: 0, title: 'Autre', capacity: 5 },
-        ]
-        const url = `${URL}/dechets/getWasteLevel.php`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                for (var i = 0; i < 7; i++)
-                    res[i] == null ? levels[i].value = 0 : levels[i].value = res[i]
-                this.setState({ levels })
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+    // getLevels() {
+    //     var levels = [
+    //         { value: 0, title: 'Verre', capacity: 5 },
+    //         { value: 0, title: 'Métal', capacity: 5 },
+    //         { value: 0, title: 'Plastique', capacity: 5 },
+    //         { value: 0, title: 'Organique', capacity: 5 },
+    //         { value: 0, title: 'Papier', capacity: 5 },
+    //         { value: 0, title: 'Dangereux', capacity: 5 },
+    //         { value: 0, title: 'Autre', capacity: 5 },
+    //     ]
+    //     const url = `${URL}/dechets/getWasteLevel.php`;
+    //     return fetch(url)
+    //         .then(res => res.json())
+    //         .then((res) => {
+    //             for (var i = 0; i < 7; i++)
+    //                 res[i] == null ? levels[i].value = 0 : levels[i].value = res[i]
+    //             this.setState({ levels })
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         });
+    // }
 
     getWasteRecycled(d0, d1) {
         // Weights
@@ -120,56 +123,56 @@ export default class Recycled extends Component {
             });
     }
 
-    getWasteTotal(d0, d1) {
-        // Weights
-        const url = `${URL}/dechets/getWasteTotal.php?dateStart=${d1}&dateEnd=${d0}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null)
-                    res[0] = 0;
-                if (res[1] == null)
-                    res[1] = 0;
-                this.setState({
-                    totalLevel: res[0],
-                    totalWeight: res[1]
-                })
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+    // getWasteTotal(d0, d1) {
+    //     // Weights
+    //     const url = `${URL}/dechets/getWasteTotal.php?dateStart=${d1}&dateEnd=${d0}`;
+    //     return fetch(url)
+    //         .then(res => res.json())
+    //         .then((res) => {
+    //             if (res[0] == null)
+    //                 res[0] = 0;
+    //             if (res[1] == null)
+    //                 res[1] = 0;
+    //             this.setState({
+    //                 totalLevel: res[0],
+    //                 totalWeight: res[1]
+    //             })
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         });
+    // }
 
-    getRecycledTotal(d0, d1) {
-        // Weights
-        const url = `${URL}/dechets/getRecycledTotal.php?dateStart=${d1}&dateEnd=${d0}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null)
-                    res[0] = 0;
-                if (res[1] == null)
-                    res[1] = 0;
-                this.setState({
-                    totalRecycledLevel: res[0],
-                    totalRecycledWeight: res[1]
-                })
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+    // getRecycledTotal(d0, d1) {
+    //     // Weights
+    //     const url = `${URL}/dechets/getRecycledTotal.php?dateStart=${d1}&dateEnd=${d0}`;
+    //     return fetch(url)
+    //         .then(res => res.json())
+    //         .then((res) => {
+    //             if (res[0] == null)
+    //                 res[0] = 0;
+    //             if (res[1] == null)
+    //                 res[1] = 0;
+    //             this.setState({
+    //                 totalRecycledLevel: res[0],
+    //                 totalRecycledWeight: res[1]
+    //             })
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         });
+    // }
 
     refreshValues(days) {
         var dates = this.calculateDates(days)
         var date0 = dates.d0
         var date1 = dates.d1
-        this.getWasteWeightSolid(date0, date1)
-        this.getWasteWeightComposte(date0, date1)
+        // this.getWasteWeightSolid(date0, date1)
+        // this.getWasteWeightComposte(date0, date1)
         this.getWasteRecycled(date0, date1)
-        this.getLevels()
-        this.getWasteTotal(date0, date1)
-        this.getRecycledTotal(date0, date1)
+        // this.getLevels()
+        // this.getWasteTotal(date0, date1)
+        // this.getRecycledTotal(date0, date1)
         this.setState({ selectedTime: days })
     }
 
@@ -202,7 +205,8 @@ export default class Recycled extends Component {
     }
 
     render() {
-        return (
+        // let x = this.props.lang === 'fr' ? 0 : 1
+                return (
             <div className="indicator" >
                 <Identity
                     title="Indicateur de Recyclage"
@@ -268,3 +272,5 @@ export default class Recycled extends Component {
         )
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recycled)

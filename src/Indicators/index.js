@@ -168,7 +168,7 @@ border-radius: 15px;
 }
 @media (min-width: 1024px) {
     height: 50px;
-    width: 80px;
+    width: 100px;
 }
 `;
 

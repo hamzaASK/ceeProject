@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { lang } from '../Settings/Lang'
 import { langmoment } from '../Settings/moments'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 var moment = require('moment')
@@ -115,9 +116,6 @@ class Footer extends Component {
                     <div style={{ flex: 2, display: 'flex', color: 'white', fontWeight: '600' }} className="just" >
                         {moment().format('LLLL')}
                     </div>
-                    {/* <div style={{ flex: 2, display: 'flex', color: 'white' }} className="just" >
-                        {moment().format('LTS')}
-                    </div> */}
                     <div style={{ flex: 1 }} />
                 </Time>
             </Container>
