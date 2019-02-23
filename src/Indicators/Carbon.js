@@ -8,7 +8,7 @@ import Information from '../Charts/Information'
 import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
 import { connect } from 'react-redux'
-import { lang } from './Settings/Lang'
+import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
 class Carbon extends Component {

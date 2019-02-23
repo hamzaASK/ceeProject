@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Timers } from '../Settings/Timers'
 
 import { connect } from 'react-redux'
-// import lang from '../Settings/Lang'
+import {lang} from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
 import Water from './Water'

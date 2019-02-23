@@ -9,7 +9,7 @@ import Controls from '../Components/Controls'
 import BarChart from '../Charts/BarChart'
 import Information from '../Charts/Information'
 import { connect } from 'react-redux'
-import { lang } from './Settings/Lang'
+import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
 class Waste extends Component {

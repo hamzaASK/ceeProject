@@ -8,7 +8,7 @@ import Controls from '../Components/Controls'
 import PieChart from '../Charts/PieChart'
 import ReactSpeedometer from "react-d3-speedometer"
 import { connect } from 'react-redux'
-import { lang } from './Settings/Lang'
+import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from './Settings/ReduxStore/actions'
 
 class Energy extends Component {
