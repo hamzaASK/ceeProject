@@ -11,8 +11,11 @@ export default class Progress extends Component {
                     {this.props.title + ': ' + this.props.value + this.props.unit}
                 </div> */}
                 <Label>
-                    {this.props.title + ' ' + this.props.value + this.props.unit}
+                    {this.props.title}
                 </Label>
+                <Measure>
+                    {this.props.value + this.props.unit}
+                </Measure>
                 <Bar>
                     <CircularProgressbar
                         strokeWidth={10} percentage={this.props.value} max={this.props.max}
@@ -51,6 +54,17 @@ margin: 5px;
 `;
 
 const Label = styled.div`
+font-size: 10px;
+width: inherit; 
+height: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow-x: visible;
+font-weight: 600;
+`;
+
+const Measure = styled.div`
 font-size: 12px;
 width: inherit; 
 height: 20px;

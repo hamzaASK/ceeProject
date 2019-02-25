@@ -185,7 +185,7 @@ class Sidebar extends Component {
 
     componentDidMount() {
         // this.refreshValues(7)
-        timer = setInterval(() => { this.refreshValues(7) }, 60000);
+        timer = setInterval(() => { this.refreshValues(7) }, 6000);
     }
 
     render() {
@@ -243,7 +243,7 @@ class Sidebar extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
 
 const Container = styled.div`
-width: 320px;
+width: 360px;
 height: inherit;
 display: flex;
 flex-direction: column;
