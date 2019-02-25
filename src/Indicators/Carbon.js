@@ -169,13 +169,13 @@ class Carbon extends Component {
         return (
             <div className="indicator" >
                 <Identity
-                    title="Radar des performances"
-                    description="Le radar des performances donne une vue globale sur le bilan Carbon des différentes activités du centre de l'éducation à l'environnement"
+                    title={lang[x].GES.title}
+                    description={lang[x].GES.desc}
                 />
                 <Controls refreshValues={this.refreshValues} />
                 <div className="row-3" >
                     <div className="el-1" >
-                        <Card title="Radar des performances"
+                        <Card title={lang[x].GES.indic_1.title}
                             content={
                                 <Radar
                                     name="Performance par secteur"
@@ -191,7 +191,7 @@ class Carbon extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Le jardin botanique du CEE"
+                        <Card title={lang[x].GES.indic_2.title}
                             content={
                                 <img
                                     style={{ maxHeight: 700, maxWidth: 700, borderRadius: 10 }}
@@ -203,7 +203,7 @@ class Carbon extends Component {
                 </div>
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Bilan GES total du CEE"
+                        <Card title={'lang[x].GES.indic_3.title'}
                             content={
                                 <Information
                                     info={[
@@ -220,10 +220,10 @@ class Carbon extends Component {
                         />
                     </div>
                     <div className="el-2" >
-                        <Card title="Comment lire le radar ?"
+                        <Card title={lang[x].GES.indic_3.title}
                             content={
                                 <Information
-                                    info="Le centre du graphe du Radar renvoi vers la valeur minimale 0. Plus les zones sont de couleur verte, plus les émissions du CO2 sont basses, plus elles sont blanches plus les émissions en CO2 sont élevées."
+                                    info={lang[x].GES.indic_3.desc}
                                 />
                             }
                         />
@@ -232,7 +232,7 @@ class Carbon extends Component {
                         <Card //title="Radar des performances"
                             content={
                                 <Information
-                                    info="Le jardin botanique du Centre de l’éducation à l’environnement contient différentes espèces végétales identifiées en collection. Ce jardin a pour mission principale la conservation de la biodiversité, notamment des espèces locales, l'amélioration de la qualité de l'air en absorbant les GES, ainsi qu'une mission d'information et da sensibilisation à la protection de l'environnement du public."
+                                    info={lang[x].GES.indic_4.title}
                                 />
                             }
                         />

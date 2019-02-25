@@ -58,7 +58,7 @@ class Footer extends Component {
             <Container>
                 <Box>
                     <Label long>
-                        {'Courant'}
+                        {lang[x].Meteo.lebel_1}
                     </Label>
                     <Measure>
                         {this.state.temp + ' °C'}
@@ -72,7 +72,7 @@ class Footer extends Component {
                         src={'/images/footer/tempmax.png'}
                     />
                     <Label>
-                        Max
+                        {lang[x].Meteo.lebel_2}
                     </Label>
                     <Measure>
                         {this.state.temp_max + ' °C'}
@@ -83,7 +83,7 @@ class Footer extends Component {
                         src={'/images/footer/tempmin.png'}
                     />
                     <Label>
-                        Min
+                        {lang[x].Meteo.lebel_3}
                     </Label>
                     <Measure>
                         {this.state.temp_min + ' °C'}
@@ -94,7 +94,7 @@ class Footer extends Component {
                         src={'/images/footer/humidity.png'}
                     />
                     <Label>
-                        Humid.
+                        {lang[x].Meteo.lebel_4}
                     </Label>
                     <Measure>
                         {this.state.humidity + ' %'}
@@ -105,7 +105,7 @@ class Footer extends Component {
                         src={'/images/footer/windy.png'}
                     />
                     <Label>
-                        Vent
+                        {lang[x].Meteo.lebel_5}
                     </Label>
                     <Measure>
                         {this.state.wind_spd + ' km/h ' + this.state.wind_deg + '°'}

@@ -4,6 +4,7 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux'
+import { lang } from '../Settings/Lang'
 import { langmoment } from '../Settings/moments'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 var moment = require('moment')
@@ -46,7 +47,7 @@ class Controls extends Component {
             <Container>
                 {/* <div style={{ flex: 1 }} /> */}
                 <Text>
-                    Periode d'activité
+                    {lang[x].Control.label}
                 </Text>
                 <DateRangePicker
                     startDatePlaceholderText="Début"

@@ -99,19 +99,19 @@ class Water extends Component {
     }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator">
                 <Identity
-                    title="Indicateurs des Eaux"
-                    description="Cet indicateur affiche la quantité d'eau potable consommée dans le CEE ainsi que la quantité d'eau recyclée par la station de traitement des eaux usées et récupérées"
+                    title={lang[x].Water.title}
+                    description={lang[x].Water.desc}
                 />
                 <Controls
                     refreshValues={this.refreshValues}
                 />
                 <div className="row-3" >
                     <div className="el-1" >
-                        <Card title="Eau potable consommée (m3)"
+                        <Card title={lang[x].Water.indic_1.title}
                             content={
                                 <ReactSpeedometer
                                     width={250}
@@ -131,25 +131,25 @@ class Water extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Performance"
+                        <Card title={lang[x].Water.indic_2.title}
                             content={
                                 <PieChart
                                     height="95%"
                                     width="95%"
-                                    legend={["Eaux consommées", "Eaux recyclées"]}
-                                    title="Eaux consommées vs. Eaux recyclées"
+                                    legend={[lang[x].Water.indic_2.Element_1.label, lang[x].Water.indic_2.Element_2.label]}
+                                    title={lang[x].Water.indic_2.desc}
                                     titleFont='15'
                                     colorList={['#92D050', 'dodgerblue']}
                                     data={[
-                                        { value: this.state.recycledWater, name: "Eaux\nRecyclées" },
-                                        { value: this.state.consumedWater, name: "Eaux\nConsommées" },
+                                        { value: this.state.recycledWater, name: lang[x].Water.indic_2.Element_2.label },
+                                        { value: this.state.consumedWater, name: lang[x].Water.indic_2.Element_1.label },
                                     ]}
                                 />
                             }
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Eau recyclée (m3)"
+                        <Card title={lang[x].Water.indic_3.title}
                             content={
                                 <ReactSpeedometer
                                     width={250}
@@ -171,20 +171,20 @@ class Water extends Component {
                 </div>
                 <div className="row-2" >
                     <div className="el-1" >
-                        <Card title="Qualité d’eau en provenance de la STEP"
+                        <Card title={lang[x].Water.indic_4.title}
                             content={
                                 <Information
-                                    info="Non potable mais bonne pour l’arrosage"
+                                    info={lang[x].Water.indic_4.comment}
                                     icon="/images/2-green.png"
                                 />
                             }
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Qualité d’eau en provenance du réseau national"
+                        <Card title={lang[x].Water.indic_5.title}
                             content={
                                 <Information
-                                    info="Potable, très bonne pour la consommation quotidienne"
+                                    info={lang[x].Water.indic_5.comment}
                                     icon="/images/3-blue.png"
                                 />
                             }

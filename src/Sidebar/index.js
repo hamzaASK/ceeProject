@@ -189,14 +189,14 @@ class Sidebar extends Component {
     }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
-                return (
+        let x = this.props.lang === 'fr' ? 0 : 1
+        return (
             <Container>
                 <div style={{ display: 'flex' }} >
-                    <Card title={"Performances environnementales"}
+                    <Card title={lang[x].SideBar.title}
                         content={
                             <Information
-                                info="Aperçu sur les performances environnementales au cours des sept jours derniers"
+                                info={lang[x].SideBar.desc}
                             // Fix: icon for general information like bulbe
                             />
                         }
@@ -205,32 +205,32 @@ class Sidebar extends Component {
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.consumedWater} max={100} icon={'/images/sidebar/water.png'} title={'Eaux cons.'} unit={' m3'} />
-                            <Progress value={this.state.recycledWater} max={100} icon={'/images/sidebar/water_.png'} title={'Eaux recyc.'} unit={' m3'} />
+                            <Progress value={this.state.consumedWater} max={100} icon={'/images/sidebar/water.png'} title={lang[x].SideBar.indic_1.title} unit={' m3'} />
+                            <Progress value={this.state.recycledWater} max={100} icon={'/images/sidebar/water_.png'} title={lang[x].SideBar.indic_2.title} unit={' m3'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.consumedEnergy} max={100} icon={'/images/sidebar/energy.png'} title={'Energies cons.'} unit={' kWh'} />
-                            <Progress value={this.state.consumedPV} max={100} icon={'/images/sidebar/energy_.png'} title={'Energies prod.'} unit={' kWh'} />
+                            <Progress value={this.state.consumedEnergy} max={100} icon={'/images/sidebar/energy.png'} title={lang[x].SideBar.indic_3.title} unit={' kWh'} />
+                            <Progress value={this.state.consumedPV} max={100} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.totalWaste} max={100} icon={'/images/sidebar/waste.png'} title={'Déchets'} unit={' m3'} />
-                            <Progress value={this.state.totalRecycled} max={100} icon={'/images/sidebar/waste_.png'} title={'Recyclage'} unit={' m3'} />
+                            <Progress value={this.state.totalWaste} max={100} icon={'/images/sidebar/waste.png'} title={lang[x].SideBar.indic_5.title} unit={' m3'} />
+                            <Progress value={this.state.totalRecycled} max={100} icon={'/images/sidebar/waste_.png'} title={lang[x].SideBar.indic_6.title} unit={' m3'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={58} max={100} icon={'/images/sidebar/ges.png'} title={'Eau'} unit={' m3'} />
-                            <Progress value={this.state.transport} max={100} icon={'/images/sidebar/transport.png'} title={'Eau'} unit={' m3'} />
+                            <Progress value={58} max={100} icon={'/images/sidebar/ges.png'} title={lang[x].SideBar.indic_7.title} unit={' m3'} />
+                            <Progress value={this.state.transport} max={100} icon={'/images/sidebar/transport.png'} title={lang[x].SideBar.indic_8.title} unit={' m3'} />
                         </Content>
                     }
                 />

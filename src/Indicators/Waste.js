@@ -138,19 +138,19 @@ class Waste extends Component {
     // }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator">
                 <Identity
-                    title="Indicateurs des déchets"
-                    description="La poubelle du CEE permet le tri des déchets selon leurs catégories. Ce tri aide à la collecte des différentes informations ci-dessous"
+                    title={lang[x].Waste.title}
+                    description={lang[x].Waste.desc}
                 />
                 <Controls
                     refreshValues={this.refreshValues}
                 />
                 <div className="row-3" >
                     <div className="el-1" >
-                        <Card title="Recyclage"
+                        <Card title={lang[x].Waste.indic_1.title}
                             content={
                                 <BarChart
                                     items={3}
@@ -164,7 +164,7 @@ class Waste extends Component {
                                     legend1='Verre'
                                     legend2='Metal'
                                     legend3='Plastique'
-                                    title={'Poids des déchets Recyclables (en kg)'}
+                                    title={lang[x].Waste.indic_1.desc}
                                     legend={['Verre', 'Metal', 'Plastique']}
                                     time={['']}
                                     height='90%'
@@ -174,7 +174,7 @@ class Waste extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Compostage"
+                        <Card title={lang[x].Waste.indic_2.title}
                             content={
                                 <BarChart
                                     items={2}
@@ -185,7 +185,7 @@ class Waste extends Component {
                                     color2={'#5B9BD5'}
                                     legend1='Organique'
                                     legend2='Papier'
-                                    title={'Poids des déchets Compostables (en kg)'}
+                                    title={lang[x].Waste.indic_2.desc}
                                     legend={['Organique', 'Papier']}
                                     time={['']}
                                     height='90%'
@@ -197,7 +197,7 @@ class Waste extends Component {
                 </div>
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Niveau total"
+                        <Card title={lang[x].Waste.indic_3.title}
                             content={
                                 <Information
                                     info={this.state.totalRecycledLevel + " m3"}
@@ -208,7 +208,7 @@ class Waste extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Poids total"
+                        <Card title={lang[x].Waste.indic_5.title}
                             content={
                                 <Information
                                     info={this.state.totalRecycledWeight + " kg"}
@@ -222,7 +222,7 @@ class Waste extends Component {
                         <Card // title=""
                             content={
                                 <Information
-                                    info="Les déchets organiques sont transformés en composte pour les utiliser dans le jardin botanique. Les autres déchets sont confiés aux filières de recyclage."
+                                    info={lang[x].Waste.indic_6.desc}
                                     // Fix: icon for general information like bulbe
                                     icon="/images/splash.png"
                                 />

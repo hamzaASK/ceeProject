@@ -25,13 +25,13 @@ class Biodiv extends Component {
         let x = this.props.lang === 'fr' ? 0 : 1
         switch (status) {
             case 0:
-                return lang[x].indicators.biodiv.state_0
+                return lang[x].Faune.state_0
             case 1:
-                return lang[x].indicators.biodiv.state_1
+                return lang[x].Faune.state_1
             case 2:
-                return lang[x].indicators.biodiv.state_2
+                return lang[x].Faune.state_2
             default:
-                return lang[x].indicators.biodiv.state_3
+                return lang[x].Faune.state_2
         }
     }
 

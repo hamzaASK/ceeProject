@@ -151,16 +151,16 @@ class AirQuality extends Component {
         return (
             <div className="indicator">
                 <Identity
-                    title="Indicateur de la Qualité d'air"
-                    description="L'indicateur de la qualité d'air affiche les différentes valeurs mesurées et instantanées de la température, de l'humidité et de la quantité des particules CO2 dans l'air, ainsi que les variations de ces paramétres dans les diverses périodes souhaitées"
+                    title={lang[x].Air.title}
+                    description={lang[x].Air.desc}
                 />
                 <div className="row-1" >
-                    {this.renderSpace("Extérieur", 18, 600, 55)}
-                    {this.renderSpace("Mezzanine", 21, 350, 60)}
+                    {this.renderSpace(lang[x].Air.indic_1.title, 18, 600, 55)}
+                    {this.renderSpace(lang[x].Air.indic_2.title, 21, 350, 60)}
                 </div>
                 <div className="row-1" >
-                    {this.renderSpace("Classe verte", 23, 400, null)}
-                    {this.renderSpace("Salle plénière", 21, 410, 40)}
+                    {this.renderSpace(lang[x].Air.indic_3.title, 23, 400, null)}
+                    {this.renderSpace(lang[x].Air.indic_4.title, 21, 410, 40)}
                 </div>
             </div>
         );

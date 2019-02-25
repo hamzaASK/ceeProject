@@ -182,13 +182,13 @@ class Energy extends Component {
         return (
             <div className="indicator">
                 <Identity
-                    title="Indicateurs des énergies"
-                    description="Les indicateurs des énergies renseignent sur la quantité d'énergie consommée par les équipements du CEE à savoir : les équipements de confort Climatisation-Chauffage-Ventilation, les prises éléctriques et l'éclairage. Ils indiquent aussi la quantité d'énergie renouvelable produite par la ferme solaire du CEE"
+                    title={lang[x].Energy.title}
+                    description={lang[x].Energy.desc}
                 />
                 <Controls refreshValues={this.refreshValues} />
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Energie globale consommée (kWh)"
+                        <Card title={lang[x].Energy.indic_1.title}
                             content={
                                 <ReactSpeedometer
                                     width={250}
@@ -208,13 +208,13 @@ class Energy extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Energie renouvelable consommée (kWh)"
+                        <Card title={lang[x].Energy.indic_2.title}
                             content={
                                 <ReactSpeedometer
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max* 5}
+                                    maxValue={this.state.max * 5}
                                     value={this.state.consumedPV}
                                     needleColor="purple"
                                     startColor="limegreen"
@@ -236,28 +236,28 @@ class Energy extends Component {
                                 <PieChart
                                     height="95%"
                                     width="95%"
-                                    title={"Consommation d'énergie\npar équipements"}
+                                    title={lang[x].Energy.indic_3.title}
                                     colorList={['#77d9f9', '#17b229', '#040238', '#30141b']}
                                     data={[
-                                        { value: this.state.consumedCVC, name: "Équipement de \n confort CVC\n" + this.cvcPercent() },
-                                        { value: this.state.consumedEclairage, name: "Éclairage\n" + this.eclairagePercent() },
-                                        { value: this.state.consumedPlugs, name: "Prises électriques\n" + this.plugsPercent() },
+                                        { value: this.state.consumedCVC, name: lang[x].Energy.indic_3.Element_1.label + "\n" + this.cvcPercent() },
+                                        { value: this.state.consumedEclairage, name: lang[x].Energy.indic_3.Element_2.label + "\n" + this.eclairagePercent() },
+                                        { value: this.state.consumedPlugs, name: lang[x].Energy.indic_3.Element_3.label + "\n" + this.plugsPercent() },
                                     ]}
                                 />
                             }
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Performance"
+                        <Card title={lang[x].Energy.indic_4.title}
                             content={
                                 <PieChart
                                     height="95%"
                                     width="95%"
-                                    title={"Energie consommée\nConventionnelle vs. Renouvelable"}
+                                    title={lang[x].Energy.indic_4.desc}
                                     colorList={['#12B5EA', '#92D050', '#040238', '#30141b']}
                                     data={[
-                                        { value: this.state.consumedEnergy, name: "Energie\nconventionnelle\n " + this.consumedPercent() },
-                                        { value: this.state.consumedPV, name: "Energie\nrenouvelable\n " + this.consumedPVPercent() }]}
+                                        { value: this.state.consumedEnergy, name: lang[x].Energy.indic_4.Element_2.label + "\n " + this.consumedPercent() },
+                                        { value: this.state.consumedPV, name: lang[x].Energy.indic_4.Element_1.label + "\n " + this.consumedPVPercent() }]}
                                 />
                             }
                         />

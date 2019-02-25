@@ -35,7 +35,7 @@ text-align: center;
     font-size: 14px;
 }
 @media (min-width: 1024px) {
-    font-size: 20px;
+    font-size: 18px;
 }
 `;
 

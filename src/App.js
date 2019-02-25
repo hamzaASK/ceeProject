@@ -49,7 +49,7 @@ class App extends Component {
     return (
       <div className="viewport">
 
-        <Header text="Monitoring du Centre d'Education à l'Environnement - FM6E" />
+        <Header text={lang[x].title} />
 
         <HashRouter>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex' }} >

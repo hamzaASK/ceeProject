@@ -28,7 +28,7 @@ export default class Identity extends Component {
 
 const Container = styled.div`
 margin: 10px 10px 0;
-width: '100%';
+width: inherit;
 height: 60px;
 display: flex;
 flex-direction: column;
