@@ -181,8 +181,8 @@ class Carbon extends Component {
                                     name="Performance par secteur"
                                     data={[
                                         this.state.transport,
-                                        this.state.consumedEnergy,
-                                        this.state.consumedWater,
+                                        this.state.consumedEnergy/1000,
+                                        this.state.consumedWater/1000,
                                         51,
                                         70
                                     ]}
@@ -207,9 +207,9 @@ class Carbon extends Component {
                             content={
                                 <Information
                                     info={[
-                                        (this.state.consumedEnergy - this.state.consumedPV) * 0.784 +
-                                        (this.state.consumedWater - this.state.recycledWater) * 0.5 +
-                                        (this.state.consumedWater - this.state.recycledWater) * 0.5 +
+                                        (this.state.consumedEnergy/1000 - this.state.consumedPV/1000) * 0.784 +
+                                        (this.state.consumedWater/1000 - this.state.recycledWater/1000) * 0.5 +
+                                        (this.state.consumedWater/1000 - this.state.recycledWater/1000) * 0.5 +
                                         this.state.transport
                                         // Fix: add waste carbon footprint to the total
                                     ] + ' kgCO2'}
