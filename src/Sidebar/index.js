@@ -205,16 +205,16 @@ class Sidebar extends Component {
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.consumedWater} max={100} icon={'/images/sidebar/water.png'} title={lang[x].SideBar.indic_1.title} unit={' m3'} />
-                            <Progress value={this.state.recycledWater} max={100} icon={'/images/sidebar/water_.png'} title={lang[x].SideBar.indic_2.title} unit={' m3'} />
+                            <Progress value={Math.round((this.state.consumedWater / 1000) * 10) / 10} max={10} icon={'/images/sidebar/water.png'} title={lang[x].SideBar.indic_1.title} unit={' m3'} />
+                            <Progress value={Math.round((this.state.recycledWater / 1000) * 10) / 10} max={10} icon={'/images/sidebar/water_.png'} title={lang[x].SideBar.indic_2.title} unit={' m3'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.consumedEnergy} max={100} icon={'/images/sidebar/energy.png'} title={lang[x].SideBar.indic_3.title} unit={' kWh'} />
-                            <Progress value={this.state.consumedPV} max={100} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
+                            <Progress value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10} max={1500} icon={'/images/sidebar/energy.png'} title={lang[x].SideBar.indic_3.title} unit={' kWh'} />
+                            <Progress value={Math.round((this.state.consumedPV / 1000) * 10) / 10} max={50} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
                         </Content>
                     }
                 />

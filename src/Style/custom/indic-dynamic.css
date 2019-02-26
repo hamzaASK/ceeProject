@@ -1,4 +1,4 @@
-@media (max-width: 767px) {     
+@media (max-width: 7.67px) {     
     .row-0 {
         width: '100%';
         height: 120px;
@@ -22,7 +22,7 @@
     }
   }
 
-@media (min-width: 768px) {
+@media (min-width: 7.68px) {
     .row-0 {
         width: '100%';
         height: 120px;

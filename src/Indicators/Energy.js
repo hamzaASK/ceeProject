@@ -194,8 +194,8 @@ class Energy extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max * 5}
-                                    value={this.state.consumedEnergy}
+                                    maxValue={this.state.max * 30}
+                                    value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="limegreen"
                                     endColor="red"
@@ -215,7 +215,7 @@ class Energy extends Component {
                                     height={'100%'}
                                     forceRender={true}
                                     maxValue={this.state.max * 5}
-                                    value={this.state.consumedPV}
+                                    value={Math.round((this.state.consumedPV / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="limegreen"
                                     endColor="red"
@@ -239,9 +239,9 @@ class Energy extends Component {
                                     title={lang[x].Energy.indic_3.title}
                                     colorList={['#77d9f9', '#17b229', '#040238', '#30141b']}
                                     data={[
-                                        { value: this.state.consumedCVC, name: lang[x].Energy.indic_3.Element_1.label + "\n" + this.cvcPercent() },
-                                        { value: this.state.consumedEclairage, name: lang[x].Energy.indic_3.Element_2.label + "\n" + this.eclairagePercent() },
-                                        { value: this.state.consumedPlugs, name: lang[x].Energy.indic_3.Element_3.label + "\n" + this.plugsPercent() },
+                                        { value: this.state.consumedCVC / 1000, name: lang[x].Energy.indic_3.Element_1.label + "\n" + this.cvcPercent() },
+                                        { value: this.state.consumedEclairage / 1000, name: lang[x].Energy.indic_3.Element_2.label + "\n" + this.eclairagePercent() },
+                                        { value: this.state.consumedPlugs / 1000, name: lang[x].Energy.indic_3.Element_3.label + "\n" + this.plugsPercent() },
                                     ]}
                                 />
                             }

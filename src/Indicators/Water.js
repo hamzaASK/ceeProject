@@ -117,8 +117,8 @@ class Water extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max / 2}
-                                    value={this.state.consumedWater}
+                                    maxValue={this.state.max / 5}
+                                    value={Math.round((this.state.consumedWater / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="dodgerblue"
                                     segments={5}
@@ -141,8 +141,8 @@ class Water extends Component {
                                     titleFont='15'
                                     colorList={['#92D050', 'dodgerblue']}
                                     data={[
-                                        { value: this.state.recycledWater, name: lang[x].Water.indic_2.Element_2.label },
-                                        { value: this.state.consumedWater, name: lang[x].Water.indic_2.Element_1.label },
+                                        { value: this.state.recycledWater / 1000, name: lang[x].Water.indic_2.Element_2.label },
+                                        { value: this.state.consumedWater / 1000, name: lang[x].Water.indic_2.Element_1.label },
                                     ]}
                                 />
                             }
@@ -155,8 +155,8 @@ class Water extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max / 2}
-                                    value={this.state.recycledWater}
+                                    maxValue={this.state.max / 5}
+                                    value={Math.round((this.state.recycledWater / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="red"
                                     endColor="limegreen"
