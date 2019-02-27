@@ -42,17 +42,17 @@ class AirQuality extends Component {
                             <Element style={{ flexDirection: 'row', display: 'flex' }} >
                                 <Element className="just">
                                     <Title className="just" style={{ backgroundColor: 'whitesmoke', borderRadius: 50, margin: 10 }}>
-                                        {'Température'}
+                                        {lang[x].Air.indic_1.Element_1.label}
                                     </Title>
                                 </Element>
                                 <Element className="just">
                                     <Title className="just" style={{ backgroundColor: 'whitesmoke', borderRadius: 50, margin: 10 }}>
-                                        {'Humidité'}
+                                        {lang[x].Air.indic_1.Element_2.label}
                                     </Title>
                                 </Element>
                                 <Element className="just">
                                     <Title className="just" style={{ backgroundColor: 'whitesmoke', borderRadius: 50, margin: 10 }}>
-                                        {'GES'}
+                                        {lang[x].Air.indic_1.Element_3.label}
                                     </Title>
                                 </Element>
 

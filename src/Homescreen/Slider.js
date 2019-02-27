@@ -13,42 +13,44 @@ import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
+var timer = 0
 class CarouselPage extends Component {
 
     // const CarouselPage = () => {
     constructor(props) {
         super(props)
         this.state = {
-            elements: [
-                {
-                    id: 1,
-                    title: 'title 1',
-                    description: "description 1",
-                    picture: "/images/home/home1.png"
-                },
-                {
-                    id: 2,
-                    title: "Station d'épuration des eaux",
-                    description: "description 2",
-                    picture: "/images/home/home2.png"
-                },
-                {
-                    id: 3,
-                    title: "Station photovoltaique",
-                    description: "description 3",
-                    picture: "/images/home/home3.png"
-                },
-            ]
+            // elements: [
+            //     {
+            //         id: 1,
+            //         title: 'title 1',
+            //         description: "description 1",
+            //         picture: "/images/home/home1.png"
+            //     },
+            //     {
+            //         id: 2,
+            //         title: "Station d'épuration des eaux",
+            //         description: "description 2",
+            //         picture: "/images/home/home2.png"
+            //     },
+            //     {
+            //         id: 3,
+            //         title: "Station photovoltaique",
+            //         description: "description 3",
+            //         picture: "/images/home/home3.png"
+            //     },
+            // ],
+            elements: []
         }
     }
 
     render() {
-        let i = this.props.lang === 'fr' ? 0 : 1
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
-            <MDBCarousel activeItem={1} length={this.state.elements.length} showControls={true} showIndicators={true} className="z-depth-1" style={{ margin: 10, borderRadius: 10, flex: 1 }} interval={Timers.homeslides} >
+            <MDBCarousel activeItem={1} length={lang[x].welcome.length} showControls={true} showIndicators={true} className="z-depth-1" style={{ margin: 10, borderRadius: 10, flex: 1 }} interval={Timers.homeslides} >
                 <MDBCarouselInner>
                     {
-                        this.state.elements.map((x) => {
+                        lang[x].welcome.map((x) => {
                             return (
                                 <MDBCarouselItem itemId={x.id} key={x.id}>
                                     <MDBView >
@@ -61,7 +63,7 @@ class CarouselPage extends Component {
                                         >
                                             {x.title}
                                         </h3>
-                                        <Info info={x.description} />
+                                        <Info info={x.desc} />
                                     </div>
                                 </MDBCarouselItem>
                             )

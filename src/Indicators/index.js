@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Timers } from '../Settings/Timers'
 
 import { connect } from 'react-redux'
-import {lang} from '../Settings/Lang'
+import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
 import Water from './Water'
@@ -95,6 +95,7 @@ class Indicators extends Component {
 
     render() {
         let i = this.state.currentComp
+        let y = this.props.lang === 'fr' ? 0 : 1
         // Fix: Make Header div scrollable
         return (
             <Container>
@@ -104,12 +105,16 @@ class Indicators extends Component {
                         this.state.Components.map((x) => {
                             return (
                                 <Button
-                                    style={{ boxShadow: x.key === this.state.currentComp ? '0 4px 10px 0 rgba(0, 0, 0, 0.2)' : null }}
+                                    style={{
+                                        boxShadow: x.key === this.state.currentComp ? '0 4px 10px 0 rgba(0, 0, 0, 0.2)' : null,
+                                        // borderBottomWidth: x.key === this.state.currentComp ? 2 : 1,
+                                        // borderBottomStyle: 'solid'
+                                    }}
                                     key={x.key}
                                     onClick={() => { this.setState({ currentComp: x.key }) }}
                                 >
                                     <Icon src={x.icon} />
-                                    <Title style={{ fontWeight: x.key === this.state.currentComp ? 'bold' : 'normal' }} >{x.label}</Title>
+                                    <Title style={{ fontWeight: x.key === this.state.currentComp ? 'bold' : 'normal' }} >{lang[y].indicatorsNames[x.key]}</Title>
                                 </Button>
                             )
                         })
@@ -130,13 +135,6 @@ const Container = styled.div`
 flex: 1;
 display: flex;
 flex-direction: column;
-`;
-
-const Tempo = styled.div`
-flex: 1;
-display: flex;
-justify-content: center;
-align-items: center;
 `;
 
 const Header = styled.div`
@@ -168,7 +166,7 @@ border-radius: 15px;
 }
 @media (min-width: 1024px) {
     height: 50px;
-    width: 100px;
+    width: 120px;
 }
 `;
 

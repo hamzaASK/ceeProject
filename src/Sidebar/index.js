@@ -192,7 +192,7 @@ class Sidebar extends Component {
         let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <Container>
-                <div style={{ display: 'flex' }} >
+                <div style={{ display: 'flex', flex: 1 }} >
                     <Card title={lang[x].SideBar.title}
                         content={
                             <Information

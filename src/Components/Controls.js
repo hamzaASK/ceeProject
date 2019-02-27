@@ -141,6 +141,7 @@ const Text = styled.div`
 }
 display: flex;
 padding: 10px;
+margin-left: 10px;
 `;
 
 const Message = styled.div`

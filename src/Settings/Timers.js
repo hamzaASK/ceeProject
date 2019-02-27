@@ -1,8 +1,8 @@
 
-const coef = 300
+const coef = 30
 
 export const Timers = {
-    lang: 200 * coef, // language alternance
+    lang: 2000 * coef, // language alternance
     homescreen: 2500 * coef, // homescreen page
     homeslides: 500 * coef, // homescreen slides
     indicators: 7000 * coef, // indicators page

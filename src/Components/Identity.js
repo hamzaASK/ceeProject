@@ -8,9 +8,14 @@ export default class Identity extends Component {
         return (
             <Container>
 
-                <Title>
-                    <Typography variant="h5" color="" style={{ color: '#005475' }} noWrap>
+                <Title className="just" >
+                    <Typography variant="h5" style={{ color: '#005475' }} noWrap>
                         {this.props.title}
+                    </Typography>
+                </Title>
+                <Title className="just" >
+                    <Typography className="just" variant="subtitle1" noWrap>
+                        {this.props.description}
                     </Typography>
                 </Title>
                 {/* <Description>
@@ -18,9 +23,9 @@ export default class Identity extends Component {
                         {this.props.description}
                     </Typography>
                 </Description> */}
-                <Description
+                {/* <Description
                     className="header-4" readOnly value={this.props.description}
-                />
+                /> */}
             </Container>
         )
     }
@@ -38,6 +43,7 @@ const Title = styled.div`
 flex: 3;
 display: flex;
 justfify-content: center;
+align-items: center;
 padding: 0 5px 0;
 `;
 

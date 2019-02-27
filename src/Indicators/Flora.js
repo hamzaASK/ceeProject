@@ -12,7 +12,7 @@ import Biodiv from '../Charts/Biodiv'
 import { Timers } from '../Settings/Timers'
 
 import { connect } from 'react-redux'
-import {lang} from '../Settings/Lang'
+import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
 
 let timer = 0
@@ -62,8 +62,8 @@ class Fauna extends Component {
     }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
-                const settings = {
+        let x = this.props.lang === 'fr' ? 0 : 1
+        const settings = {
             infinite: true,
             speed: 1000,
             slidesToShow: 4,
@@ -74,8 +74,8 @@ class Fauna extends Component {
         return (
             <div className="indicator" >
                 <Identity
-                    title="Indicateur de la Faune"
-                    description="Description ... "
+                    title={lang[x].Flore.title}
+                    description={lang[x].Flore.desc}
                 />
                 <div style={{ flexDirection: 'row', display: 'flex', padding: 5, marginTop: 5 }} >
                     <Slider {...settings} >
@@ -98,7 +98,7 @@ class Fauna extends Component {
 
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Espèces à préoccupation mineur"
+                        <Card title={lang[x].Flore.state_0}
                             content={
                                 <Information
                                     info={this.state.biostat[0]}
@@ -109,7 +109,7 @@ class Fauna extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Especes en vulnérabilité"
+                        <Card title={lang[x].Flore.state_1}
                             content={
                                 <Information
                                     info={this.state.biostat[1]}
@@ -120,7 +120,7 @@ class Fauna extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Especes menacés"
+                        <Card title={lang[x].Flore.state_2}
                             content={
                                 <Information
                                     info={this.state.biostat[2]}

@@ -71,7 +71,7 @@ class Fauna extends Component {
     }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
+        let x = this.props.lang === 'fr' ? 0 : 1
         const settings = {
             infinite: true,
             speed: 1000,
@@ -83,8 +83,8 @@ class Fauna extends Component {
         return (
             <div className="indicator" >
                 <Identity
-                    title="Indicateur de la Faune"
-                    description="Description ... "
+                    title={lang[x].Faune.title}
+                    description={lang[x].Faune.desc}
                 />
                 <div style={{ flexDirection: 'row', display: 'flex', padding: 5, marginTop: 5 }} >
                     <Slider {...settings} >
@@ -92,14 +92,14 @@ class Fauna extends Component {
                             this.state.biodiv.map((x) => {
                                 return (
                                     <Biodiv
-                                    title={x[1]}
-                                    title_ar={x[5]}
-                                    image={URL + '/' + x[2]}
-                                    text={x[3]}
-                                    text_ar={x[6]}
+                                        title={x[1]}
+                                        title_ar={x[5]}
+                                        image={URL + '/' + x[2]}
+                                        text={x[3]}
+                                        text_ar={x[6]}
                                         status={x[4]}
-                                        />
-                                        )
+                                    />
+                                )
                             })
                         }
                     </Slider>
@@ -107,37 +107,37 @@ class Fauna extends Component {
 
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title="Espèces à préoccupation mineur"
+                        <Card title={lang[x].Faune.state_0}
                             content={
                                 <Information
-                                info={this.state.biostat[0]}
+                                    info={this.state.biostat[0]}
                                     icon={"/images/indicators/biodiv/good.png"}
                                     measure={true}
                                 />
                             }
-                            />
+                        />
                     </div>
                     <div className="el-1" >
-                        <Card title="Especes en vulnérabilité"
+                        <Card title={lang[x].Faune.state_1}
                             content={
                                 <Information
-                                info={this.state.biostat[1]}
+                                    info={this.state.biostat[1]}
                                     icon={"/images/indicators/biodiv/bad.png"}
                                     measure={true}
-                                    />
-                                }
-                                />
-                    </div>
-                    <div className="el-1" >
-                        <Card title="Especes menacés"
-                            content={
-                                <Information
-                                info={this.state.biostat[2]}
-                                icon={"/images/indicators/biodiv/danger.png"}
-                                measure={true}
                                 />
                             }
-                            />
+                        />
+                    </div>
+                    <div className="el-1" >
+                        <Card title={lang[x].Faune.state_2}
+                            content={
+                                <Information
+                                    info={this.state.biostat[2]}
+                                    icon={"/images/indicators/biodiv/danger.png"}
+                                    measure={true}
+                                />
+                            }
+                        />
                     </div>
                 </div>
             </div>

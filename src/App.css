@@ -1,8 +1,8 @@
 .viewport {
   margin: auto;
-  width: 1914px;
+  width: 1920px;
   height: 1080px;
-  min-width: 1914px;
+  min-width: 1920px;
   min-height: 1080px;
   display: flex;
   flex-direction: column;
