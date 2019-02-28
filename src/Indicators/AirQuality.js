@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
+import { URL } from '../Settings/Server'
 import styled from 'styled-components'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
@@ -13,10 +14,11 @@ class AirQuality extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            airquality: []
         }
     }
 
-    renderSpace(title, temp, co2, humid) { // Space could be a hallway, a room or an open area
+    renderSpace(title, temp, humid, co2) { // Space could be a hallway, a room or an open area
         let x = this.props.lang === 'fr' ? 0 : 1
         var bghumid = '/images/indicators/air/humidopt.png'
         var bgtemp = '/images/indicators/air/AirQtempopt.png'
@@ -146,6 +148,23 @@ class AirQuality extends Component {
         )
     }
 
+    refreshValues() {
+        const url = `${URL}/air/airquality.php`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((res) => {
+                console.log(res)
+                this.setState({ airquality: res })
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
+    componentDidMount() {
+        this.refreshValues()
+    }
+
     render() {
         let x = this.props.lang === 'fr' ? 0 : 1
         return (
@@ -155,12 +174,12 @@ class AirQuality extends Component {
                     description={lang[x].Air.desc}
                 />
                 <div className="row-1" >
-                    {this.renderSpace(lang[x].Air.indic_1.title, 18, 600, 55)}
-                    {this.renderSpace(lang[x].Air.indic_2.title, 21, 350, 60)}
+                    {this.renderSpace(lang[x].Air.indic_1.title, this.state.airquality[3], this.state.airquality[7], this.state.airquality[10])}
+                    {this.renderSpace(lang[x].Air.indic_2.title, this.state.airquality[4], this.state.airquality[8], this.state.airquality[11])}
                 </div>
                 <div className="row-1" >
-                    {this.renderSpace(lang[x].Air.indic_3.title, 23, 400, null)}
-                    {this.renderSpace(lang[x].Air.indic_4.title, 21, 410, 40)}
+                    {this.renderSpace(lang[x].Air.indic_3.title, this.state.airquality[1], this.state.airquality[5], null)}
+                    {this.renderSpace(lang[x].Air.indic_4.title, this.state.airquality[2], this.state.airquality[6], this.state.airquality[9])}
                 </div>
             </div>
         );
