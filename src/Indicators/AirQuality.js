@@ -23,13 +23,13 @@ class AirQuality extends Component {
         var bghumid = '/images/indicators/air/humidopt.png'
         var bgtemp = '/images/indicators/air/AirQtempopt.png'
         var bgco2 = '/images/indicators/air/air60.png'
-        if (co2 < 500)
+        if (co2 < 300)
             bgco2 = '/images/indicators/air/air20.png'
-        if (co2 > 1000)
+        if (co2 > 800)
             bgco2 = '/images/indicators/air/air80.png'
-        if (humid < 45)
+        if (humid < 35)
             bghumid = '/images/indicators/air/humidmin.png'
-        if (humid > 60)
+        if (humid > 70)
             bghumid = '/images/indicators/air/humidmax.png'
         if (temp < 19)
             bgtemp = '/images/indicators/air/AirQtempmin.png'
