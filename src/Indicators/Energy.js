@@ -80,9 +80,9 @@ class Energy extends Component {
             .then(res => res.json())
             .then((res) => {
                 if (res[0] == null) {
-                    this.setState({ eclairage: 0 })
+                    this.setState({ consumedEclairage: 0 })
                 } else {
-                    this.setState({ eclairage: res[0] })
+                    this.setState({ consumedEclairage: res[0] })
                 }
             })
             .catch((error) => {
@@ -91,14 +91,14 @@ class Energy extends Component {
     }
 
     getConsumedCVC(days) {
-        const url = `${URL}/energy/getConsumedCVC.php?days=${days}`;
+        let url = `${URL}/energy/getConsumedCVC.php?days=${days}`;
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
                 if (res[0] == null) {
-                    this.setState({ cvc: 0 })
+                    this.setState({ consumedCVC: 0 })
                 } else {
-                    this.setState({ cvc: res[0] })
+                    this.setState({ consumedCVC: res[0] })
                 }
             })
             .catch((error) => {
@@ -112,9 +112,9 @@ class Energy extends Component {
             .then(res => res.json())
             .then((res) => {
                 if (res[0] == null) {
-                    this.setState({ plugs: 0 })
+                    this.setState({ consumedPlugs: 0 })
                 } else {
-                    this.setState({ plugs: res[0] })
+                    this.setState({ consumedPlugs: res[0] })
                 }
             })
             .catch((error) => {
@@ -160,17 +160,17 @@ class Energy extends Component {
 
     plugsPercent() {
         var total = this.state.consumedPlugs + this.state.consumedEclairage + this.state.consumedCVC
-        return total === 0 ? 0 + ' %' : (this.state.consumedPlugs / total) + ' %'
+        return total === 0 ? 0 + ' %' : Math.round((this.state.consumedPlugs / total) * 1000) / 10 + ' %'
     }
 
     eclairagePercent() {
         var total = this.state.consumedPlugs + this.state.consumedEclairage + this.state.consumedCVC
-        return total === 0 ? 0 + ' %' : (this.state.consumedEclairage / total) + ' %'
+        return total === 0 ? 0 + ' %' : Math.round((this.state.consumedEclairage / total) * 1000) / 10 + ' %'
     }
 
     cvcPercent() {
         var total = this.state.consumedPlugs + this.state.consumedEclairage + this.state.consumedCVC
-        return total === 0 ? 0 + ' %' : (this.state.consumedCVC / total) + ' %'
+        return total === 0 ? 0 + ' %' : Math.round((this.state.consumedCVC / total) * 1000) / 10 + ' %'
     }
 
     // componentDidMount() {
@@ -194,7 +194,7 @@ class Energy extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max * 30}
+                                    maxValue={this.state.max * 5}
                                     value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="limegreen"

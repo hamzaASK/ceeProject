@@ -124,6 +124,18 @@ class PrimarySearchAppBar extends React.Component {
         console.log(value)
     };
 
+
+    handleAutoNav() {
+        let url = window.location.href
+        url = url.toString()
+        if (url.substr(url.indexOf("/#/")) === "/#/")
+            return 0
+        if (url.substr(url.indexOf("/#/")) === "/#/indicators")
+            return 1
+        if (url.substr(url.indexOf("/#/")) === "/#/ressources")
+            return 2
+    }
+
     render() {
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const { classes } = this.props;
@@ -189,7 +201,7 @@ class PrimarySearchAppBar extends React.Component {
                         </Typography>
                         <div className={classes.grow} />
                         <Tabs
-                            value={value}
+                            value={this.handleAutoNav()}
                             onChange={this.handleChange}
                             variant="scrollable"
                             scrollButtons="on"
