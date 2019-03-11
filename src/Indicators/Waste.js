@@ -10,7 +10,8 @@ import BarChart from '../Charts/BarChart'
 import Information from '../Charts/Information'
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
-import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 class Waste extends Component {
 

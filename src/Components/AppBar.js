@@ -121,7 +121,6 @@ class PrimarySearchAppBar extends React.Component {
 
     handleChange = (event, value) => {
         this.setState({ value });
-        console.log(value)
     };
 
 
@@ -134,6 +133,8 @@ class PrimarySearchAppBar extends React.Component {
             return 1
         if (url.substr(url.indexOf("/#/")) === "/#/ressources")
             return 2
+        if (url.substr(url.indexOf("/#/")) === "/#/reports")
+            return 3
     }
 
     render() {
@@ -191,13 +192,13 @@ class PrimarySearchAppBar extends React.Component {
 
         return (
             <div className={classes.root}>
-                <AppBar position="static" style={{ backgroundColor: 'dodgerblue' }} >
+                <AppBar position="static" style={{ backgroundColor: this.props.admin ? 'limegreen' : 'dodgerblue' }} >
                     <Toolbar variant="dense" disableGutters={true} >
                         <img src="/images/intellcap.png" alt="INTELLCAP" height={20} width={120}
                             style={{ margin: 5, marginLeft: 20 }}
                         />
                         <Typography className={classes.title} variant="caption" color="inherit" noWrap style={{ marginLeft: 20, opacity: .5 }}>
-                            CEE Monitor v1.0 (AutoDisplay Mode)
+                            {this.props.version}
                         </Typography>
                         <div className={classes.grow} />
                         <Tabs

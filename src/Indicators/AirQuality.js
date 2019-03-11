@@ -7,7 +7,8 @@ import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
-import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 class AirQuality extends Component {
 

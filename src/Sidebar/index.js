@@ -5,7 +5,8 @@ import { URL } from '../Settings/Server'
 
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
-import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 import Card from '../Components/Card'
 
@@ -132,7 +133,6 @@ class Sidebar extends Component {
 
     getTransport(d0, d1) {
         const url = `${URL}/transport/getTransport.php?dateStart=${d1}&dateEnd=${d0}`
-        console.log(url)
         return fetch(url)
             .then(res => res.json())
             .then((res) => {

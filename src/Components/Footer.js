@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { langmoment } from '../Settings/moments'
-import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 var moment = require('moment')
 
 let timer = 0

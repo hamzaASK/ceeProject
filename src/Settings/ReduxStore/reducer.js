@@ -1,18 +1,10 @@
+import { combineReducers } from 'redux'
+import langReducer from './langReducer'
+import adminReducer from './adminReducer'
 
-const initialState = {
-    lang: 'fr',
-}
+const rootreducer = combineReducers({
+    langReducer: langReducer,
+    adminReducer: adminReducer,
+})
 
-const reducer = (state = initialState, action) => {
-    const newState = { ...state }
-
-    if (action.type === 'AR')
-        newState.lang = 'ar'
-
-    if (action.type === 'FR')
-        newState.lang = 'fr'
-
-    return newState
-}
-
-export default reducer
+export default rootreducer

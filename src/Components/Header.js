@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { lang } from '../Settings/Lang'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 class Header extends Component {
 
     render() {
         return (
-            <Container>
+            <Container style={{
+                background: this.props.admin ?
+                    'linear-gradient(to left bottom, green, limegreen)' :
+                    'linear-gradient(to left bottom, darkblue, dodgerblue)'
+            }}>
 
-                {/* <LangButton
+                <LangButton
                     // Fix: Activated lang should have full opacity
                     // style={{ opacity: x === 1 ? .7 : 1 }}
                     onClick={() => { this.props.AR() }}
@@ -21,10 +29,12 @@ class Header extends Component {
                     <Icon src="/images/btn_lang_fr.png" />
                 </LangButton>
                 <LangButton
+                    disabled={true}
+                    style={{ opacity: .3 }}
                     onClick={() => { }}
                 >
                     <Icon src="/images/btn_lang_en.png" />
-                </LangButton> */}
+                </LangButton>
 
                 <Gap />
 
@@ -39,13 +49,12 @@ class Header extends Component {
     }
 }
 
-export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
 
 const Container = styled.div`
 width: '100%';
 display: flex;
 flex-direction: row;
-background: linear-gradient(to left bottom, darkblue, dodgerblue);
 padding: 5px;
 `;
 
@@ -57,6 +66,27 @@ display: flex;
 color: white;
 margin: 5px;
 text-align: center;
+`;
+
+
+const LangButton = styled.button`
+height: 30px;
+width: 30px;
+display: flex;
+opacity: 0.7;
+margin: 10px;
+background: none;
+border: none;
+cursor: pointer;
+&:hover {
+    opacity: 1;
+}
+`;
+
+const Icon = styled.img`
+    max-width: 30px;
+    max-height: 30px;
+    border-raduis: 50px;
 `;
 
 const Logo = styled.div`

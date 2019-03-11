@@ -32,6 +32,7 @@ export const lang = [
                 { label: "Accueil" },
                 { label: "Indicateurs" },
                 { label: "Ressources" },
+                { label: "Rapport" },
             ]
         },
 
@@ -470,6 +471,7 @@ export const lang = [
                 { label: "الرئيسية" },
                 { label: "المؤشرات" },
                 { label: "الموارد" },
+                { label: "التقارير" },
             ]
         },
 

@@ -6,7 +6,8 @@ import 'react-dates/initialize';
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { langmoment } from '../Settings/moments'
-import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/actions'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 var moment = require('moment')
 
 // Fix: Add fast changeDates icons

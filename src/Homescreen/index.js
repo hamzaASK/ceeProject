@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Slider from './Slider'
 import { Timers } from '../Settings/Timers'
+import { connect } from 'react-redux'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 let timer = 0
 
-export default class Homescreen extends Component {
+class Homescreen extends Component {
 
   constructor(props) {
     super(props);
@@ -13,7 +16,10 @@ export default class Homescreen extends Component {
   }
 
   componentDidMount() {
-    timer = setTimeout(() => this.props.history.push(`/indicators`), Timers.homescreen)
+    timer = setTimeout(() => {
+      if (this.props.admin)
+        this.props.history.push(`/indicators`)
+    }, Timers.homescreen)
   }
 
   componentWillUnmount() {
@@ -34,3 +40,4 @@ export default class Homescreen extends Component {
   }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(Homescreen)
