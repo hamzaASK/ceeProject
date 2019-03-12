@@ -79,7 +79,7 @@ class Fauna extends Component {
             slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: Timers.indicItems / 100,
+            autoplaySpeed: Timers.indicItems / 10,
         }
         return (
             <div className="indicator" >

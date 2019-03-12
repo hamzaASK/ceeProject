@@ -18,7 +18,7 @@ export default class Progress extends Component {
                 </Measure>
                 <Bar>
                     <CircularProgressbar
-                        strokeWidth={10} percentage={this.props.value} max={this.props.max}
+                        strokeWidth={10} percentage={(this.props.value * 100) / this.props.max} max={this.props.max}
                         styles={{
                             root: { flex: 1, margin: 3, maxHeight: 60, maxWidth: 60 },
                             path: { stroke: 'green' }

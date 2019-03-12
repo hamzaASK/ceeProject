@@ -214,7 +214,7 @@ class Sidebar extends Component {
                     content={
                         <Content>
                             <Progress value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10} max={1500} icon={'/images/sidebar/energy.png'} title={lang[x].SideBar.indic_3.title} unit={' kWh'} />
-                            <Progress value={Math.round((this.state.consumedPV / 1000) * 10) / 10} max={50} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
+                            <Progress value={Math.round((this.state.consumedPV / 1000) * 10) / 10} max={150} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
                         </Content>
                     }
                 />

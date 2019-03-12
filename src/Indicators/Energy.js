@@ -195,7 +195,7 @@ class Energy extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max * 5}
+                                    maxValue={this.state.max * 30}
                                     value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="limegreen"
