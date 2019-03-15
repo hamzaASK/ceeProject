@@ -16,30 +16,9 @@ import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 class CarouselPage extends Component {
 
-    // const CarouselPage = () => {
     constructor(props) {
         super(props)
         this.state = {
-            // elements: [
-            //     {
-            //         id: 1,
-            //         title: 'title 1',
-            //         description: "description 1",
-            //         picture: "/images/home/home1.png"
-            //     },
-            //     {
-            //         id: 2,
-            //         title: "Station d'épuration des eaux",
-            //         description: "description 2",
-            //         picture: "/images/home/home2.png"
-            //     },
-            //     {
-            //         id: 3,
-            //         title: "Station photovoltaique",
-            //         description: "description 3",
-            //         picture: "/images/home/home3.png"
-            //     },
-            // ],
             elements: []
         }
     }
@@ -55,24 +34,13 @@ class CarouselPage extends Component {
                                 <MDBCarouselItem itemId={x.id} key={x.id}>
                                     <MDBView >
                                         <img className="d-block w-100" src={x.picture} alt="slide show" style={{ borderRadius: 10 }} />
-                                        {/* <MDBMask overlay="black-light" style={{ borderRadius: 10 }} /> */}
                                     </MDBView>
-                                    {/* <MDBCarouselCaption>
-                                    <h3
-                                        className="h3-responsive"
-                                        style={{
-                                            backgroundColor: 'rgba(240, 240, 240, 0.7)',
-                                            borderRadius: 50, color: 'black', fontWeight: '600'
-                                        }}>
-                                        {x.title}
-                                    </h3>
-                                </MDBCarouselCaption> */}
                                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
                                         <h3
                                             className="h3-responsive"
                                             style={{ borderRadius: 50, color: 'black', fontWeight: '600', margin: 10 }}
                                         >
-                                            {x.label}
+                                            {x.title}
                                         </h3>
                                         <Info info={x.desc} />
                                     </div>

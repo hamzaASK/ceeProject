@@ -18,14 +18,15 @@ import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 let timer = 0
 
-class Fauna extends Component {
+class Flora extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             count: 0,
-            biodiv: [],
-            biostat: []
+            biodiv: lang[1].Flore.list,
+            biostat: [0, 2, 9]
+            // [4, 2, 2]
         }
     }
 
@@ -34,7 +35,8 @@ class Fauna extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((biodiv) => {
-                this.setState({ biodiv })
+                // this.setState({ biodiv })
+                this.setState({ biodiv: lang[1].Flore.list })
             })
             .catch((error) => {
                 console.log(error)
@@ -54,8 +56,8 @@ class Fauna extends Component {
     }
 
     componentDidMount() {
-        this.getFlora()
-        this.getStatFlora()
+        // this.getFlora()
+        // this.getStatFlora()
     }
 
     componentWillUnmount() {
@@ -75,8 +77,8 @@ class Fauna extends Component {
         return (
             <div className="indicator" >
                 <Identity
-                    title={lang[x].Flore.title}
-                    description={lang[x].Flore.desc}
+                    title={lang[x].Faune.title}
+                    description={lang[x].Faune.desc}
                 />
                 <div style={{ flexDirection: 'row', display: 'flex', padding: 5, marginTop: 5 }} >
                     <Slider {...settings} >
@@ -84,6 +86,7 @@ class Fauna extends Component {
                             this.state.biodiv.map((x) => {
                                 return (
                                     <Biodiv
+                                        key={x[1]}
                                         title={x[1]}
                                         title_ar={x[5]}
                                         image={URL + '/' + x[2]}
@@ -99,10 +102,10 @@ class Fauna extends Component {
 
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title={lang[x].Flore.state_0}
+                        <Card title={lang[x].Faune.state_0}
                             content={
                                 <Information
-                                    info={this.state.biostat[0]}
+                                    info={this.state.biostat[2]}
                                     icon={"/images/indicators/biodiv/good.png"}
                                     measure={true}
                                 />
@@ -110,7 +113,7 @@ class Fauna extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title={lang[x].Flore.state_1}
+                        <Card title={lang[x].Faune.state_1}
                             content={
                                 <Information
                                     info={this.state.biostat[1]}
@@ -121,10 +124,10 @@ class Fauna extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title={lang[x].Flore.state_2}
+                        <Card title={lang[x].Faune.state_2}
                             content={
                                 <Information
-                                    info={this.state.biostat[2]}
+                                    info={this.state.biostat[0]}
                                     icon={"/images/indicators/biodiv/danger.png"}
                                     measure={true}
                                 />
@@ -137,7 +140,4 @@ class Fauna extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Fauna)
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Flora)

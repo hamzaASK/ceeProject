@@ -14,33 +14,11 @@ import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
-var timer = 0
 class CarouselPage extends Component {
 
-    // const CarouselPage = () => {
     constructor(props) {
         super(props)
         this.state = {
-            // elements: [
-            //     {
-            //         id: 1,
-            //         title: 'title 1',
-            //         description: "description 1",
-            //         picture: "/images/home/home1.png"
-            //     },
-            //     {
-            //         id: 2,
-            //         title: "Station d'épuration des eaux",
-            //         description: "description 2",
-            //         picture: "/images/home/home2.png"
-            //     },
-            //     {
-            //         id: 3,
-            //         title: "Station photovoltaique",
-            //         description: "description 3",
-            //         picture: "/images/home/home3.png"
-            //     },
-            // ],
             elements: []
         }
     }
@@ -77,58 +55,3 @@ class CarouselPage extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarouselPage)
-
-
-
-
-
-
-
-// import React from "react";
-// import {
-//   MDBCarousel, MDBCarouselCaption, MDBCarouselInner,
-//   MDBCarouselItem, MDBView, MDBMask
-// } from
-//   "mdbreact";
-
-// import { Timers } from '../Settings/Timers'
-
-// const CarouselPage = () => {
-//   return (
-//     <MDBCarousel activeItem={1} length={3} showControls={true} showIndicators={true} className="z-depth-1" style={{ margin: 10, borderRadius: 10 }} interval={Timers.homeslides} >
-//       <MDBCarouselInner>
-//         <MDBCarouselItem itemId="1">
-//           <MDBView >
-//             <img className="d-block w-100" src="/images/home/home1.png" alt="First slide" style={{ borderRadius: 10 }} />
-//             {/* <MDBMask overlay="black-light" style={{ borderRadius: 10 }} /> */}
-//           </MDBView>
-//           {/* <MDBCarouselCaption>
-//             <h3 className="h3-responsive" style={{ backgroundColor: 'rgba(240, 240, 240, 0.7)', borderRadius: 50, color: '#005475', fontWeight: '600' }}>Light mask</h3>
-//           </MDBCarouselCaption> */}
-//         </MDBCarouselItem>
-//         <MDBCarouselItem itemId="2">
-//           <MDBView>
-//             <img className="d-block w-100" src="/images/home/home2.png" alt="Second slide" style={{ borderRadius: 10 }} />
-//             <MDBMask overlay="black-light" style={{ borderRadius: 10 }} />
-//           </MDBView>
-//           {/* <MDBCarouselCaption>
-//             <h3 className="h3-responsive">Strong mask</h3>
-//             <p>Second text</p>
-//           </MDBCarouselCaption> */}
-//         </MDBCarouselItem>
-//         <MDBCarouselItem itemId="3">
-//           <MDBView>
-//             <img className="d-block w-100" src="/images/home/home3.png" alt="Third slide" style={{ borderRadius: 10 }} />
-//             <MDBMask overlay="black-slight" style={{ borderRadius: 10 }} />
-//           </MDBView>
-//           {/* <MDBCarouselCaption>
-//             <h3 className="h3-responsive">Slight mask</h3>
-//             <p>Third text</p>
-//           </MDBCarouselCaption> */}
-//         </MDBCarouselItem>
-//       </MDBCarouselInner>
-//     </MDBCarousel>
-//   );
-// }
-
-// export default CarouselPage;

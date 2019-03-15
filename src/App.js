@@ -66,13 +66,13 @@ class App extends Component {
         <HashRouter>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex' }} >
             <AppBar admin={this.props.admin}
-            version={this.props.admin ? 'CEE Monitor v1.0' : 'CEE Monitor Autodisplay v1.0'}
-             menu={[
-              { label: lang[x].AppBar.Menu[0].label, link: "/" },
-              { label: lang[x].AppBar.Menu[1].label, link: "/indicators" },
-              { label: lang[x].AppBar.Menu[2].label, link: "/ressources" },
-              { label: lang[x].AppBar.Menu[3].label, link: "/reports" }
-            ]} />
+              version={this.props.admin ? 'CEE Monitor v1.0' : 'CEE Monitor Autodisplay v1.0'}
+              menu={[
+                { label: lang[x].AppBar.Menu[0].label, link: "/" },
+                { label: lang[x].AppBar.Menu[1].label, link: "/indicators" },
+                { label: lang[x].AppBar.Menu[2].label, link: "/ressources" },
+                { label: lang[x].AppBar.Menu[3].label, link: "/reports" }
+              ]} />
 
             <Body>
               {
@@ -95,7 +95,6 @@ class App extends Component {
             <Footer />
             : null
         }
-
       </div>
     );
   }
