@@ -7,13 +7,49 @@ import {
     Water, Energy, Fauna, Flora, Carbon
 } from './Details'
 
+import { URL } from '../Settings/Server'
+
 export default class Report extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
+            consumedEnergy: 0,
+            producedEnergy: 0,
             elements: []
         }
+    }
+
+    getConsumedEnergy(days) {
+        const url = `${URL}/energy/getConsumedEnergy.php?days=${days}`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((res) => {
+                if (res[0] == null) {
+                    this.setState({ consumedEnergy: 0 })
+                } else {
+                    this.setState({ consumedEnergy: res[0] })
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
+    getProducedEnergy(days) {
+        const url = `${URL}/energy/getProducedEnergy.php?days=${days}`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((res) => {
+                if (res[0] == null) {
+                    this.setState({ producedEnergy: 0 })
+                } else {
+                    this.setState({ producedEnergy: res[0] })
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
     // addHeader() {
@@ -42,7 +78,7 @@ export default class Report extends Component {
                 <div>
                     <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des énergies</Typography>
                     <Typography variant="h6" style={{ marginLeft: 20 }} >Energies description ...</Typography>
-                    {Energy}
+                    {Energy(this.state.consumedEnergy, this.state.producedEnergy)}
                     {Remarks}
                     <div style={{ height: 50 }} />
                 </div>
@@ -77,6 +113,11 @@ export default class Report extends Component {
             )
         }
         this.setState({ elements })
+    }
+
+    componentDidMount() {
+        this.getConsumedEnergy()
+        this.getProducedEnergy()
     }
 
     componentWillReceiveProps() {

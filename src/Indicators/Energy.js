@@ -18,7 +18,7 @@ class Energy extends Component {
         super(props)
         this.state = {
             producedEnergy: 0,
-            consumedEnergy: 0,
+            consumedEnergy: 10,
             consumedEclairage: 0,
             consumedPlugs: 0,
             consumedCVC: 0,
@@ -128,7 +128,7 @@ class Energy extends Component {
         this.getConsumedEclairage(days)
         this.getConsumedPlugs(days)
         this.getConsumedEnergy(days)
-        this.getConsumedPV(days)
+                this.getConsumedPV(days)
         this.getProducedEnergy(days)
         switch (days) {
             case 1:

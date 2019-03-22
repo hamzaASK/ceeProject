@@ -1,5 +1,5 @@
 
-const coef = 30
+const coef = 3000
 
 export const Timers = {
     lang: 2000 * coef, // language alternance

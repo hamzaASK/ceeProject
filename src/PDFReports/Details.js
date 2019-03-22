@@ -57,7 +57,7 @@ export const Water = (
     </ExpansionPanelDetails>
 )
 
-export const Energy = (
+export const Energy = (consumedEnergy, producedEnergy) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }}>
         <Card title="Energie globale consommée (kWh)"
             content={
@@ -66,7 +66,7 @@ export const Energy = (
                     height={300}
                     forceRender={true}
                     maxValue={100}
-                    value={50}
+                    value={consumedEnergy}
                     needleColor="purple"
                     startColor="limegreen"
                     endColor="red"
@@ -95,7 +95,7 @@ export const Energy = (
                     height={300}
                     forceRender={true}
                     maxValue={100}
-                    value={50}
+                    value={producedEnergy}
                     needleColor="purple"
                     startColor="limegreen"
                     endColor="red"
