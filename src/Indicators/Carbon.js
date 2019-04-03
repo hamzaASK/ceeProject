@@ -186,6 +186,7 @@ class Carbon extends Component {
                                         Math.round((this.state.consumedWater / 1000) * 10) / 10,
                                         51,
                                         70
+                                        // Fix: Autres : Construction du batiment, les effets benefiques des espaces verts...
                                     ]}
                                 />
                             }

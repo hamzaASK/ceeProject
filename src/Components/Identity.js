@@ -13,8 +13,8 @@ export default class Identity extends Component {
                         {this.props.title}
                     </Typography>
                 </Title>
-                <Title className="just" >
-                    <Typography className="just" variant="subtitle1" noWrap>
+                <Title className="just">
+                    <Typography className="just" variant="subtitle1" noWrap style={{ overflow: 'hidden', textOverflow: 'ellipsis' }} >
                         {this.props.description}
                     </Typography>
                 </Title>
@@ -41,6 +41,7 @@ flex-direction: column;
 
 const Title = styled.div`
 flex: 3;
+width: inherit; 
 display: flex;
 justfify-content: center;
 align-items: center;

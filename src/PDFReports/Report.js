@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography';
 
 import {
-    Identity, People, General, Remarks,
-    Water, Energy, Fauna, Flora, Carbon
+    Identity, People, General, Remarks, Waste, Recycle,
+    Water, Energy, Fauna, Flora, Carbon, Transport
 } from './Details'
 
 import { URL } from '../Settings/Server'
@@ -14,8 +14,14 @@ export default class Report extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            consumedEnergy: 0,
-            producedEnergy: 0,
+            consumedEnergy: 8,
+            producedEnergy: 4,
+            consumedWater: 6,
+            recycledWated: 5,
+            Transport: [],
+            waste: 0,
+            statFauna: [0, 1, 6],
+            statFlora: [0, 2, 9],
             elements: []
         }
     }
@@ -45,6 +51,38 @@ export default class Report extends Component {
                     this.setState({ producedEnergy: 0 })
                 } else {
                     this.setState({ producedEnergy: res[0] })
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
+    getConsumedWater(days) {
+        const url = `${URL}/water/getConsumedWater.php?days=${days}`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((res) => {
+                if (res[0] == null) {
+                    this.setState({ consumedWater: 0 })
+                } else {
+                    this.setState({ consumedWater: res[0] })
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
+    getRecycledWater(days) {
+        const url = `${URL}/water/getRecycledWater.php?days=${days}`;
+        return fetch(url)
+            .then(res => res.json())
+            .then((res) => {
+                if (res[0] == null) {
+                    this.setState({ recycledWater: 0 })
+                } else {
+                    this.setState({ recycledWater: res[0] })
                 }
             })
             .catch((error) => {
@@ -89,9 +127,48 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des eaux</Typography>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des Eaux</Typography>
                     <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Water}
+                    {Water(this.state.consumedWater, this.state.recycledWated)}
+                    {Remarks}
+                    <div style={{ height: 50 }} />
+                </div>
+            )
+        }
+        if (this.props.transport) {
+            // if (elements.length % 2 === 0)
+            elements.push(header)
+            elements.push(
+                <div>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de Transport</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
+                    {Transport}
+                    {Remarks}
+                    <div style={{ height: 50 }} />
+                </div>
+            )
+        }
+        if (this.props.waste) {
+            // if (elements.length % 2 === 0)
+            elements.push(header)
+            elements.push(
+                <div>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des Déchets</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
+                    {Waste}
+                    {Remarks}
+                    <div style={{ height: 50 }} />
+                </div>
+            )
+        }
+        if (this.props.recycle) {
+            // if (elements.length % 2 === 0)
+            elements.push(header)
+            elements.push(
+                <div>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de Recyclage</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
+                    {Recycle}
                     {Remarks}
                     <div style={{ height: 50 }} />
                 </div>
@@ -102,12 +179,12 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de la biodiversité</Typography>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de la Biodiversité</Typography>
                     <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Flora}
+                    {Flora(this.state.statFlora)}
                     <div style={{ height: 30 }} />
                     <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Fauna}
+                    {Fauna(this.state.statFauna)}
                     {Remarks}
                 </div>
             )
@@ -115,10 +192,12 @@ export default class Report extends Component {
         this.setState({ elements })
     }
 
-    componentDidMount() {
-        this.getConsumedEnergy()
-        this.getProducedEnergy()
-    }
+    // componentDidMount() {
+    //     this.getConsumedEnergy(7)
+    //     this.getProducedEnergy(7)
+    //     this.getConsumedWater(7)
+    //     this.getRecycledWater(7)
+    // }
 
     componentWillReceiveProps() {
         this.setElements()
@@ -137,15 +216,15 @@ export default class Report extends Component {
                 {General}
 
                 <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Identité du rapport</Typography>
-                {Identity}
+                {Identity(this.props.reference, this.props.date, this.props.period, this.props.place)}
 
                 <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Diffusion</Typography>
-                {People}
+                {People(this.props.diffusion, this.props.precision, this.props.generatedby, this.props.authorizedby)}
 
                 <div>
                     <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Radar des performances</Typography>
                     <Typography variant="h6" style={{ marginLeft: 20 }} >Radar des performances description ...</Typography>
-                    {Carbon}
+                    {Carbon(this.state.consumedEnergy, this.state.consumedWater, this.state.transport, this.state.waste, 0)}
                     {Remarks}
                 </div>
 
@@ -153,65 +232,6 @@ export default class Report extends Component {
                     this.state.elements.map((x) => {
                         return x
                     })
-                }
-
-                {/* PAGE #2 */}
-                {/* <Header>
-                    <Intellcap />
-                    <div style={{ flex: 1 }} />
-                    <Fondation />
-                </Header>
-
-                {this.props.energy ?
-                    <div>
-                        <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des énergies</Typography>
-                        <Typography variant="h6" style={{ marginLeft: 20 }} >Energies description ...</Typography>
-                        {Energy}
-                        {Remarks}
-                        <div style={{ height: 50 }} />
-                    </div>
-                    : null
-                }
-
-                {this.props.water ?
-                    <div>
-                        <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des eaux</Typography>
-                        <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                        {Water}
-                        {Remarks}
-                        <div style={{ height: 50 }} />
-                    </div>
-                    : null
-                } */}
-
-                {/* PAGE #3 */}
-                {/* <Header>
-                    <Intellcap />
-                    <div style={{ flex: 1 }} />
-                    <Fondation />
-                </Header>
-
-                {this.props.biodiv ?
-                    <div>
-                        <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de la biodiversité</Typography>
-                        <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                        {Flora}
-                        <div style={{ height: 30 }} />
-                        <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                        {Fauna}
-                        {Remarks}
-                    </div>
-                    : null
-                } */}
-
-                {/* {this.props.biodiv ?
-                    <div>
-                        <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de la Faune</Typography>
-                        <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                        {Fauna}
-                        {Remarks}
-                    </div>
-                    : null */}
                 }
 
             </div >
@@ -244,4 +264,3 @@ background-image: url(/images/logo.png);
 background-position: 0 0;
 background-size: 100% 100%;
 `;
-

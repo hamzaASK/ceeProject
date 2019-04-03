@@ -140,7 +140,7 @@ flex-direction: column;
 
 const Header = styled.div`
 height: 60px;
-width: '100%';
+width: inherit;
 display: flex;
 flex-direction: row;
 overflow-x: auto;

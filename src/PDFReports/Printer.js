@@ -19,7 +19,18 @@ export default class Printer extends Component {
                     biodiv={this.props.biodiv}
                     fauna={this.props.fauna}
                     flora={this.props.flora}
-                />
+                    transport={this.props.transport}
+                    waste={this.props.waste}
+                    recycle={this.props.recycle}
+                    diffusion={this.props.diffusion}
+                    precision={this.props.precision}
+                    generetadby={this.props.generatedby}
+                    authorizedby={this.props.authorizedby}
+                    reference={this.props.reference}
+                    date={this.props.date}
+                    period={this.props.period}
+                    place={this.props.place}
+                        />
             </ExpansionPanelDetails>
         )
     }

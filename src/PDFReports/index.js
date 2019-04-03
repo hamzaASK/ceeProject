@@ -18,6 +18,7 @@ class Reports extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            days: 7,
         }
         this.refreshValues = this.refreshValues.bind(this) /* jshint expr: true */
     }
@@ -28,6 +29,7 @@ class Reports extends Component {
     // }
 
     refreshValues(days) {
+        this.setState({ days })
     }
 
     render() {
@@ -38,7 +40,7 @@ class Reports extends Component {
                     description="Description du générateur ..."
                 />
                 <Controls refreshValues={this.refreshValues} />
-                <Panel />
+                <Panel days={this.state.days} />
             </div>
         )
     }

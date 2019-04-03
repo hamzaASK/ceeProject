@@ -122,7 +122,7 @@ const Container = styled.div`
     flex-direction: row;
 }
 margin: 10px;
-width: '100%';
+width: inherit;
 display: flex;
 border-width: 1px;
 border-style: solid;
@@ -146,7 +146,7 @@ margin-left: 10px;
 `;
 
 const Message = styled.div`
-Flex: 1;
+flex: 1;
 align-items: center;
 display: flex;
 padding: 10px;

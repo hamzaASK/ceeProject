@@ -102,8 +102,8 @@ export default class Loading extends PureComponent {
         return (
             <ReactEcharts
                 option={this.getOption()}
-                onChartReady={this.onChartReady}
-                loadingOption={this.getLoadingOption()}
+                //onChartReady={this.onChartReady}
+                //loadingOption={this.getLoadingOption()}
                 showLoading={false}
                 style={{ height: '100%', width: '100%' }}
             />

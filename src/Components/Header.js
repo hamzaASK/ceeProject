@@ -52,7 +52,7 @@ class Header extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
 
 const Container = styled.div`
-width: '100%';
+width: inherit;
 display: flex;
 flex-direction: row;
 padding: 5px;
@@ -67,7 +67,6 @@ color: white;
 margin: 5px;
 text-align: center;
 `;
-
 
 const LangButton = styled.button`
 height: 30px;
