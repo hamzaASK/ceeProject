@@ -1,5 +1,5 @@
 import React from 'react';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ReactSpeedometer from "react-d3-speedometer"
 import PieChart from '../Charts/PieChart'
 import Radar from '../Charts/Radar'
@@ -7,20 +7,21 @@ import Information from '../Charts/Information'
 import Card from '../Components/Card'
 import BarChart from '../Charts/BarChart'
 import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography'
+// import PropTypes from 'prop-types'
+// import { withStyles } from '@material-ui/core/styles'
+// import Radar from './Radar'
 
-export const Water = (consumedWater, recycledWater) => (
+export const Water = (consumedWater, recycledWater, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
-        <Card title="Eau potable consommée (m3)"
+        <Card title={lang}
             content={
                 <ReactSpeedometer
                     width={300}
                     height={300}
-                    maxValue={consumedWater * 1.5}
                     forceRender={true}
-                    value={consumedWater}
+                    maxValue={Math.round((consumedWater / 1000) * 1.5)}
+                    value={Math.round((consumedWater / 1000) * 10) / 10}
                     needleColor="purple"
                     startColor="dodgerblue"
                     segments={5}
@@ -51,8 +52,8 @@ export const Water = (consumedWater, recycledWater) => (
                     width={300}
                     height={300}
                     forceRender={true}
-                    maxValue={consumedWater * 1.5}
-                    value={recycledWater}
+                    maxValue={Math.round((recycledWater / 1000) * 1.3)}
+                    value={Math.round((recycledWater / 1000) * 10) / 10}
                     needleColor="purple"
                     startColor="red"
                     endColor="limegreen"
@@ -112,7 +113,7 @@ export const Recycle = (
 
 export const Waste = (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
-        <Card title={'lang[x].Waste.indic_1.title'}
+        <Card title={'Recyclage'}
             content={
                 <BarChart
                     items={3}
@@ -126,7 +127,7 @@ export const Waste = (
                     legend1='Verre'
                     legend2='Metal'
                     legend3='Plastique'
-                    title={'lang[x].Waste.indic_1.desc'}
+                    title={''}
                     legend={['Verre', 'Metal', 'Plastique']}
                     time={['']}
                     height='90%'
@@ -134,7 +135,7 @@ export const Waste = (
                 />
             }
         />
-        <Card title={'lang[x].Waste.indic_2.title'}
+        <Card title={'Compostage'}
             content={
                 <BarChart
                     items={2}
@@ -145,7 +146,7 @@ export const Waste = (
                     color2={'#5B9BD5'}
                     legend1='Organique'
                     legend2='Papier'
-                    title={'lang[x].Waste.indic_2.desc'}
+                    title={''}
                     legend={['Organique', 'Papier']}
                     time={['']}
                     height='90%'
@@ -197,8 +198,8 @@ export const Energy = (consumedEnergy, producedEnergy) => (
                     width={300}
                     height={300}
                     forceRender={true}
-                    maxValue={consumedEnergy * 1.5}
-                    value={consumedEnergy}
+                    maxValue={Math.round((consumedEnergy / 1000) * 1.7)}
+                    value={Math.round((consumedEnergy / 1000) * 10) / 10}
                     needleColor="purple"
                     startColor="limegreen"
                     endColor="red"
@@ -215,7 +216,7 @@ export const Energy = (consumedEnergy, producedEnergy) => (
                     title={"Energie consommée\nConventionnelle vs. Renouvelable"}
                     colorList={['#12B5EA', '#92D050', '#040238', '#30141b']}
                     data={[
-                        { value: consumedEnergy, name: "Energie\nconventionnelle" },
+                        { value: consumedEnergy - producedEnergy, name: "Energie\nconventionnelle" },
                         { value: producedEnergy, name: "Energie\nrenouvelable" }]}
                 />
             }
@@ -226,8 +227,8 @@ export const Energy = (consumedEnergy, producedEnergy) => (
                     width={300}
                     height={300}
                     forceRender={true}
-                    maxValue={consumedEnergy * 1.5}
-                    value={producedEnergy}
+                    maxValue={Math.round((producedEnergy / 1000) * 1.2)}
+                    value={Math.round((producedEnergy / 1000) * 10) / 10}
                     needleColor="purple"
                     startColor="limegreen"
                     endColor="red"
@@ -241,7 +242,7 @@ export const Energy = (consumedEnergy, producedEnergy) => (
 
 export const Flora = (stat) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 200, padding: 10 }}>
-        <Card title={'lang[x].Faune.state_0'}
+        <Card title={'Espèces en Préoccupation mineur'}
             content={
                 <Information
                     info={stat[2]}
@@ -250,7 +251,7 @@ export const Flora = (stat) => (
                 />
             }
         />
-        <Card title={'lang[x].Faune.state_1'}
+        <Card title={'Espèces en Vulnérabilité'}
             content={
                 <Information
                     info={stat[1]}
@@ -259,11 +260,11 @@ export const Flora = (stat) => (
                 />
             }
         />
-        <Card title={'lang[x].Faune.state_2'}
+        <Card title={'Espèces en Danger'}
             content={
                 <Information
                     info={stat[0]}
-                    icon={"/images/indicators/biodiv/danger.png"}
+                    icon={"/images/indicators/biodiv/dangerx.png"}
                     measure={true}
                 />
             }
@@ -273,7 +274,7 @@ export const Flora = (stat) => (
 
 export const Fauna = (stat) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 200, padding: 10 }}>
-        <Card title={'lang[x].Faune.state_0'}
+        <Card title={'Espèces en Préoccupation mineur'}
             content={
                 <Information
                     info={stat[2]}
@@ -282,7 +283,7 @@ export const Fauna = (stat) => (
                 />
             }
         />
-        <Card title={'lang[x].Faune.state_1'}
+        <Card title={'Espèces en Vulnérabilité'}
             content={
                 <Information
                     info={stat[1]}
@@ -291,11 +292,11 @@ export const Fauna = (stat) => (
                 />
             }
         />
-        <Card title={'lang[x].Faune.state_2'}
+        <Card title={'Espèces en Danger'}
             content={
                 <Information
                     info={stat[0]}
-                    icon={"/images/indicators/biodiv/danger.png"}
+                    icon={"/images/indicators/biodiv/dangerx.png"}
                     measure={true}
                 />
             }
@@ -303,12 +304,13 @@ export const Fauna = (stat) => (
     </ExpansionPanelDetails>
 )
 
-export const Carbon = (Energy, Water, Transport, Waste, Other) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 500, padding: 10 }}>
+export const Carbon = (Energy, Water, Transport, Waste, Other, lang) => (
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 450, padding: 10 }}>
         <Card // title="Radar des performances"
             content={
                 <Radar
                     name="Performance par secteur"
+                    legends={lang}
                     data={[
                         Transport,
                         Energy,
@@ -324,26 +326,26 @@ export const Carbon = (Energy, Water, Transport, Waste, Other) => (
 
 export const General = (
     <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 500, padding: 10 }}>
-        <div style={{ margin: 10, flex: 1 }} >
-            {"import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails"}
+        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
+            {"Le rapport de performance environnementale donne un aperçu général sous forme de bilans sur la gestion des ressources relatives à un ensemble d’indicateurs pertinents. Ce rapport a pour but d’améliorer et/ou de corriger les diverses actions d’utilisation et de consommation des ressources pour atteindre et respecter les objectifs de l’établissement du centre d’éducation à l’environnement."}
         </div>
         <Typography variant="h6" style={{ marginLeft: 20 }} >Avant-propos</Typography>
-        <div style={{ margin: 10, flex: 1 }} >
-            {"import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails"}
+        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
+            {"Sous le haut Patronage de Sa Majesté le Roi Mohammed VI, la fondation Mohammed VI pour la protection de l'environnement sous la présidence de son altesse Lalla Hasnae a bâti le centre d’éducation à l’environnement qui s’inscrit dans le cadre de sa stratégie nationale de la protection environnementale."}
         </div>
         <Typography variant="h6" style={{ marginLeft: 20 }} >Le centre d'éducation à l'environnement</Typography>
-        <div style={{ margin: 10, flex: 1 }} >
-            {"import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails"}
+        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
+            {"Le centre de l'éducation à l'environnement offre un ensemble d'activités dans le cadre de la protection de l'environnement. Ces activités sont organisées se forme de formations, de visites pédagogiques, d’événements et conférences ... Le Centre présente aux gens un nouveau modèle de la construction durable d'un bâtiment écologique."}
         </div>
         <Typography variant="h6" style={{ marginLeft: 20 }} >Le système de monitoring intelligent</Typography>
-        <div style={{ margin: 10, flex: 1 }} >
-            {"import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails import ExpandMoreIcon from @material-ui/icons/ExpandMore import ExpansionPanelDetails from @material-ui/core/ExpansionPanelDetails"}
+        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
+            {"Le système de monitoring intelligent du centre de l’éducation à l’environnement permet d’évaluer l’ensemble des indicateurs environnementaux liés aux ressources du centre par des chiffres et des graphiques. Selon les résultats affichés, une ou plusieurs actions pourra s’effectuer pour réduire nos activités inappropriées à l’environnement."}
         </div>
     </ExpansionPanelDetails>
 )
 
 export const Identity = (reference, date, period, place) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 140, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 100, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}
@@ -389,40 +391,14 @@ export const Identity = (reference, date, period, place) => (
     </ExpansionPanelDetails>
 )
 
-export const Remarks = (
+export const Remarks = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 400, padding: 10 }}>
-        <Card title="Remarques" content={<div style={{ height: '80%', width: '100%', backgroundColor: 'whitesmoke' }} />} />
+        <Card title={lang} content={<div style={{ height: '80%', width: '100%', backgroundColor: 'whitesmoke' }} />} />
     </ExpansionPanelDetails>
 )
 
-
-// const styles = theme => ({
-//     root: {
-//         width: 'inherit',
-//         margin: 10,
-//     },
-//     heading: {
-//         fontSize: theme.typography.pxToRem(15),
-//         fontWeight: theme.typography.fontWeightRegular,
-//     },
-//     container: {
-//         display: 'flex',
-//         flexWrap: 'wrap',
-//     },
-//     textField: {
-//         marginLeft: theme.spacing.unit,
-//         marginRight: theme.spacing.unit,
-//     },
-//     dense: {
-//         marginTop: 16,
-//     },
-//     menu: {
-//         width: 200,
-//     },
-// });
-
 export const People = (diffusion, precision, generatedby, authorizedby) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 80, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 100, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 200, marginLeft: 20, marginRight: 20 }}

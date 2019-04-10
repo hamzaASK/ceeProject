@@ -128,7 +128,7 @@ class Flora extends Component {
                             content={
                                 <Information
                                     info={this.state.biostat[0]}
-                                    icon={"/images/indicators/biodiv/danger.png"}
+                                    icon={"/images/indicators/biodiv/dangerx.png"}
                                     measure={true}
                                 />
                             }

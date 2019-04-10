@@ -54,61 +54,6 @@ class Recycled extends Component {
         return dates;
     }
 
-    // getWasteWeightSolid(d0, d1) {
-    //     // Weights
-    //     const urlW = `${URL}/dechets/getWasteWeightSolid.php?dateStart=${d1}&dateEnd=${d0}`;
-    //     return fetch(urlW)
-    //         .then(res => res.json())
-    //         .then((res) => {
-    //             var weightsSolid = []
-    //             res.map((i) => (i == null) ? weightsSolid.push(0) : weightsSolid.push(i))
-    //             this.setState({ weightsSolid })
-    //             console.log(res)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         });
-    // }
-
-    // getWasteWeightComposte(d0, d1) {
-    //     // Weights
-    //     const urlW = `${URL}/dechets/getWasteWeightComposte.php?dateStart=${d1}&dateEnd=${d0}`;
-    //     return fetch(urlW)
-    //         .then(res => res.json())
-    //         .then((res) => {
-    //             var weightsComposte = []
-    //             res.map((i) => (i == null) ? weightsComposte.push(0) : weightsComposte.push(i))
-    //             this.setState({ weightsComposte })
-    //             console.log(res)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         });
-    // }
-
-    // getLevels() {
-    //     var levels = [
-    //         { value: 0, title: 'Verre', capacity: 5 },
-    //         { value: 0, title: 'Métal', capacity: 5 },
-    //         { value: 0, title: 'Plastique', capacity: 5 },
-    //         { value: 0, title: 'Organique', capacity: 5 },
-    //         { value: 0, title: 'Papier', capacity: 5 },
-    //         { value: 0, title: 'Dangereux', capacity: 5 },
-    //         { value: 0, title: 'Autre', capacity: 5 },
-    //     ]
-    //     const url = `${URL}/dechets/getWasteLevel.php`;
-    //     return fetch(url)
-    //         .then(res => res.json())
-    //         .then((res) => {
-    //             for (var i = 0; i < 7; i++)
-    //                 res[i] == null ? levels[i].value = 0 : levels[i].value = res[i]
-    //             this.setState({ levels })
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         });
-    // }
-
     getWasteRecycled(d0, d1) {
         // Weights
         const url = `${URL}/dechets/getWasteRecycled.php?dateStart=${d1}&dateEnd=${d0}`;
@@ -124,56 +69,11 @@ class Recycled extends Component {
             });
     }
 
-    // getWasteTotal(d0, d1) {
-    //     // Weights
-    //     const url = `${URL}/dechets/getWasteTotal.php?dateStart=${d1}&dateEnd=${d0}`;
-    //     return fetch(url)
-    //         .then(res => res.json())
-    //         .then((res) => {
-    //             if (res[0] == null)
-    //                 res[0] = 0;
-    //             if (res[1] == null)
-    //                 res[1] = 0;
-    //             this.setState({
-    //                 totalLevel: res[0],
-    //                 totalWeight: res[1]
-    //             })
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         });
-    // }
-
-    // getRecycledTotal(d0, d1) {
-    //     // Weights
-    //     const url = `${URL}/dechets/getRecycledTotal.php?dateStart=${d1}&dateEnd=${d0}`;
-    //     return fetch(url)
-    //         .then(res => res.json())
-    //         .then((res) => {
-    //             if (res[0] == null)
-    //                 res[0] = 0;
-    //             if (res[1] == null)
-    //                 res[1] = 0;
-    //             this.setState({
-    //                 totalRecycledLevel: res[0],
-    //                 totalRecycledWeight: res[1]
-    //             })
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         });
-    // }
-
     refreshValues(days) {
         var dates = this.calculateDates(days)
         var date0 = dates.d0
         var date1 = dates.d1
-        // this.getWasteWeightSolid(date0, date1)
-        // this.getWasteWeightComposte(date0, date1)
         this.getWasteRecycled(date0, date1)
-        // this.getLevels()
-        // this.getWasteTotal(date0, date1)
-        // this.getRecycledTotal(date0, date1)
         this.setState({ selectedTime: days })
     }
 
@@ -206,17 +106,17 @@ class Recycled extends Component {
     }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
+        let x = this.props.lang === 'fr' ? 0 : 1
                 return (
             <div className="indicator" >
                 <Identity
-                    title="Indicateur de Recyclage"
-                    description="Les déchets organiques sont transformés en composites tandis que le reste des déchets sont confiés aux filiales de recyclage"
+                    title={lang[x].recyclable.title}
+                    description={lang[x].recyclable.desc}
                 />
                 <Controls refreshValues={this.refreshValues} />
                 <div className="row-3" >
                     <div className="el-1" >
-                        <Card title="Recyclage"
+                        <Card title={lang[x].recyclable.indic_1.title}
                             content={
                                 <BarChart
                                     items={3}
@@ -227,11 +127,11 @@ class Recycled extends Component {
                                     color1={'#92D050'}
                                     color2={'#FF0000'}
                                     color3={'#EBEB35'}
-                                    legend1='Verre'
-                                    legend2='Metal'
-                                    legend3='Plastique'
-                                    title={'Déchets Recyclés (en kg)'}
-                                    legend={['Verre', 'Metal', 'Plastique']}
+                                    legend1={lang[x].recyclable.indic_1.list[0]}
+                                    legend2={lang[x].recyclable.indic_1.list[1]}
+                                    legend3={lang[x].recyclable.indic_1.list[2]}
+                                    title={lang[x].recyclable.indic_1.desc}
+                                    legend={lang[x].recyclable.indic_1.list}
                                     time={['']}
                                     height='90%'
                                     width='90%'
@@ -240,7 +140,7 @@ class Recycled extends Component {
                         />
                     </div>
                     <div className="el-1" >
-                        <Card title="Compostage"
+                        <Card title={lang[x].recyclable.indic_2.title}
                             content={
                                 <BarChart
                                     items={2}
@@ -249,10 +149,10 @@ class Recycled extends Component {
                                     data2={[this.state.recycled[4]]}
                                     color1={'#C55A11'}
                                     color2={'#5B9BD5'}
-                                    legend1='Organique'
-                                    legend2='Papier'
-                                    title={'Déchets transformés en Composte (en kg)'}
-                                    legend={['Organique', 'Papier']}
+                                    legend1={lang[x].recyclable.indic_2.list[0]}
+                                    legend2={lang[x].recyclable.indic_2.list[1]}
+                                    title={lang[x].recyclable.indic_2.desc}
+                                    legend={lang[x].recyclable.indic_2.list}
                                     time={['']}
                                     height='90%'
                                     width='90%'
@@ -263,11 +163,11 @@ class Recycled extends Component {
                 </div>
 
                 <div className="row-1" >
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[0], this.totalRecyled()), "Verre", "/images/indicators/recyc/bin_glass.png", "#92D050")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[1], this.totalRecyled()), "Métal", "/images/indicators/recyc/bin_metal.png", "#FF0000")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[2], this.totalRecyled()), "Plastique", "/images/indicators/recyc/bin_plastic.png", "#EBEB35")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[3], this.totalRecyled()), "Organique", "/images/indicators/recyc/bin_organic.png", "#C55A11")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[4], this.totalRecyled()), "Papier", "/images/indicators/recyc/bin_paper.png", "#5B9BD5")}
+                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[0], this.totalRecyled()), lang[x].recyclable.indic_3.title, "/images/indicators/recyc/bin_glass.png", "#92D050")}
+                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[1], this.totalRecyled()), lang[x].recyclable.indic_4.title, "/images/indicators/recyc/bin_metal.png", "#FF0000")}
+                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[2], this.totalRecyled()), lang[x].recyclable.indic_5.title, "/images/indicators/recyc/bin_plastic.png", "#EBEB35")}
+                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[3], this.totalRecyled()), lang[x].recyclable.indic_6.title, "/images/indicators/recyc/bin_organic.png", "#C55A11")}
+                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[4], this.totalRecyled()), lang[x].recyclable.indic_7.title, "/images/indicators/recyc/bin_paper.png", "#5B9BD5")}
                 </div>
             </div>
         )

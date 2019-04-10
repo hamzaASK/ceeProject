@@ -13,6 +13,7 @@
     "moment": "^2.24.0",
     "react": "^16.7.0",
     "react-circular-progressbar": "^1.0.0",
+    "react-d3-radar": "^1.0.0-rc6",
     "react-d3-speedometer": "^0.4.2",
     "react-dates": "^18.4.1",
     "react-dom": "^16.7.0",

@@ -166,7 +166,7 @@ class Waste extends Component {
                                     legend2='Metal'
                                     legend3='Plastique'
                                     title={lang[x].Waste.indic_1.desc}
-                                    legend={['Verre', 'Metal', 'Plastique']}
+                                    legend={lang[x].Waste.indic_1.list}
                                     time={['']}
                                     height='90%'
                                     width='90%'
@@ -187,7 +187,7 @@ class Waste extends Component {
                                     legend1='Organique'
                                     legend2='Papier'
                                     title={lang[x].Waste.indic_2.desc}
-                                    legend={['Organique', 'Papier']}
+                                    legend={lang[x].Waste.indic_2.list}
                                     time={['']}
                                     height='90%'
                                     width='90%'

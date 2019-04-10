@@ -180,13 +180,21 @@ class Carbon extends Component {
                             content={
                                 <Radar
                                     name="Performance par secteur"
+                                    legends={[
+                                        lang[x].GES.indic_1.Element_1.label,
+                                        lang[x].GES.indic_1.Element_2.label,
+                                        lang[x].GES.indic_1.Element_3.label,
+                                        lang[x].GES.indic_1.Element_4.label,
+                                        lang[x].GES.indic_1.Element_5.label,
+                                    ]}
                                     data={[
                                         this.state.transport,
-                                        Math.round((this.state.consumedEnergy / 1000) * 10) / 10,
-                                        Math.round((this.state.consumedWater / 1000) * 10) / 10,
+                                        Math.round((this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 * 10) / 10,
+                                        Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
                                         51,
                                         70
                                         // Fix: Autres : Construction du batiment, les effets benefiques des espaces verts...
+                                        // Fix: water to CO2 coef
                                     ]}
                                 />
                             }
@@ -205,13 +213,12 @@ class Carbon extends Component {
                 </div>
                 <div className="row-1" >
                     <div className="el-1" >
-                        <Card title={'lang[x].GES.indic_3.title'}
+                        <Card title={lang[x].GES.indic_5.title}
                             content={
                                 <Information
                                     info={[
                                         Math.round((
                                             (this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 +
-                                            (this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 +
                                             (this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 +
                                             this.state.transport)
                                             * 10) / 10

@@ -257,7 +257,7 @@ class Energy extends Component {
                                     title={lang[x].Energy.indic_4.desc}
                                     colorList={['#12B5EA', '#92D050', '#040238', '#30141b']}
                                     data={[
-                                        { value: this.state.consumedEnergy, name: lang[x].Energy.indic_4.Element_2.label + "\n " + this.consumedPercent() },
+                                        { value: this.state.consumedEnergy - this.state.consumedPV, name: lang[x].Energy.indic_4.Element_2.label + "\n " + this.consumedPercent() },
                                         { value: this.state.consumedPV, name: lang[x].Energy.indic_4.Element_1.label + "\n " + this.consumedPVPercent() }]}
                                 />
                             }

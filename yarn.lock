@@ -3351,7 +3351,7 @@ d3-random@1:
   resolved "https://registry.yarnpkg.com/d3-random/-/d3-random-1.1.2.tgz#2833be7c124360bf9e2d3fd4f33847cfe6cab291"
   integrity sha512-6AK5BNpIFqP+cx/sreKzNjWbwZQCSUatxq+pPRmFIQaWuoD+NrbVWw7YWpHiXpCQ/NanKdtGDuB+VQcZDaEmYQ==
 
-d3-scale-chromatic@1:
+d3-scale-chromatic@1, d3-scale-chromatic@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/d3-scale-chromatic/-/d3-scale-chromatic-1.3.3.tgz#dad4366f0edcb288f490128979c3c793583ed3c0"
   integrity sha512-BWTipif1CimXcYfT02LKjAyItX5gKiwxuPRgr4xM58JwlLocWbjPLI7aMEjkcoOQXMkYsmNsvv3d2yl/OKuHHw==
@@ -3359,7 +3359,7 @@ d3-scale-chromatic@1:
     d3-color "1"
     d3-interpolate "1"
 
-d3-scale@2:
+d3-scale@2, d3-scale@^2.1.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-2.2.2.tgz#4e880e0b2745acaaddd3ede26a9e908a9e17b81f"
   integrity sha512-LbeEvGgIb8UMcAa0EATLNX0lelKWGYDQiPdHj+gLblGVhGLyNbaCn3EvrJf0A3Y/uOOU5aD6MTh5ZFCdEwGiCw==
@@ -3380,6 +3380,13 @@ d3-shape@1:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.4.tgz#358e76014645321eecc7c364e188f8ae3d2a07d4"
   integrity sha512-izaz4fOpOnY3CD17hkZWNxbaN70sIGagLR/5jb6RS96Y+6VqX+q1BQf1av6QSBRdfULi3Gb8Js4CzG4+KAPjMg==
+  dependencies:
+    d3-path "1"
+
+d3-shape@^1.2.2:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.5.tgz#e81aea5940f59f0a79cfccac012232a8987c6033"
+  integrity sha512-VKazVR3phgD+MUCldapHD7P9kcrvPcexeX/PkMJmkUov4JM8IxsSg1DvbYoYich9AtdTsa5nNk2++ImPiDiSxg==
   dependencies:
     d3-path "1"
 
@@ -3412,7 +3419,7 @@ d3-transition@1:
     d3-selection "^1.1.0"
     d3-timer "1"
 
-d3-voronoi@1:
+d3-voronoi@1, d3-voronoi@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/d3-voronoi/-/d3-voronoi-1.1.4.tgz#dd3c78d7653d2bb359284ae478645d95944c8297"
   integrity sha512-dArJ32hchFsrQ8uMiTBLq256MpnZjeuBtdHpaDlYuQyjU0CVzCJl/BVW+SkszaAeH95D/8gxqAhgx0ouAWAfRg==
@@ -8974,6 +8981,17 @@ react-circular-progressbar@^1.0.0:
   integrity sha512-6QOqwsYJCeFDPYTparTS3FdFGlSItafJWD8BloLG3k1sW8ZG7JGdHo7FQsqtGEIK0bldwTO9v+nD2nEYAU1OYg==
   dependencies:
     prop-types "^15.5.10"
+
+react-d3-radar@^1.0.0-rc6:
+  version "1.0.0-rc6"
+  resolved "https://registry.yarnpkg.com/react-d3-radar/-/react-d3-radar-1.0.0-rc6.tgz#bb76e89654242c107473e86e1dae658fda6d3e70"
+  integrity sha512-MSOhgo/zgbufi1NWr552HDB9CXViLFNnTg8kCmVJJ+7V0gr1gYLU7c8ZJtvN6/P+/JyUPljOO4aiyBxytnkggA==
+  dependencies:
+    d3-scale "^2.1.2"
+    d3-scale-chromatic "^1.3.3"
+    d3-shape "^1.2.2"
+    d3-voronoi "^1.1.4"
+    lodash "^4.17.11"
 
 react-d3-speedometer@^0.4.2:
   version "0.4.2"

@@ -40,7 +40,6 @@ const styles = theme => ({
   },
 });
 
-
 const diffOptions = [
   {
     value: 'Confidentiel',
@@ -76,7 +75,7 @@ class Panel extends Component {
       recycle: false,
       diffusion: 'Confidentiel',
       precision: '',
-      generetadby: '',
+      generatedby: '',
       authorizedby: '',
       reference: '',
       date: '',
@@ -166,7 +165,6 @@ class Panel extends Component {
               variant="outlined"
               helperText=""
             />
-
           </form>
         </ExpansionPanel>
         <ExpansionPanel expanded={true}>
@@ -298,7 +296,7 @@ class Panel extends Component {
           </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-        <ExpansionPanel>
+        <ExpansionPanel expanded={true} >
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>Imprimer le Rapport</Typography>
           </ExpansionPanelSummary>
@@ -313,7 +311,7 @@ class Panel extends Component {
             recycle={this.state.recycle}
             diffusion={this.state.diffusion}
             precision={this.state.precision}
-            generetadby={this.state.generetadby}
+            generatedby={this.state.generatedby}
             authorizedby={this.state.authorizedby}
             reference={this.state.reference}
             date={this.state.date}

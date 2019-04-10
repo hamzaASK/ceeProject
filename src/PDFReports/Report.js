@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
+import { URL } from '../Settings/Server'
 import styled from 'styled-components'
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'
+
+import { connect } from 'react-redux'
+import { lang } from '../Settings/Lang'
+import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
+import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
 import {
     Identity, People, General, Remarks, Waste, Recycle,
     Water, Energy, Fauna, Flora, Carbon, Transport
 } from './Details'
 
-import { URL } from '../Settings/Server'
-
-export default class Report extends Component {
+class Report extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            consumedEnergy: 8,
-            producedEnergy: 4,
-            consumedWater: 6,
-            recycledWated: 5,
+            consumedEnergy: 654321,
+            producedEnergy: 567890,
+            consumedWater: 987654,
+            recycledWater: 543210,
             Transport: [],
             waste: 0,
             statFauna: [0, 1, 6],
@@ -90,22 +94,13 @@ export default class Report extends Component {
             });
     }
 
-    // addHeader() {
-    //     let elements = []
-    //     let length = this.state.elements.length
-    //     // if (length % 2 === 0) {
-    //     elements.push(
-    //     )
-    //     // }
-    //     this.setState({ elements })
-    // }
-
     setElements() {
+        let x = this.props.lang === 'fr' ? 0 : 1
         let header = (
             <Header>
-                <Intellcap />
-                <div style={{ flex: 1 }} />
                 <Fondation />
+                <div style={{ flex: 1 }} />
+                <Intellcap />
             </Header>
         )
         let elements = []
@@ -114,11 +109,11 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des énergies</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >Energies description ...</Typography>
-                    {Energy(this.state.consumedEnergy, this.state.producedEnergy)}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >{lang[x].Energy.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Energy.desc}</Typography>
+                    {Energy(this.state.consumedEnergy, this.state.producedEnergy, lang[x].Energy)}
                     {Remarks}
-                    <div style={{ height: 50 }} />
+                    {/*<div style={{ height: 20 }} />*/}
                 </div>
             )
         }
@@ -127,11 +122,11 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des Eaux</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Water(this.state.consumedWater, this.state.recycledWated)}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >{lang[x].Water.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Water.desc}</Typography>
+                    {Water(this.state.consumedWater, this.state.recycledWater, lang[x].Water)}
                     {Remarks}
-                    <div style={{ height: 50 }} />
+                    {/*<div style={{ height: 20 }} />*/}
                 </div>
             )
         }
@@ -140,11 +135,11 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de Transport</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Transport}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >{lang[x].Transport.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Transport.desc}</Typography>
+                    {Transport(lang[x].Transport)}
                     {Remarks}
-                    <div style={{ height: 50 }} />
+                    {/*<div style={{ height: 20 }} />*/}
                 </div>
             )
         }
@@ -153,11 +148,11 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs des Déchets</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Waste}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >{lang[x].Waste.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Waste.desc}</Typography>
+                    {Waste(lang[x].Waste)}
                     {Remarks}
-                    <div style={{ height: 50 }} />
+                    {/*<div style={{ height: 20 }} />*/}
                 </div>
             )
         }
@@ -166,11 +161,11 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de Recyclage</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Recycle}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >{lang[x].recyclable.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].recyclable.desc}</Typography>
+                    {Recycle(lang[x].recyclable)}
                     {Remarks}
-                    <div style={{ height: 50 }} />
+                    {/*<div style={{ height: 20 }} />*/}
                 </div>
             )
         }
@@ -179,12 +174,12 @@ export default class Report extends Component {
             elements.push(header)
             elements.push(
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Indicateurs de la Biodiversité</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Flora(this.state.statFlora)}
-                    <div style={{ height: 30 }} />
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >description ...</Typography>
-                    {Fauna(this.state.statFauna)}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >{lang[x].Faune.biodiv}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Faune.desc}</Typography>
+                    {Flora(this.state.statFlora, lang[x].Faune)}
+                    {/*<div style={{ height: 20 }} />*/}
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Faune.desc}</Typography>
+                    {Fauna(this.state.statFauna, lang[x].Faune)}
                     {Remarks}
                 </div>
             )
@@ -204,28 +199,46 @@ export default class Report extends Component {
     }
 
     render() {
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
-            <div style={{ margin: 10 }}>
+            <div style={{ margin: 20, borderWidth: 1, borderStyle: 'solid', borderColor: 'gray' }}>
                 <Header>
                     <Intellcap />
                     <div style={{ flex: 1 }} />
                     <Fondation />
                 </Header>
 
-                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Information général sur le rapport</Typography>
+                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >Information général sur le rapport</Typography>
                 {General}
 
-                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Identité du rapport</Typography>
+                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >Identité du rapport</Typography>
                 {Identity(this.props.reference, this.props.date, this.props.period, this.props.place)}
 
-                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Diffusion</Typography>
+                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >Diffusion</Typography>
                 {People(this.props.diffusion, this.props.precision, this.props.generatedby, this.props.authorizedby)}
 
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid' }} >Radar des performances</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20 }} >Radar des performances description ...</Typography>
-                    {Carbon(this.state.consumedEnergy, this.state.consumedWater, this.state.transport, this.state.waste, 0)}
-                    {Remarks}
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center', textAlign: 'center' }} >Radar des performances</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >Le radar des performances donne une vue globale sur le bilan Carbon des différentes activités du centre de l'éducation à l'environnement</Typography>
+                    {Carbon(
+                        Math.round((this.state.consumedEnergy / 1000 - this.state.producedEnergy / 1000) * 0.784 * 10) / 10,
+                        Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
+                        0,
+                        0,
+                        100,
+                        [
+                            lang[x].GES.indic_1.Element_1.label,
+                            lang[x].GES.indic_1.Element_2.label,
+                            lang[x].GES.indic_1.Element_3.label,
+                            lang[x].GES.indic_1.Element_4.label,
+                            lang[x].GES.indic_1.Element_5.label
+                        ]
+
+                        // Fix: Autres : Construction du batiment, les effets benefiques des espaces verts...
+                        // Fix: water to CO2 coef
+
+                    )}
+                    {Remarks(lang[1].title)}
                 </div>
 
                 {
@@ -239,6 +252,8 @@ export default class Report extends Component {
     }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(Report)
+
 const Header = styled.div`
 margin: 10px;
 display: flex;
@@ -249,18 +264,18 @@ width: inherit;
 
 const Intellcap = styled.div`
 height: 60px;
-width: 120px;
+width: 180px;
 margin: 10px;
-background-image: url(/images/intellcap.png);
+background-image: url(/images/intellcapx.png);
 background-position: 0 0;
 background-size: 100% 100%;
 `;
 
 const Fondation = styled.div`
 height: 60px;
-width: 120px;
+width: 200px;
 margin: 10px;
-background-image: url(/images/logo.png);
+background-image: url(/images/fondation.png);
 background-position: 0 0;
 background-size: 100% 100%;
 `;

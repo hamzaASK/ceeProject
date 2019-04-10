@@ -28,6 +28,7 @@ export default class Loading extends PureComponent {
     _t = null;
     getOption = () => {
         return {
+            animation: true,
             title: {
                 //text: 'Bilan carbon du CEE (Tonnes équ. CO2)',
                 textStyle: {
@@ -45,11 +46,11 @@ export default class Loading extends PureComponent {
             radar: {
                 //shape: 'circle',
                 indicator: [
-                    { name: 'Transport ' + this.props.data[0] + ' kgCO2', max: 100 },
-                    { name: 'Energie ' + this.props.data[1] + ' kgCO2', max: 100 },
-                    { name: 'Eau ' + this.props.data[2] + ' kgCO2', max: 100 },
-                    { name: 'Déchets ' + this.props.data[3] + ' kgCO2', max: 100 },
-                    { name: 'Autres ' + this.props.data[4] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[0] + ' ' + this.props.data[0] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[1] + ' ' + this.props.data[1] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[2] + ' ' + this.props.data[2] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[3] + ' ' + this.props.data[3] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[4] + ' ' + this.props.data[4] + ' kgCO2', max: 100 },
                 ],
                 nameGap: 10,
                 //zlevel: 100,
@@ -76,12 +77,13 @@ export default class Loading extends PureComponent {
                 color: 'limegreen'
             }]
         };
-    };
+    }
+
     onChartReady = (chart) => {
         this._t = setTimeout(function () {
             chart.hideLoading();
         }, 1000);
-    };
+    }
 
     getLoadingOption = () => {
         return {
@@ -91,19 +93,18 @@ export default class Loading extends PureComponent {
             maskColor: 'rgba(0, 70, 0, 0.5)',
             zlevel: 0
         };
-    };
+    }
 
     componentWillUnmount() {
         clearTimeout(this._t);
-    };
+    }
 
     render() {
-
         return (
             <ReactEcharts
                 option={this.getOption()}
-                //onChartReady={this.onChartReady}
-                //loadingOption={this.getLoadingOption()}
+                // onChartReady={this.onChartReady}
+                // loadingOption={this.getLoadingOption()}
                 showLoading={false}
                 style={{ height: '100%', width: '100%' }}
             />

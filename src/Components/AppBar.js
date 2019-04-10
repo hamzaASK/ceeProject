@@ -208,7 +208,8 @@ class PrimarySearchAppBar extends React.Component {
                             scrollButtons="on"
                         >
                             {this.props.menu.map((x) => {
-                                return <Tab key={x.label} component={NavLink} label={x.label} to={x.link} style={{ fontSize: 16 }} />
+                                if (x)
+                                    return <Tab key={x.label} component={NavLink} label={x.label} to={x.link} style={{ fontSize: 16 }} />
                             })}
                         </Tabs>
                         <div className={classes.grow} />

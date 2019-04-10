@@ -313,19 +313,19 @@ export const lang = [
             indic_1: {
                 title: "Radar des performances",
                 Element_1: {
-                    label: "Déchets",
+                    label: "Transport",
                     unit: " KgCO2"
                 },
                 Element_2: {
-                    label: "Eau",
-                    unit: " KgCO2"
-                },
-                Element_3: {
                     label: "Energie",
                     unit: " KgCO2"
                 },
+                Element_3: {
+                    label: "Eau",
+                    unit: " KgCO2"
+                },
                 Element_4: {
-                    label: "Transport",
+                    label: "Déchets",
                     unit: " KgCO2"
                 },
                 Element_5: {
@@ -343,10 +343,14 @@ export const lang = [
             indic_4: {
                 title: "Le jardin botanique du Centre de l’éducation à l’environnement contient différentes espèces végétales identifiées en collection. Ce jardin a pour mission principale la conservation de la biodiversité, notamment des espèces locales, l'amélioration de la qualité de l'air en absorbant les GES, ainsi qu'une mission d'information et de sensibilisation à la protection de l'environnement du public",
             },
+            indic_5: {
+                title: "Bilan GES total du CEE",
+            },
         },
 
         Faune: {
             name: "Faune",
+            biodiv: "Indicateurs de la Biodiversité",
             title: "Indicateur de la Faune",
             desc: "L’environnement naturel du CEE abrite plusieurs espèces animales existantes dans la région. Ci-dessous quelques informations et statistiques des espèces animales et leurs statuts de conservation",
             indic_1: "Espèces à préoccupation mineur",
@@ -749,19 +753,19 @@ export const lang = [
             indic_1: {
                 title: "ردار الأداء",
                 Element_1: {
-                    label: "النفايات",
+                    label: "النقل",
                     unit: " KgCO2"
                 },
                 Element_2: {
-                    label: "الماء",
-                    unit: " KgCO2"
-                },
-                Element_3: {
                     label: "الطاقة",
                     unit: " KgCO2"
                 },
+                Element_3: {
+                    label: "الماء",
+                    unit: " KgCO2"
+                },
                 Element_4: {
-                    label: "النقل",
+                    label: "النفايات",
                     unit: " KgCO2"
                 },
                 Element_5: {
@@ -779,10 +783,14 @@ export const lang = [
             indic_4: {
                 title: "تحتوي الحديقة النباتية التابعة لمركز التربية البيئية على أنواع نباتية مختلفة مرتبة في مجموعات. وتتمثل المهمة الرئيسية لهذه الحديقة في الحفاظ على التنوع البيولوجي، بما في ذلك للأنواع المحلية، وتحسين نوعية الهواء عن طريق امتصاص الغازات الدفيئة، وكذلك توفير المعلومات والرفع من الوعي لحماية البيئة",
             },
+                                                indic_5: {
+                                                    title: "إجمالي الانبعاثات",
+                                                },
         },
 
         Faune: {
             name: "الحيوانات",
+            biodiv: "مؤشر التنوع البيولوجي",
             title: "مؤشر التنوع البيولوجي - الحياة البرية",
             desc: "تعد البيئة الطبيعية لمركز التربية البيئية موطنا لعدة أنواع من الحيوانات الموجودة في المنطقة. فيما يلي بعض المعلومات والإحصائيات عن الأنواع الحيوانية وحالة حفظها",
             indic_1: "أنواع غير مهددة بالإنقراض",

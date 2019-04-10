@@ -1,26 +1,21 @@
 
 const initialState = {
-    admin: false,
+    admin: {
+        status: false,
+        data: null,
+    },
 }
 
 const reducer = (state = initialState, action) => {
     const newState = { ...state }
 
-    // if (action.type === 'AdminON')
-    //     newState.admin = true
-
-    // if (action.type === 'AdminOFF')
-    //     newState.admin = false
-
-    // return newState
-
     switch (action.type) {
         case "AdminOFF": {
-            newState.admin = false
+            newState.admin = action.value
             return newState
         }
         case 'AdminON': {
-            newState.admin = true
+            newState.admin = action.value
             return newState
         }
         default: {

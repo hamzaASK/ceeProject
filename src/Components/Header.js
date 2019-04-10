@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <Container style={{
-                background: this.props.admin ?
+                background: this.props.admin.status ?
                     'linear-gradient(to left bottom, green, limegreen)' :
                     'linear-gradient(to left bottom, darkblue, dodgerblue)'
             }}>

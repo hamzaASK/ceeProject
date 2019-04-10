@@ -24,7 +24,7 @@ export default class Printer extends Component {
                     recycle={this.props.recycle}
                     diffusion={this.props.diffusion}
                     precision={this.props.precision}
-                    generetadby={this.props.generatedby}
+                    generatedby={this.props.generatedby}
                     authorizedby={this.props.authorizedby}
                     reference={this.props.reference}
                     date={this.props.date}

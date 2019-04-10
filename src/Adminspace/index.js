@@ -19,7 +19,7 @@ class Adminspace extends Component {
   }
 
   componentDidMount() {
-    this.props.AdminON()
+    this.props.AdminON('hamza@hamza.hamza', '123456789')
   }
 
   render() {

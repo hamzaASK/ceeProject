@@ -72,17 +72,17 @@ class Transport extends Component {
     }
 
     render() {
-        // let x = this.props.lang === 'fr' ? 0 : 1
+        let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator" >
                 <Identity
-                    title="Indicateur de Transport"
-                    description="Cet indicateur a pour objectif de définir le degré de la contribution des moyens de transport dans la pollution de l'air"
+                    title={lang[x].Transport.title}
+                    description={lang[x].Transport.desc}
                 />
                 <Controls refreshValues={this.refreshValues} />
                 <div className="row-3" >
                     <div className="el-1" >
-                        <Card title="Bilan carbone du transport"
+                        <Card title={lang[x].Transport.indic_1.title}
                             content={
                                 <BarChart
                                     items={5}
@@ -97,12 +97,12 @@ class Transport extends Component {
                                     color3={'#5B9BD5'}
                                     color4={'#92D050'}
                                     color5={'orange'}
-                                    legend1='Voiture'
-                                    legend2='Train'
-                                    legend3='Tramway'
-                                    legend4='Bus urbain'
-                                    legend5='Deux roues'
-                                    title={'Bilan carbone du transport (Kg équi. CO2)'}
+                                    legend1={lang[x].Transport.indic_1.list[0]}
+                                    legend2={lang[x].Transport.indic_1.list[1]}
+                                    legend3={lang[x].Transport.indic_1.list[2]}
+                                    legend4={lang[x].Transport.indic_1.list[3]}
+                                    legend5={lang[x].Transport.indic_1.list[4]}
+                                    title={lang[x].Transport.indic_1.desc}
                                     legend={null}
                                     time={['']}
                                     height='85%'

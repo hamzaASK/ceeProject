@@ -21,7 +21,7 @@ class Adminbar extends Component {
     render() {
         return (
             <Container>
-                <Card title={"Information"}
+                <Card title={"Bonjour " + this.props.admin.data.prenom + ' !'}
                     content={
                         null
                     }

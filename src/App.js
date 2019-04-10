@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   componentWillReceiveProps() {
-    if (this.props.admin) {
+    if (this.props.admin.status) {
       clearInterval(timer)
     }
   }
@@ -65,33 +65,33 @@ class App extends Component {
 
         <HashRouter>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex' }} >
-            <AppBar admin={this.props.admin}
-              version={this.props.admin ? 'CEE Monitor v1.0' : 'CEE Monitor Autodisplay v1.0'}
+            <AppBar admin={this.props.admin.status}
+              version={this.props.admin.status ? 'CEE Monitor v1.0' : 'CEE Monitor Autodisplay v1.0'}
               menu={[
                 { label: lang[x].AppBar.Menu[0].label, link: "/" },
                 { label: lang[x].AppBar.Menu[1].label, link: "/indicators" },
                 { label: lang[x].AppBar.Menu[2].label, link: "/ressources" },
-                { label: lang[x].AppBar.Menu[3].label, link: "/reports" }
+                this.props.admin.status ? { label: lang[x].AppBar.Menu[3].label, link: "/reports" } : null
               ]} />
 
             <Body>
               {
                 this.state.width >= 1200 ?
-                  this.props.admin ? <Adminbar /> : <Sidebar />
+                  this.props.admin.status ? <Adminbar /> : <Sidebar />
                   : null
               }
               <Content>
                 <Route component={Homescreen} path="/" exact />
                 <Route component={Indicators} path="/indicators" />
                 <Route component={Ressources} path="/ressources" />
-                <Route component={PDFReports} path="/reports" />
+                {this.props.admin.status ? <Route component={PDFReports} path="/reports" /> : null}
                 <Route component={Adminspace} path="/ceeadmin" />
               </Content>
             </Body>
           </div>
         </HashRouter>
         {
-          this.state.width >= 1200 && !this.props.admin ?
+          this.state.width >= 1200 && !this.props.admin.status ?
             <Footer />
             : null
         }

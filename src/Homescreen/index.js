@@ -17,7 +17,7 @@ class Homescreen extends Component {
 
   componentDidMount() {
     timer = setTimeout(() => {
-      if (this.props.admin)
+      if (this.props.admin.status)
         this.props.history.push(`/indicators`)
     }, Timers.homescreen)
   }
