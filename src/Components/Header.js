@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { lang } from '../Settings/Lang'
+// import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 

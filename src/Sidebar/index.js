@@ -12,7 +12,7 @@ import Card from '../Components/Card'
 
 import Progress from './Progress'
 
-var timer = 10
+var timer = 0
 
 class Sidebar extends Component {
 
@@ -186,6 +186,10 @@ class Sidebar extends Component {
     componentDidMount() {
         // this.refreshValues(7)
         timer = setInterval(() => { this.refreshValues(7) }, 6000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(timer)
     }
 
     render() {

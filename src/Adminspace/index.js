@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
-import { URL } from '../Settings/Server'
+// import { URL } from '../Settings/Server'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 
 import { connect } from 'react-redux'
-import { lang } from '../Settings/Lang'
+// import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/adminActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 

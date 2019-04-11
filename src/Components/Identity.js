@@ -48,14 +48,14 @@ align-items: center;
 padding: 0 5px 0;
 `;
 
-const Description = styled.textarea`
-flex: 2;
-display: flex;
-justfify-content: center;
-padding: 0 5px 0;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-border: none;
-background: none;
-`;
+// const Description = styled.textarea`
+// flex: 2;
+// display: flex;
+// justfify-content: center;
+// padding: 0 5px 0;
+// white-space: nowrap;
+// overflow: hidden;
+// text-overflow: ellipsis;
+// border: none;
+// background: none;
+// `;

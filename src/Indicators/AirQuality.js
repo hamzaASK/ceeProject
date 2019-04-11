@@ -64,7 +64,7 @@ class AirQuality extends Component {
                                 {
                                     temp !== null ?
                                         <Element className="just">
-                                            <img
+                                            <img alt=''
                                                 style={{ maxWidth: 90, maxHeight: 90, margin: 5 }}
                                                 src={bgtemp}
                                                 className="is-icon is-active"
@@ -76,7 +76,7 @@ class AirQuality extends Component {
                                 {
                                     co2 !== null ?
                                         <Element className="just">
-                                            <img
+                                            <img alt=''
                                                 style={{ maxWidth: 90, maxHeight: 90, margin: 5 }}
                                                 src={bghumid}
                                                 className="is-icon is-active"
@@ -84,7 +84,7 @@ class AirQuality extends Component {
                                         </Element>
                                         :
                                         <Element className="just">
-                                            <img
+                                            <img alt=''
                                                 src={'/images/indicators/air/humid0.png'}
                                                 className="is-icon is-active"
                                                 style={{ opacity: 0.8, maxWidth: 90, maxHeight: 90, margin: 5 }}
@@ -94,7 +94,7 @@ class AirQuality extends Component {
                                 {
                                     humid !== null ?
                                         <Element className="just">
-                                            <img
+                                            <img alt=''
                                                 style={{ maxWidth: 90, maxHeight: 90, margin: 5 }}
                                                 src={bgco2}
                                                 className="is-icon is-active"
@@ -102,7 +102,7 @@ class AirQuality extends Component {
                                         </Element>
                                         :
                                         <Element className="just">
-                                            <img
+                                            <img alt=''
                                                 src={'/images/indicators/air/air0.png'}
                                                 className="is-icon is-active"
                                                 style={{ opacity: 0.8, maxWidth: 90, maxHeight: 90, margin: 5 }}
@@ -169,7 +169,7 @@ class AirQuality extends Component {
     render() {
         let x = this.props.lang === 'fr' ? 0 : 1
         return (
-            <div className="indicator">
+            <div className="indicator" style={{ padding: 20 }}>
                 <Identity
                     title={lang[x].Air.title}
                     description={lang[x].Air.desc}

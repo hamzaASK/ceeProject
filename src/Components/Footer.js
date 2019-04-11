@@ -34,7 +34,7 @@ class Footer extends Component {
                         temp_min: Math.round(res.main.temp_min - 273.15),
                         temp_max: Math.round(res.main.temp_max - 273.15),
                         humidity: Math.round(res.main.humidity),
-                        wind_deg: Math.round(res.wind.deg) == 360 ? 0 : Math.round(res.wind.deg),
+                        wind_deg: Math.round(res.wind.deg) === 360 ? 0 : Math.round(res.wind.deg),
                         wind_spd: Math.round(res.wind.speed * 36) / 10,
                     });
                 },

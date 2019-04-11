@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
-import { URL } from '../Settings/Server'
-import Card from '../Components/Card'
+// import { URL } from '../Settings/Server'
+// import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
 import Panel from './Panel'
 
 import { connect } from 'react-redux'
-import { lang } from '../Settings/Lang'
+// import { lang } from '../Settings/Lang'
 import { mapStateToProps, mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 
 // import ReactToPrint from 'react-to-print';
@@ -48,10 +48,10 @@ class Reports extends Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reports)
 
-const Container = styled.div`
-flex: 1;
-display: flex;
-flex-direction: column;
-background-color: orange;
-margin: 10px;
-`;
+// const Container = styled.div`
+// flex: 1;
+// display: flex;
+// flex-direction: column;
+// background-color: orange;
+// margin: 10px;
+// `;

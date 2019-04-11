@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { URL } from '../Settings/Server'
+// import { URL } from '../Settings/Server'
 import { connect } from 'react-redux'
 import { mapDispatchToProps } from '../Settings/ReduxStore/adminActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
@@ -40,12 +40,12 @@ display: flex;
 flex-direction: column;
 `;
 
-const Content = styled.div`
-flex: 1;
-display: flex;
-flex-direction: row;
-padding: 5px;
-`;
+// const Content = styled.div`
+// flex: 1;
+// display: flex;
+// flex-direction: row;
+// padding: 5px;
+// `;
 
 // const Box = styled.div`
 // flex: 1;

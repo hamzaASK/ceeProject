@@ -65,7 +65,7 @@ class Carbon extends Component {
         m = myDate.getMonth() + 1
         d = myDate.getDate()
         d0 = m + '/' + d + '/' + y
-        if (days != -1) {
+        if (days !== -1) {
             myDate.setDate(myDate.getDate() - days)
         } else {
             myDate = new Date(1990, 8, 1)
@@ -203,7 +203,7 @@ class Carbon extends Component {
                     <div className="el-1" >
                         <Card title={lang[x].GES.indic_2.title}
                             content={
-                                <img
+                                <img alt=''
                                     style={{ maxHeight: 700, maxWidth: 700, borderRadius: 10 }}
                                     src="/images/indicators/radar/ges.jpg"
                                 />

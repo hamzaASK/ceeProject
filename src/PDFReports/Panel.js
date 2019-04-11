@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
-import { Water, Energy, Identity, People } from './Details'
+// import { Water, Energy, Identity, People } from './Details'
 import Printer from './Printer'
 // import ReactToPrint from 'react-to-print';
 var moment = require('moment');
