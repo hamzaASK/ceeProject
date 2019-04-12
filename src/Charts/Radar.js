@@ -30,7 +30,7 @@ export default class Loading extends PureComponent {
         return {
             animation: true,
             title: {
-                //text: 'Bilan carbon du CEE (Tonnes équ. CO2)',
+                // text: 'Bilan carbon du CEE (Tonnes équ. CO2)',
                 textStyle: {
                     fontStyle: 'normal',
                     fontFamily: 'dubai',
@@ -41,7 +41,7 @@ export default class Loading extends PureComponent {
             },
             tooltip: {},
             legend: {
-                //data: ['(Allocated Budget)']
+                // data: ['(Allocated Budget)']
             },
             radar: {
                 //shape: 'circle',
@@ -71,7 +71,7 @@ export default class Loading extends PureComponent {
                 data: [
                     {
                         value: this.getData(),
-                        //name: 'Bilan carbone (kg équi. CO2)'
+                        // name: 'Bilan carbone (kg équi. CO2)'
                     },
                 ],
                 color: 'limegreen'
@@ -106,7 +106,7 @@ export default class Loading extends PureComponent {
                 // onChartReady={this.onChartReady}
                 // loadingOption={this.getLoadingOption()}
                 showLoading={false}
-                style={{ height: '100%', width: '100%' }}
+                style={{ flex: 1 }}
             />
         );
     }

@@ -12,6 +12,12 @@ import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 
+// const t0 = new Date(2019, 0, 1) // instant 0: CEE opening day
+
+// const footprintCEE = 50000 // kgCO2 (total)
+
+// const co2Absoption = 2000 // kgCO2 per year
+
 class Carbon extends Component {
 
     constructor(props) {
@@ -22,7 +28,9 @@ class Carbon extends Component {
             consumedWater: 0,
             recycledWater: 0,
             transport: 0,
-            totalWeight: 0
+            totalWeight: 0,
+            waste: 0,
+            days: 7
         }
         this.refreshValues = this.refreshValues.bind(this)
     }
@@ -34,8 +42,9 @@ class Carbon extends Component {
         var dates = this.calculateDates(days)
         var date0 = dates.d0
         var date1 = dates.d1
-        this.getTransport(date0, date1)
+        // this.getTransport(date0, date1)
         this.getWasteTotal(date0, date1)
+        this.setState({ days })
     }
 
     getTransport(d0, d1) {
@@ -44,8 +53,7 @@ class Carbon extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                var transport = 10
-                //transport = transport + res.map((i) => (i != null) ? i : 0)
+                let transport = transport + res.map((i) => (i != null) ? i : 0)
                 this.setState({ transport })
             })
             .catch((error) => {
@@ -178,25 +186,30 @@ class Carbon extends Component {
                     <div className="el-1" >
                         <Card title={lang[x].GES.indic_1.title}
                             content={
-                                <Radar
-                                    name="Performance par secteur"
-                                    legends={[
-                                        lang[x].GES.indic_1.Element_1.label,
-                                        lang[x].GES.indic_1.Element_2.label,
-                                        lang[x].GES.indic_1.Element_3.label,
-                                        lang[x].GES.indic_1.Element_4.label,
-                                        lang[x].GES.indic_1.Element_5.label,
-                                    ]}
-                                    data={[
-                                        this.state.transport,
-                                        Math.round((this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 * 10) / 10,
-                                        Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
-                                        51,
-                                        70
-                                        // Fix: Autres : Construction du batiment, les effets benefiques des espaces verts...
-                                        // Fix: water to CO2 coef
-                                    ]}
-                                />
+                                <div style={{ flex: 1, flexDirection: 'column' }} >
+                                    <Radar
+                                        name="Performance par secteur"
+                                        legends={[
+                                            lang[x].GES.indic_1.Element_1.label,
+                                            lang[x].GES.indic_1.Element_2.label,
+                                            lang[x].GES.indic_1.Element_3.label,
+                                            lang[x].GES.indic_1.Element_4.label,
+                                            lang[x].GES.indic_1.Element_5.label,
+                                        ]}
+                                        data={[
+                                            this.state.transport,
+                                            Math.round((this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 * 10) / 10,
+                                            Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
+                                            this.state.waste,
+                                            Math.round(83 * this.state.days) / 10
+                                            // Fix: Autres : Construction du batiment, les effets benefiques des espaces verts...
+                                            // Fix: water to CO2 coef
+                                        ]}
+                                    />
+                                    <div className="just" style={{ width: 'inherit', height: 50 }} >
+                                        Autres : Construction du CEE, jardin botanique ...
+                                    </div>
+                                </div>
                             }
                         />
                     </div>
@@ -220,7 +233,8 @@ class Carbon extends Component {
                                         Math.round((
                                             (this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 +
                                             (this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 +
-                                            this.state.transport)
+                                            this.state.transport +
+                                            8.3 * this.state.days)
                                             * 10) / 10
                                         // Fix: add waste carbon footprint to the total
                                     ] + ' kgCO2'}
