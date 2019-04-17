@@ -77,8 +77,8 @@ class Flora extends Component {
         return (
             <div className="indicator" >
                 <Identity
-                    title={lang[x].Faune.title}
-                    description={lang[x].Faune.desc}
+                    title={lang[x].Flore.title}
+                    description={lang[x].Flore.desc}
                 />
                 <div style={{ flexDirection: 'row', display: 'flex', padding: 5, marginTop: 5 }} >
                     <Slider {...settings} >
