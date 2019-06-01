@@ -95,6 +95,7 @@ class Report extends Component {
     }
 
     setElements() {
+        // Fix: include indicators
         let i = this.props.lang === 'fr' ? 0 : 1
         // // if (!x)
         // let x = 0
@@ -210,18 +211,18 @@ class Report extends Component {
                     <Fondation />
                 </Header>
 
-                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >Information général sur le rapport</Typography>
-                {General}
+                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].rapport.partie1.title1}</Typography>
+                {General(lang[x].rapport)}
 
-                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >Identité du rapport</Typography>
-                {Identity(this.props.reference, this.props.date, this.props.period, this.props.place)}
+                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].rapport.partie2.title}</Typography>
+                {Identity(this.props.reference, this.props.date, this.props.period, lang[x].rapport.partie2.title3, lang[x].rapport)}
 
-                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >Diffusion</Typography>
-                {People(this.props.diffusion, this.props.precision, this.props.generatedby, this.props.authorizedby)}
+                <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].rapport.partie3.title}</Typography>
+                {People(this.props.diffusion, this.props.precision, this.props.generatedby, this.props.authorizedby, lang[x].rapport)}
 
                 <div>
-                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >Radar des performances</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >Le radar des performances donne une vue globale sur le bilan Carbone des différentes activités du centre de l'éducation à l'environnement</Typography>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].GES.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50, textAlign: 'center' }} >{lang[x].GES.desc}</Typography>
                     {Carbon(
                         Math.round((this.state.consumedEnergy / 1000 - this.state.producedEnergy / 1000) * 0.784 * 10) / 10,
                         Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
@@ -240,7 +241,8 @@ class Report extends Component {
                         // Fix: water to CO2 coef
 
                     )}
-                    {Remarks(lang[1].title)}
+                    {Remarks("Remarques spéciales")}
+                    {/* Fix: translate "Remarques spéciales" */}
                 </div>
 
                 {

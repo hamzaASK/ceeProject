@@ -324,33 +324,33 @@ export const Carbon = (Energy, Water, Transport, Waste, Other, lang) => (
     </ExpansionPanelDetails>
 )
 
-export const General = (
-    <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 500, padding: 10 }}>
-        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
-            {"Le rapport de performance environnementale donne un aperçu général sous forme de bilans sur la gestion des ressources relatives à un ensemble d’indicateurs pertinents. Ce rapport a pour but d’améliorer et/ou de corriger les diverses actions d’utilisation et de consommation des ressources pour atteindre et respecter les objectifs de l’établissement du centre d’éducation à l’environnement."}
+export const General = (lang) => (
+    <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 500, padding: 10 }} >
+        <div style={{ margin: 10, flex: 1, fontSize: 20, textAlign: 'center' }} >
+            {lang.partie1.desc1}
         </div>
-        <Typography variant="h6" style={{ marginLeft: 20 }} >Avant-propos</Typography>
-        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
-            {"Sous le haut Patronage de Sa Majesté le Roi Mohammed VI, la fondation Mohammed VI pour la protection de l'environnement sous la présidence de son altesse Lalla Hasnae a bâti le centre d’éducation à l’environnement qui s’inscrit dans le cadre de sa stratégie nationale de la protection environnementale."}
+        <Typography variant="h6" style={{ marginLeft: 20, textAlign: 'center' }} >{lang.partie1.title2}</Typography>
+        <div style={{ margin: 10, flex: 1, fontSize: 20, textAlign: 'center' }} >
+            {lang.partie1.desc2}
         </div>
-        <Typography variant="h6" style={{ marginLeft: 20 }} >Le centre d'éducation à l'environnement</Typography>
-        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
-            {"Le centre de l'éducation à l'environnement offre un ensemble d'activités dans le cadre de la protection de l'environnement. Ces activités sont organisées se forme de formations, de visites pédagogiques, d’événements et conférences ... Le Centre présente aux gens un nouveau modèle de la construction durable d'un bâtiment écologique."}
+        <Typography variant="h6" style={{ marginLeft: 20, textAlign: 'center' }} >{lang.partie1.title3}</Typography>
+        <div style={{ margin: 10, flex: 1, fontSize: 20, textAlign: 'center' }} >
+            {lang.partie1.desc3}
         </div>
-        <Typography variant="h6" style={{ marginLeft: 20 }} >Le système de monitoring intelligent</Typography>
-        <div style={{ margin: 10, flex: 1, fontSize: 20 }} >
-            {"Le système de monitoring intelligent du centre de l’éducation à l’environnement permet d’évaluer l’ensemble des indicateurs environnementaux liés aux ressources du centre par des chiffres et des graphiques. Selon les résultats affichés, une ou plusieurs actions pourra s’effectuer pour réduire nos activités inappropriées à l’environnement."}
+        <Typography variant="h6" style={{ marginLeft: 20, textAlign: 'center' }} >{lang.partie1.title4}</Typography>
+        <div style={{ margin: 10, flex: 1, fontSize: 20, textAlign: 'center' }} >
+            {lang.partie1.desc4}
         </div>
     </ExpansionPanelDetails>
 )
 
-export const Identity = (reference, date, period, place) => (
+export const Identity = (reference, date, period, place, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 100, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Référence"
+                label={lang.partie2.option1}
                 value={reference}
                 //   className={classes.textField}
                 margin="dense"
@@ -360,7 +360,7 @@ export const Identity = (reference, date, period, place) => (
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Date de génération"
+                label={lang.partie2.option2}
                 value={date}
                 //   className={classes.textField}
                 margin="dense"
@@ -370,7 +370,7 @@ export const Identity = (reference, date, period, place) => (
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Durée d'activité"
+                label={lang.partie2.option31}
                 value={period}
                 //   className={classes.textField}
                 margin="dense"
@@ -380,7 +380,7 @@ export const Identity = (reference, date, period, place) => (
             <TextField
                 style={{ width: 320, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Lieu"
+                label={lang.partie2.option41}
                 value={place}
                 //   className={classes.textField}
                 margin="dense"
@@ -397,13 +397,13 @@ export const Remarks = (lang) => (
     </ExpansionPanelDetails>
 )
 
-export const People = (diffusion, precision, generatedby, authorizedby) => (
+export const People = (diffusion, precision, generatedby, authorizedby, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 100, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 200, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Diffusion"
+                label={lang.partie3.diffusion}
                 value={diffusion}
                 //   className={classes.textField}
                 margin="dense"
@@ -413,7 +413,7 @@ export const People = (diffusion, precision, generatedby, authorizedby) => (
             <TextField
                 style={{ width: 200, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Précision"
+                label={lang.partie3.option2}
                 value={precision}
                 //   className={classes.textField}
                 margin="dense"
@@ -423,7 +423,7 @@ export const People = (diffusion, precision, generatedby, authorizedby) => (
             <TextField
                 style={{ width: 200, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Généré par"
+                label={lang.partie3.option3}
                 value={generatedby}
                 //   className={classes.textField}
                 margin="dense"
@@ -433,7 +433,7 @@ export const People = (diffusion, precision, generatedby, authorizedby) => (
             <TextField
                 style={{ width: 200, marginLeft: 20, marginRight: 20 }}
                 id="outlined-dense"
-                label="Authorisé par"
+                label={lang.partie3.option4}
                 value={authorizedby}
                 //   className={classes.textField}
                 margin="dense"
