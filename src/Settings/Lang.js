@@ -312,19 +312,19 @@ export const lang = [
             desc: "Le radar des performances donne une vue globale sur le bilan Carbon des différentes activités du centre de l'éducation à l'environnement",
             indic_1: {
                 title: "Radar des performances",
-                Element_1: {
+                Element_4: {
                     label: "Déchets",
                     unit: " KgCO2"
                 },
-                Element_2: {
+                Element_3: {
                     label: "Eau",
                     unit: " KgCO2"
                 },
-                Element_3: {
+                Element_2: {
                     label: "Energie",
                     unit: " KgCO2"
                 },
-                Element_4: {
+                Element_1: {
                     label: "Transport",
                     unit: " KgCO2"
                 },
