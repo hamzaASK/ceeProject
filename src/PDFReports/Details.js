@@ -345,7 +345,7 @@ export const General = (lang) => (
 )
 
 export const Identity = (reference, date, period, place, lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 120, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 110, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}

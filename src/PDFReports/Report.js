@@ -254,7 +254,7 @@ class Report extends Component {
 
                 <div>
                     <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].Energy.title}</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Energy.desc}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50, textAlign: 'center' }} >{lang[x].Energy.desc}</Typography>
                     {Energy(this.state.consumedEnergy, this.state.producedEnergy, lang[x].Energy)}
                     {Remarks("Remarques spéciales")}
                     {/*<div style={{ height: 20 }} />*/}
@@ -268,7 +268,7 @@ class Report extends Component {
 
                 <div>
                     <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].Water.title}</Typography>
-                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Water.desc}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50, textAlign: 'center' }} >{lang[x].Water.desc}</Typography>
                     {Water(this.state.consumedWater, this.state.recycledWater, lang[x].Water)}
                     {Remarks("Remarques spéciales")}
                     {/*<div style={{ height: 20 }} />*/}
