@@ -787,19 +787,19 @@ export const lang = [
             desc: "يقدم رادار الأداء رؤية عامة لحصيلة البصمة الكربونية لمختلف أنشطة مركز التربية البيئية",
             indic_1: {
                 title: "ردار الأداء",
-                Element_1: {
+                Element_4: {
                     label: "النفايات",
                     unit: " KgCO2"
                 },
-                Element_2: {
+                Element_3: {
                     label: "الماء",
                     unit: " KgCO2"
                 },
-                Element_3: {
+                Element_2: {
                     label: "الطاقة",
                     unit: " KgCO2"
                 },
-                Element_4: {
+                Element_1: {
                     label: "النقل",
                     unit: " KgCO2"
                 },
