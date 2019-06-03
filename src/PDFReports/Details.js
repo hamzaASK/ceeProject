@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography'
 
 export const Water = (consumedWater, recycledWater, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
-        <Card title={lang}
+        <Card title={lang.indic_1.title}
             content={
                 <ReactSpeedometer
                     width={300}
@@ -36,17 +36,17 @@ export const Water = (consumedWater, recycledWater, lang) => (
                     height="95%"
                     width="95%"
                     legend={["Eaux consommées", "Eaux recyclées"]}
-                    title="Eaux consommées vs. Eaux recyclées"
+                    title={lang.indic_2.title}
                     titleFont='15'
                     colorList={['#92D050', 'dodgerblue']}
                     data={[
-                        { value: consumedWater, name: "Eaux\nRecyclées" },
-                        { value: recycledWater, name: "Eaux\nConsommées" },
+                        { value: consumedWater, name: lang.indic_2.Element_2.label },
+                        { value: recycledWater, name: lang.indic_2.Element_1.label },
                     ]}
                 />
             }
         />
-        <Card title="Eau recyclée (m3)"
+        <Card title={lang.indic_3.title}
             content={
                 <ReactSpeedometer
                     width={300}
@@ -190,9 +190,9 @@ export const Transport = (
     </ExpansionPanelDetails>
 )
 
-export const Energy = (consumedEnergy, producedEnergy) => (
+export const Energy = (consumedEnergy, producedEnergy, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }}>
-        <Card title="Energie globale consommée (kWh)"
+        <Card title={lang.indic_1.title}
             content={
                 <ReactSpeedometer
                     width={300}
@@ -213,15 +213,15 @@ export const Energy = (consumedEnergy, producedEnergy) => (
                 <PieChart
                     height="95%"
                     width="95%"
-                    title={"Energie consommée\nConventionnelle vs. Renouvelable"}
+                    title={lang.indic_4.title}
                     colorList={['#12B5EA', '#92D050', '#040238', '#30141b']}
                     data={[
-                        { value: consumedEnergy - producedEnergy, name: "Energie\nconventionnelle" },
-                        { value: producedEnergy, name: "Energie\nrenouvelable" }]}
+                        { value: consumedEnergy - producedEnergy, name: lang.indic_4.Element_2.label },
+                        { value: producedEnergy, name: lang.indic_4.Element_1.label }]}
                 />
             }
         />
-        <Card title="Energie renouvelable consommée (kWh)"
+        <Card title={lang.indic_2.title}
             content={
                 <ReactSpeedometer
                     width={300}
@@ -345,7 +345,7 @@ export const General = (lang) => (
 )
 
 export const Identity = (reference, date, period, place, lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 100, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 120, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}

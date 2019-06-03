@@ -18,10 +18,10 @@ class Report extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            consumedEnergy: 654321,
-            producedEnergy: 567890,
-            consumedWater: 987654,
-            recycledWater: 543210,
+            consumedEnergy: 100000,
+            producedEnergy: 0,
+            consumedWater: 0,
+            recycledWater: 0,
             Transport: [],
             waste: 0,
             statFauna: [0, 1, 6],
@@ -107,7 +107,7 @@ class Report extends Component {
             </Header>
         )
         let elements = []
-        if (this.props.energy) {
+        // if (this.props.energy) {
             // if (elements.length % 2 === 0)
             elements.push(header)
             elements.push(
@@ -119,7 +119,7 @@ class Report extends Component {
                     {/*<div style={{ height: 20 }} />*/}
                 </div>
             )
-        }
+        // }
         if (this.props.water) {
             // if (elements.length % 2 === 0)
             elements.push(header)
@@ -190,12 +190,12 @@ class Report extends Component {
         this.setState({ elements })
     }
 
-    // componentDidMount() {
-    //     this.getConsumedEnergy(7)
-    //     this.getProducedEnergy(7)
-    //     this.getConsumedWater(7)
-    //     this.getRecycledWater(7)
-    // }
+    componentDidMount() {
+        this.getConsumedEnergy(7)
+        this.getProducedEnergy(7)
+        this.getConsumedWater(7)
+        this.getRecycledWater(7)
+    }
 
     componentWillReceiveProps() {
         this.setElements()
@@ -203,6 +203,7 @@ class Report extends Component {
 
     render() {
         let x = this.props.lang === 'fr' ? 0 : 1
+        console.log(this.state.energy)
         return (
             <div style={{ margin: 20, borderWidth: 1, borderStyle: 'solid', borderColor: 'gray' }}>
                 <Header>
@@ -245,11 +246,40 @@ class Report extends Component {
                     {/* Fix: translate "Remarques spéciales" */}
                 </div>
 
-                {
+                <Header>
+                    <Intellcap />
+                    <div style={{ flex: 1 }} />
+                    <Fondation />
+                </Header>
+
+                <div>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].Energy.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Energy.desc}</Typography>
+                    {Energy(this.state.consumedEnergy, this.state.producedEnergy, lang[x].Energy)}
+                    {Remarks("Remarques spéciales")}
+                    {/*<div style={{ height: 20 }} />*/}
+                </div>
+
+                <Header>
+                    <Intellcap />
+                    <div style={{ flex: 1 }} />
+                    <Fondation />
+                </Header>
+
+                <div>
+                    <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].Water.title}</Typography>
+                    <Typography variant="h6" style={{ marginLeft: 20, height: 50 }} >{lang[x].Water.desc}</Typography>
+                    {Water(this.state.consumedWater, this.state.recycledWater, lang[x].Water)}
+                    {Remarks("Remarques spéciales")}
+                    {/*<div style={{ height: 20 }} />*/}
+                </div>
+
+
+                {/* {
                     this.state.elements.map((x) => {
                         return x
                     })
-                }
+                } */}
 
             </div >
         )
