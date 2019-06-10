@@ -67,7 +67,7 @@ export const Water = (consumedWater, recycledWater, lang) => (
 
 export const Recycle = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
-        <Card title="Déchets Recyclés (en kg)"
+        <Card title={lang.indic_1.title}
             content={
                 <BarChart
                     items={3}
@@ -82,14 +82,14 @@ export const Recycle = (lang) => (
                     legend2='Metal'
                     legend3='Plastique'
                     title={''}
-                    legend={['Verre', 'Metal', 'Plastique']}
+                    legend={lang.indic_1.list}
                     time={['']}
                     height='90%'
                     width='90%'
                 />
             }
         />
-        <Card title="Déchets transformés en Composte (en kg)"
+        <Card title={lang.indic_2.title}
             content={
                 <BarChart
                     items={2}
@@ -101,7 +101,7 @@ export const Recycle = (lang) => (
                     legend1='Organique'
                     legend2='Papier'
                     title={''}
-                    legend={['Organique', 'Papier']}
+                    legend={lang.indic_2.list}
                     time={['']}
                     height='90%'
                     width='90%'
@@ -214,7 +214,7 @@ export const Energy = (consumedEnergy, producedEnergy, lang) => (
                     height="95%"
                     width="95%"
                     title={lang.indic_4.title}
-                    colorList={['#12B5EA', '#92D050', '#040238', '#30141b']}
+                    colorList={['dodgerblue', 'forestgreen', '#040238', '#30141b']}
                     data={[
                         { value: consumedEnergy - producedEnergy, name: lang.indic_4.Element_2.label },
                         { value: producedEnergy, name: lang.indic_4.Element_1.label }]}

@@ -238,7 +238,7 @@ class Energy extends Component {
                                     height="95%"
                                     width="95%"
                                     title={lang[x].Energy.indic_3.title}
-                                    colorList={['#77d9f9', '#17b229', '#040238', '#30141b']}
+                                    colorList={['tomato', 'green', 'DodgerBlue', '#30141b']}
                                     data={[
                                         { value: this.state.consumedCVC / 1000, name: lang[x].Energy.indic_3.Element_1.label + "\n" + this.cvcPercent() },
                                         { value: this.state.consumedEclairage / 1000, name: lang[x].Energy.indic_3.Element_2.label + "\n" + this.eclairagePercent() },
@@ -255,7 +255,7 @@ class Energy extends Component {
                                     height="95%"
                                     width="95%"
                                     title={lang[x].Energy.indic_4.desc}
-                                    colorList={['#12B5EA', '#92D050', '#040238', '#30141b']}
+                                    colorList={['dodgerblue', 'forestgreen', '#040238', '#30141b']}
                                     data={[
                                         { value: this.state.consumedEnergy - this.state.consumedPV, name: lang[x].Energy.indic_4.Element_2.label + "\n " + this.consumedPercent() },
                                         { value: this.state.consumedPV, name: lang[x].Energy.indic_4.Element_1.label + "\n " + this.consumedPVPercent() }]}

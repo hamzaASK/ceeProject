@@ -1023,7 +1023,7 @@ export const lang = [
                 [
                     "Flore",
                     "Faux-poivrier odorant",
-                    "uploads/Schinus_terebinthifolia,jpg",
+                    "uploads/Schinus_terebinthifolia.jpg",
                     "Arbre à feuilles persistantes à croissance rapide qui pousse à 15m. Les fruits rose vif sont souvent vendus comme ''Baies de poivre'', bien qu'il n'ait aucun lien avec le vrai poivrier. Feuilles pennées de 8 à 25 cm. L'arbre est dioique, les fleurs mâles et femelles poussent sur des ports séparés.",
                     "3",
                     "فلفل بيروفي",
