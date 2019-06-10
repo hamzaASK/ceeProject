@@ -307,6 +307,7 @@ class Panel extends Component {
             <Typography className={classes.heading}>{lang[x].rapport.Element_2}</Typography>
           </ExpansionPanelSummary>
           <Printer
+            days={this.props.days}
             energy={this.state.energy}
             water={this.state.water}
             biodiv={this.state.biodiv}

@@ -14,6 +14,7 @@ export default class Printer extends Component {
                 />
                 <Report
                     ref={el => (this.report = el)}
+                    days={this.props.days}
                     energy={this.props.energy}
                     water={this.props.water}
                     biodiv={this.props.biodiv}

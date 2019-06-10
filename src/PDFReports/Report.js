@@ -19,7 +19,7 @@ class Report extends Component {
         super(props)
         this.state = {
             consumedEnergy: 0,
-            producedEnergy: 0,
+            consumedPV: 0,
             consumedWater: 0,
             recycledWater: 0,
             Transport: [],
@@ -46,15 +46,15 @@ class Report extends Component {
             });
     }
 
-    getProducedEnergy(days) {
-        const url = `${URL}/energy/getProducedEnergy.php?days=${days}`;
+    getConsumedPV(days) {
+        const url = `${URL}/energy/getConsumedPV.php?days=${days}`;
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ producedEnergy: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ consumedPV: 90000 * days })
                 } else {
-                    this.setState({ producedEnergy: res[0] })
+                    this.setState({ consumedPV: res[0] })
                 }
             })
             .catch((error) => {
@@ -114,7 +114,7 @@ class Report extends Component {
                 <div>
                     <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[i].Energy.title}</Typography>
                     <Typography variant="h6" style={{ marginLeft: 20, height: 50, textAlign: 'center' }} >{lang[i].Energy.desc}</Typography>
-                    {Energy(this.state.consumedEnergy, this.state.producedEnergy, lang[i].Energy)}
+                    {Energy(this.state.consumedEnergy, this.state.consumedPV, lang[i].Energy)}
                     {Remarks("Remarques spéciales")}
                     {/*<div style={{ height: 20 }} />*/}
                 </div>
@@ -190,11 +190,15 @@ class Report extends Component {
         this.setState({ elements })
     }
 
+    refreshValues(days) {
+        this.getConsumedEnergy(days)
+        this.getConsumedPV(days)
+        this.getConsumedWater(days)
+        this.getRecycledWater(days)
+    }
+
     componentDidMount() {
-        this.getConsumedEnergy(7)
-        this.getProducedEnergy(7)
-        this.getConsumedWater(7)
-        this.getRecycledWater(7)
+        this.refreshValues(this.props.days)
     }
 
     componentWillReceiveProps() {
@@ -225,7 +229,7 @@ class Report extends Component {
                     <Typography variant="h4" style={{ margin: 20, borderTopWidth: 1, borderTopStyle: 'solid', textAlign: 'center' }} >{lang[x].GES.title}</Typography>
                     <Typography variant="h6" style={{ marginLeft: 20, height: 50, textAlign: 'center' }} >{lang[x].GES.desc}</Typography>
                     {Carbon(
-                        Math.round((this.state.consumedEnergy / 1000 - this.state.producedEnergy / 1000) * 0.784 * 10) / 10,
+                        Math.round((this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 * 10) / 10,
                         Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
                         0,
                         0,

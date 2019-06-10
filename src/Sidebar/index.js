@@ -83,7 +83,7 @@ class Sidebar extends Component {
             .then(res => res.json())
             .then((res) => {
                 if (res[0] == null) {
-                    this.setState({ consumedPV: 0 })
+                    this.setState({ consumedPV: 90000 * days })
                 } else {
                     this.setState({ consumedPV: res[0] })
                 }
@@ -217,24 +217,24 @@ class Sidebar extends Component {
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10} max={1500} icon={'/images/sidebar/energy.png'} title={lang[x].SideBar.indic_3.title} unit={' kWh'} />
-                            <Progress value={Math.round((this.state.consumedPV / 1000) * 10) / 10} max={150} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
+                            <Progress value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10} max={2500} icon={'/images/sidebar/energy.png'} title={lang[x].SideBar.indic_3.title} unit={' kWh'} />
+                            <Progress value={Math.round((this.state.consumedPV / 1000) * 10) / 10} max={1500} icon={'/images/sidebar/energy_.png'} title={lang[x].SideBar.indic_4.title} unit={' kWh'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.totalWaste} max={100} icon={'/images/sidebar/waste.png'} title={lang[x].SideBar.indic_5.title} unit={' m3'} />
-                            <Progress value={this.state.totalRecycled} max={100} icon={'/images/sidebar/waste_.png'} title={lang[x].SideBar.indic_6.title} unit={' m3'} />
+                            <Progress value={this.state.totalWaste} max={100} icon={'/images/sidebar/waste.png'} title={lang[x].SideBar.indic_5.title} unit={' kg'} />
+                            <Progress value={this.state.totalRecycled} max={100} icon={'/images/sidebar/waste_.png'} title={lang[x].SideBar.indic_6.title} unit={' kg'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={58} max={100} icon={'/images/sidebar/ges.png'} title={lang[x].SideBar.indic_7.title} unit={' m3'} />
-                            <Progress value={this.state.transport} max={100} icon={'/images/sidebar/transport.png'} title={lang[x].SideBar.indic_8.title} unit={' m3'} />
+                            <Progress value={58} max={100} icon={'/images/sidebar/ges.png'} title={lang[x].SideBar.indic_7.title} unit={' kgCO2'} />
+                            <Progress value={this.state.transport} max={100} icon={'/images/sidebar/transport.png'} title={lang[x].SideBar.indic_8.title} unit={' kgCO2'} />
                         </Content>
                     }
                 />

@@ -18,7 +18,7 @@ class Energy extends Component {
         super(props)
         this.state = {
             producedEnergy: 0,
-            consumedEnergy: 10,
+            consumedEnergy: 0,
             consumedEclairage: 0,
             consumedPlugs: 0,
             consumedCVC: 0,
@@ -48,8 +48,8 @@ class Energy extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedPV: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ consumedPV: 90000 * days })
                 } else {
                     this.setState({ consumedPV: res[0] })
                 }
@@ -64,8 +64,8 @@ class Energy extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ producedEnergy: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ producedEnergy: 0 * days })
                 } else {
                     this.setState({ producedEnergy: res[0] })
                 }
@@ -128,7 +128,7 @@ class Energy extends Component {
         this.getConsumedEclairage(days)
         this.getConsumedPlugs(days)
         this.getConsumedEnergy(days)
-                this.getConsumedPV(days)
+        this.getConsumedPV(days)
         this.getProducedEnergy(days)
         switch (days) {
             case 1:
@@ -195,7 +195,7 @@ class Energy extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max * 30}
+                                    maxValue={this.state.max * 50}
                                     value={Math.round((this.state.consumedEnergy / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="limegreen"
@@ -215,7 +215,7 @@ class Energy extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max * 5}
+                                    maxValue={this.state.max * 30}
                                     value={Math.round((this.state.consumedPV / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="limegreen"
