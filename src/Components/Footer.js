@@ -127,6 +127,7 @@ class Footer extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(Footer)
 
 const Container = styled.div`
+z-index: 1000;
 height: 60px;
 width: inherit;
 display: flex;

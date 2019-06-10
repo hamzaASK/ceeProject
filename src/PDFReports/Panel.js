@@ -117,7 +117,7 @@ class Panel extends Component {
     let x = this.props.lang === 'fr' ? 0 : 1
     const { classes } = this.state.props
     return (
-      <div className={classes.root} style={{ overflowY: 'auto', height: 780 }} >
+      <div className={classes.root} style={{ overflowY: 'auto', height: 680 }} >
         <ExpansionPanel expanded={true}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>{lang[x].rapport.partie2.title}</Typography>

@@ -65,7 +65,7 @@ export const Water = (consumedWater, recycledWater, lang) => (
     </ExpansionPanelDetails>
 )
 
-export const Recycle = (
+export const Recycle = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
         <Card title="Déchets Recyclés (en kg)"
             content={
@@ -111,9 +111,9 @@ export const Recycle = (
     </ExpansionPanelDetails>
 )
 
-export const Waste = (
+export const Waste = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
-        <Card title={'Recyclage'}
+        <Card title={lang.indic_1.title}
             content={
                 <BarChart
                     items={3}
@@ -128,14 +128,14 @@ export const Waste = (
                     legend2='Metal'
                     legend3='Plastique'
                     title={''}
-                    legend={['Verre', 'Metal', 'Plastique']}
+                    legend={lang.indic_1.list}
                     time={['']}
                     height='90%'
                     width='90%'
                 />
             }
         />
-        <Card title={'Compostage'}
+        <Card title={lang.indic_2.title}
             content={
                 <BarChart
                     items={2}
@@ -147,7 +147,7 @@ export const Waste = (
                     legend1='Organique'
                     legend2='Papier'
                     title={''}
-                    legend={['Organique', 'Papier']}
+                    legend={lang.indic_2.list}
                     time={['']}
                     height='90%'
                     width='90%'
@@ -157,9 +157,9 @@ export const Waste = (
     </ExpansionPanelDetails>
 )
 
-export const Transport = (
+export const Transport = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
-        <Card title="Bilan carbone du transport (Kg équi. CO2)"
+        <Card title={lang.indic_1.desc}
             content={
                 <BarChart
                     items={5}
@@ -174,11 +174,11 @@ export const Transport = (
                     color3={'#5B9BD5'}
                     color4={'#92D050'}
                     color5={'orange'}
-                    legend1='Voiture'
-                    legend2='Train'
-                    legend3='Tramway'
-                    legend4='Bus urbain'
-                    legend5='Deux roues'
+                    legend1={lang.indic_1.list[0]}
+                    legend2={lang.indic_1.list[1]}
+                    legend3={lang.indic_1.list[2]}
+                    legend4={lang.indic_1.list[3]}
+                    legend5={lang.indic_1.list[4]}
                     title={''}
                     legend={null}
                     time={['']}
@@ -240,9 +240,9 @@ export const Energy = (consumedEnergy, producedEnergy, lang) => (
     </ExpansionPanelDetails>
 )
 
-export const Flora = (stat) => (
+export const Flora = (stat, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 200, padding: 10 }}>
-        <Card title={'Espèces en Préoccupation mineur'}
+        <Card title={lang.state_0}
             content={
                 <Information
                     info={stat[2]}
@@ -251,7 +251,7 @@ export const Flora = (stat) => (
                 />
             }
         />
-        <Card title={'Espèces en Vulnérabilité'}
+        <Card title={lang.state_1}
             content={
                 <Information
                     info={stat[1]}
@@ -260,7 +260,7 @@ export const Flora = (stat) => (
                 />
             }
         />
-        <Card title={'Espèces en Danger'}
+        <Card title={lang.state_2}
             content={
                 <Information
                     info={stat[0]}
@@ -272,9 +272,9 @@ export const Flora = (stat) => (
     </ExpansionPanelDetails>
 )
 
-export const Fauna = (stat) => (
+export const Fauna = (stat, lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 200, padding: 10 }}>
-        <Card title={'Espèces en Préoccupation mineur'}
+        <Card title={lang.state_0}
             content={
                 <Information
                     info={stat[2]}
@@ -283,7 +283,7 @@ export const Fauna = (stat) => (
                 />
             }
         />
-        <Card title={'Espèces en Vulnérabilité'}
+        <Card title={lang.state_1}
             content={
                 <Information
                     info={stat[1]}
@@ -292,7 +292,7 @@ export const Fauna = (stat) => (
                 />
             }
         />
-        <Card title={'Espèces en Danger'}
+        <Card title={lang.state_2}
             content={
                 <Information
                     info={stat[0]}
@@ -345,7 +345,7 @@ export const General = (lang) => (
 )
 
 export const Identity = (reference, date, period, place, lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 110, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 100, padding: 10 }}>
         <form className={""} noValidate autoComplete="off" >
             <TextField
                 style={{ width: 280, marginLeft: 20, marginRight: 20 }}
@@ -440,11 +440,6 @@ export const People = (diffusion, precision, generatedby, authorizedby, lang) =>
                 variant="outlined"
                 helperText=""
             />
-            {/* <ChipInput
-              value={this.state.diffusionList}
-              onRequestAdd={(chip) => this.handleAddChip(chip)}
-              onRequestDelete={(chip, index) => this.handleDeleteChip(chip, index)}
-            /> */}
         </form>
     </ExpansionPanelDetails>
 )
