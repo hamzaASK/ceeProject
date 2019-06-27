@@ -58,19 +58,19 @@ class Indicators extends Component {
                     content: <AirQuality />,
                 },
                 {
-                    delay: 7, key: 6, label: "GES",
-                    icon: "/images/indicators/indic_ges.png",
-                    content: <Carbon />,
-                },
-                {
-                    delay: 15, key: 7, label: "Faune",
+                    delay: 15, key: 6, label: "Faune",
                     icon: "/images/indicators/indic_fauna.png",
                     content: <Fauna />,
                 },
                 {
-                    delay: 15, key: 8, label: "Flore",
+                    delay: 15, key: 7, label: "Flore",
                     icon: "/images/indicators/indic_flora.png",
                     content: <Flora />,
+                },
+                {
+                    delay: 7, key: 8, label: "GES",
+                    icon: "/images/indicators/indic_ges.png",
+                    content: <Carbon />,
                 },
             ]
         }

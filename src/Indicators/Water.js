@@ -78,8 +78,8 @@ class Water extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ recycledWater: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ recycledWater: 3000 * days })
                 } else {
                     this.setState({ recycledWater: res[0] })
                 }
@@ -118,7 +118,7 @@ class Water extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max / 5}
+                                    maxValue={this.state.max}
                                     value={Math.round((this.state.consumedWater / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="dodgerblue"
@@ -142,8 +142,8 @@ class Water extends Component {
                                     titleFont='15'
                                     colorList={['#92D050', 'dodgerblue']}
                                     data={[
-                                        { value: this.state.recycledWater / 1000, name: lang[x].Water.indic_2.Element_2.label },
-                                        { value: this.state.consumedWater / 1000, name: lang[x].Water.indic_2.Element_1.label },
+                                        { value: this.state.recycledWater / 1000, name: lang[x].Water.indic_2.Element_2.label + "\n" + this.recycledPercent() },
+                                        { value: this.state.consumedWater / 1000, name: lang[x].Water.indic_2.Element_1.label + "\n" + this.consumedPercent() },
                                     ]}
                                 />
                             }
@@ -156,7 +156,7 @@ class Water extends Component {
                                     width={250}
                                     height={'100%'}
                                     forceRender={true}
-                                    maxValue={this.state.max / 5}
+                                    maxValue={this.state.max * 2}
                                     value={Math.round((this.state.recycledWater / 1000) * 10) / 10}
                                     needleColor="purple"
                                     startColor="red"

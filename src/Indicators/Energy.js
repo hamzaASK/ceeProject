@@ -49,8 +49,9 @@ class Energy extends Component {
             .then(res => res.json())
             .then((res) => {
                 if (res[0] == null || res[0] === 0) {
-                    this.setState({ consumedPV: 90000 * days })
+                    this.setState({ consumedPV: 42000 * days })
                 } else {
+                    // this.setState({ consumedPV: res[0] })
                     this.setState({ consumedPV: res[0] })
                 }
             })
@@ -150,12 +151,12 @@ class Energy extends Component {
     }
 
     consumedPercent() {
-        var total = this.state.consumedEnergy + this.state.consumedPV
-        return total === 0 ? 0 + ' %' : Math.round((this.state.consumedEnergy / total) * 1000) / 10 + ' %'
+        var total = this.state.consumedEnergy
+        return total === 0 ? 0 + ' %' : Math.round(((this.state.consumedEnergy - this.state.consumedPV) / total) * 1000) / 10 + ' %'
     }
 
     consumedPVPercent() {
-        var total = this.state.consumedEnergy + this.state.consumedPV
+        var total = this.state.consumedEnergy
         return total === 0 ? 0 + ' %' : Math.round((this.state.consumedPV / total) * 1000) / 10 + ' %'
     }
 
@@ -218,8 +219,8 @@ class Energy extends Component {
                                     maxValue={this.state.max * 30}
                                     value={Math.round((this.state.consumedPV / 1000) * 10) / 10}
                                     needleColor="purple"
-                                    startColor="limegreen"
-                                    endColor="red"
+                                    startColor="red"
+                                    endColor="limegreen"
                                     segments={7}
                                     needleTransitionDuration={2000}
                                     needleTransition="easeElastic"

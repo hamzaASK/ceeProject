@@ -29,7 +29,7 @@ class Footer extends Component {
             .then(
                 (res) => {
                     this.setState({
-                        icon: res.weather[0].icon,
+                        icon: res.weather[0].icon? res.weather[0].icon : 'icon',
                         temp: Math.round(res.main.temp - 273.15),
                         temp_min: Math.round(res.main.temp_min - 273.15),
                         temp_max: Math.round(res.main.temp_max - 273.15),

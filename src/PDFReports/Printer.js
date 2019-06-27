@@ -31,6 +31,7 @@ export default class Printer extends Component {
                     date={this.props.date}
                     period={this.props.period}
                     place={this.props.place}
+                    print={this.props.print}
                         />
             </ExpansionPanelDetails>
         )

@@ -37,7 +37,7 @@ class Reports extends Component {
             <div className="indicator">
                 <Identity
                     title="Générateur des Rapports"
-                    description="Description du générateur ..."
+                    description=""
                 />
                 <Controls refreshValues={this.refreshValues} />
                 <Panel days={this.state.days} />

@@ -11,8 +11,8 @@ class Header extends Component {
         return (
             <Container style={{
                 background: this.props.admin.status ?
-                    'linear-gradient(to left bottom, green, limegreen)' :
-                    'linear-gradient(to left bottom, darkblue, dodgerblue)'
+                'linear-gradient(to left bottom, green, limegreen)' :
+                'linear-gradient(to left bottom, darkblue, dodgerblue)'
             }}>
 
                 <LangButton
@@ -69,8 +69,8 @@ text-align: center;
 `;
 
 const LangButton = styled.button`
-height: 30px;
-width: 30px;
+height: 50px;
+width: 50px;
 display: flex;
 opacity: 0.7;
 margin: 10px;
@@ -99,7 +99,7 @@ const Logo = styled.div`
     width: 180px;
     margin: 5px;
 }
-background-image: url(/images/fm6e.png);
+background-image: url(/images/logo.png);
 background-position: 0 0;
 background-size: 100% 100%;
 `;

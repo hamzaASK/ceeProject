@@ -46,11 +46,11 @@ export default class Loading extends PureComponent {
             radar: {
                 //shape: 'circle',
                 indicator: [
-                    { name: this.props.legends[0] + ' ' + this.props.data[0] + ' kgCO2', max: 100 },
-                    { name: this.props.legends[1] + ' ' + this.props.data[1] + ' kgCO2', max: 100 },
-                    { name: this.props.legends[2] + ' ' + this.props.data[2] + ' kgCO2', max: 100 },
-                    { name: this.props.legends[3] + ' ' + this.props.data[3] + ' kgCO2', max: 100 },
-                    { name: this.props.legends[4] + ' ' + this.props.data[4] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[0] + '\n' + this.props.data2[0] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[1] + '\n' + this.props.data2[1] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[2] + '\n' + this.props.data2[2] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[3] + '\n' + this.props.data2[3] + ' kgCO2', max: 100 },
+                    { name: this.props.legends[4] + '\n' + this.props.data2[4] + ' kgCO2', max: 100 },
                 ],
                 nameGap: 10,
                 //zlevel: 100,
@@ -70,7 +70,8 @@ export default class Loading extends PureComponent {
                 areaStyle: { normal: {} },
                 data: [
                     {
-                        value: this.getData(),
+                        // value: this.getData(),
+                        value: this.props.data
                         // name: 'Bilan carbone (kg équi. CO2)'
                     },
                 ],
@@ -100,6 +101,7 @@ export default class Loading extends PureComponent {
     }
 
     render() {
+        console.log(this.props.data)
         return (
             <ReactEcharts
                 option={this.getOption()}

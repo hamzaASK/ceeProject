@@ -38,7 +38,7 @@ export const Water = (consumedWater, recycledWater, lang) => (
                     legend={["Eaux consommées", "Eaux recyclées"]}
                     title={lang.indic_2.title}
                     titleFont='15'
-                    colorList={['#92D050', 'dodgerblue']}
+                    colorList={['dodgerblue', '#92D050']}
                     data={[
                         { value: consumedWater, name: lang.indic_2.Element_2.label },
                         { value: recycledWater, name: lang.indic_2.Element_1.label },
@@ -73,8 +73,8 @@ export const Recycle = (lang) => (
                     items={3}
                     barWidth='15%'
                     data1={[0]}
-                    data2={[1]}
-                    data3={[2]}
+                    data2={[0]}
+                    data3={[0]}
                     color1={'#92D050'}
                     color2={'#FF0000'}
                     color3={'#EBEB35'}
@@ -94,8 +94,8 @@ export const Recycle = (lang) => (
                 <BarChart
                     items={2}
                     barWidth='15%'
-                    data1={[3]}
-                    data2={[4]}
+                    data1={[10]}
+                    data2={[40]}
                     color1={'#C55A11'}
                     color2={'#5B9BD5'}
                     legend1='Organique'
@@ -115,12 +115,12 @@ export const Waste = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
         <Card title={lang.indic_1.title}
             content={
-                <BarChart
+                <BarChart // [0.8, 1.75, 2.2]
                     items={3}
                     barWidth='15%'
-                    data1={[1]}
-                    data2={[2]}
-                    data3={[2]}
+                    data1={[7]}
+                    data2={[15]}
+                    data3={[19]}
                     color1={'#92D050'}
                     color2={'#FF0000'}
                     color3={'#EBEB35'}
@@ -140,8 +140,8 @@ export const Waste = (lang) => (
                 <BarChart
                     items={2}
                     barWidth='15%'
-                    data1={[1]}
-                    data2={[2]}
+                    data1={[10]}
+                    data2={[40]}
                     color1={'#C55A11'}
                     color2={'#5B9BD5'}
                     legend1='Organique'
@@ -160,15 +160,15 @@ export const Waste = (lang) => (
 export const Transport = (lang) => (
     <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 400, padding: 10 }} >
         <Card title={lang.indic_1.desc}
-            content={
+            content={// [78, 66, 3, 12, 6]
                 <BarChart
                     items={5}
                     barWidth='15%'
-                    data1={[1]}
-                    data2={[1]}
-                    data3={[2]}
-                    data4={[4]}
-                    data5={[3]}
+                    data1={[78]}
+                    data2={[66]}
+                    data3={[3]}
+                    data4={[12]}
+                    data5={[6]}
                     color1={'#A0A0A0'}
                     color2={'#C06020'}
                     color3={'#5B9BD5'}
@@ -230,8 +230,8 @@ export const Energy = (consumedEnergy, producedEnergy, lang) => (
                     maxValue={Math.round((producedEnergy / 1000) * 1.2)}
                     value={Math.round((producedEnergy / 1000) * 10) / 10}
                     needleColor="purple"
-                    startColor="limegreen"
-                    endColor="red"
+                    startColor="red"
+                    endColor="limegreen"
                     segments={7}
                     textColor="grey"
                 />
@@ -241,7 +241,7 @@ export const Energy = (consumedEnergy, producedEnergy, lang) => (
 )
 
 export const Flora = (stat, lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 200, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 190, padding: 10 }}>
         <Card title={lang.state_0}
             content={
                 <Information
@@ -273,7 +273,7 @@ export const Flora = (stat, lang) => (
 )
 
 export const Fauna = (stat, lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 200, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 190, padding: 10 }}>
         <Card title={lang.state_0}
             content={
                 <Information
@@ -304,20 +304,23 @@ export const Fauna = (stat, lang) => (
     </ExpansionPanelDetails>
 )
 
-export const Carbon = (Energy, Water, Transport, Waste, Other, lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 450, padding: 10 }}>
+// export const Carbon = (Energy, Water, Transport, Waste, Other, data2, lang) => (
+export const Carbon = (data, data2, lang) => (
+    <ExpansionPanelDetails style={{ flexDirection: 'row', display: 'flex', height: 420, padding: 10 }}>
         <Card // title="Radar des performances"
             content={
                 <Radar
                     name="Performance par secteur"
                     legends={lang}
-                    data={[
-                        Transport,
-                        Energy,
-                        Water,
-                        Waste,
-                        Other
-                    ]}
+                    // data={[
+                    //     Transport,
+                    //     Energy,
+                    //     Water,
+                    //     Waste,
+                    //     Other
+                    // ]}
+                    data={data}
+                    data2={data2}
                 />
             }
         />
@@ -325,7 +328,7 @@ export const Carbon = (Energy, Water, Transport, Waste, Other, lang) => (
 )
 
 export const General = (lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 500, padding: 10 }} >
+    <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 540, padding: 10 }} >
         <div style={{ margin: 10, flex: 1, fontSize: 20, textAlign: 'center' }} >
             {lang.partie1.desc1}
         </div>
@@ -392,7 +395,7 @@ export const Identity = (reference, date, period, place, lang) => (
 )
 
 export const Remarks = (lang) => (
-    <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 400, padding: 10 }}>
+    <ExpansionPanelDetails style={{ flexDirection: 'column', display: 'flex', height: 405   , padding: 10 }}>
         <Card title={lang} content={<div style={{ height: '80%', width: '100%', backgroundColor: 'whitesmoke' }} />} />
     </ExpansionPanelDetails>
 )

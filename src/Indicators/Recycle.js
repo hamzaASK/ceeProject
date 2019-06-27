@@ -20,7 +20,8 @@ class Recycled extends Component {
             weightsSolid: [],
             weightsComposte: [],
             levels: [],
-            recycled: [],
+            recycled: [0, 0, 0, 10, 40],
+            waste: [7, 15, 19, 10, 40],
             totalLevel: 0,
             totalWeight: 0,
             totalRecycledLevel: 0,
@@ -107,7 +108,7 @@ class Recycled extends Component {
 
     render() {
         let x = this.props.lang === 'fr' ? 0 : 1
-                return (
+        return (
             <div className="indicator" >
                 <Identity
                     title={lang[x].recyclable.title}
@@ -163,11 +164,12 @@ class Recycled extends Component {
                 </div>
 
                 <div className="row-1" >
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[0], this.totalRecyled()), lang[x].recyclable.indic_3.title, "/images/indicators/recyc/bin_glass.png", "#92D050")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[1], this.totalRecyled()), lang[x].recyclable.indic_4.title, "/images/indicators/recyc/bin_metal.png", "#FF0000")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[2], this.totalRecyled()), lang[x].recyclable.indic_5.title, "/images/indicators/recyc/bin_plastic.png", "#EBEB35")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[3], this.totalRecyled()), lang[x].recyclable.indic_6.title, "/images/indicators/recyc/bin_organic.png", "#C55A11")}
-                    {this.renderPerformance(this.calculatePerformance(this.state.recycled[4], this.totalRecyled()), lang[x].recyclable.indic_7.title, "/images/indicators/recyc/bin_paper.png", "#5B9BD5")}
+                    {/* {this.renderPerformance(this.calculatePerformance(this.state.recycled[0], this.totalRecyled()), lang[x].recyclable.indic_3.title, "/images/indicators/recyc/bin_glass.png", "#92D050")} */}
+                    {this.renderPerformance(Math.round((this.state.recycled[0] / this.state.waste[0]) * 100) + '%', lang[x].recyclable.indic_3.title, "/images/indicators/recyc/bin_glass.png", "#92D050")}
+                    {this.renderPerformance(Math.round((this.state.recycled[1] / this.state.waste[1]) * 100) + '%', lang[x].recyclable.indic_4.title, "/images/indicators/recyc/bin_metal.png", "#FF0000")}
+                    {this.renderPerformance(Math.round((this.state.recycled[2] / this.state.waste[2]) * 100) + '%', lang[x].recyclable.indic_5.title, "/images/indicators/recyc/bin_plastic.png", "#EBEB35")}
+                    {this.renderPerformance(Math.round((this.state.recycled[3] / this.state.waste[3]) * 100) + '%', lang[x].recyclable.indic_6.title, "/images/indicators/recyc/bin_organic.png", "#C55A11")}
+                    {this.renderPerformance(Math.round((this.state.recycled[4] / this.state.waste[4]) * 100) + '%', lang[x].recyclable.indic_7.title, "/images/indicators/recyc/bin_paper.png", "#5B9BD5")}
                 </div>
             </div>
         )

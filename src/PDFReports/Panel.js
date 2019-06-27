@@ -77,6 +77,7 @@ class Panel extends Component {
       transport: false,
       waste: false,
       recycle: false,
+      print: false,
       diffusion: 'Confidentiel',
       precision: '',
       generatedby: '',
@@ -302,7 +303,7 @@ class Panel extends Component {
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-        <ExpansionPanel expanded={true} >
+        <ExpansionPanel onChange={(x, print) => this.setState({ print })}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>{lang[x].rapport.Element_2}</Typography>
           </ExpansionPanelSummary>
@@ -324,6 +325,7 @@ class Panel extends Component {
             date={this.state.date}
             period={this.state.period}
             place={this.state.place}
+            print={this.state.print}
           />
         </ExpansionPanel>
       </div>

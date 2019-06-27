@@ -5,7 +5,7 @@
 export const lang = [
     // FR -----------
     {
-        title: "Monitoring du Centre d'Education à l'Environnement - FM6E",
+        title: "Monitoring du Centre d'Education à l'Environnement",
 
         indicatorsNames: [
             "Energies",
@@ -42,7 +42,7 @@ export const lang = [
 
         SideBar: {
             title: "Performances environnementales",
-            desc: "Les performances environnementales des sept jours derniers",
+            desc: "Les performances environnementales des sept derniers jours ",
             indic_1: {
                 title: "Eau potable:",
                 unit: " m3"
@@ -106,7 +106,7 @@ export const lang = [
             },
             indic_4: {
                 title: "Performance",
-                desc: "Energie consomée Conventionnelle VS. Renouvelable",
+                desc: "Energie consommée Conventionnelle VS. Renouvelable",
                 Element_1: {
                     label: "Energie Renouvelable",
                     unit: " %"
@@ -121,7 +121,7 @@ export const lang = [
         Water: {
             name: "Eaux",
             title: "Indicateurs des eaux",
-            desc: "Cet indicateur affiche la quantité d'eau potable consommée dans le CEE ainsi que la quantité d'eau recyclée par la station de traitement des eaux usées et récupérées",
+            desc: "Cet indicateur affiche la quantité d'eau potable consommée dans le CEE, ainsi que la quantité d'eau recyclée par la station de traitement des eaux usées et récupérées",
             indic_1: {
                 title: "Eau potable consommée (m3)",
                 unit: " m3"
@@ -146,7 +146,7 @@ export const lang = [
 
             indic_4: {
                 title: "Qualité d’eau en provenance de la STEP",
-                comment: "Non potable mais bonne pour l’arrosage"
+                comment: "Non potable, mais bonne pour l’arrosage"
 
             },
 
@@ -193,11 +193,11 @@ export const lang = [
         recyclable: {
             name: "Recyclage",
             title: "Indicateur de recyclage des déchets",
-            desc: "Les déchets organiques sont transformés en composites tandis que le reste des déchets sont confiés aux filiales de recyclage",
+            desc: "Les déchets organiques sont transformés en composte tandis que le reste des déchets sont confiés aux filières de recyclage",
             indic_1: {
                 title: "Recyclage",
                 desc: "Déchets recyclés (Kg)",
-                list: ['Verre', 'Metal', 'Plastique'],
+                list: ['Verre', 'Métal', 'Plastique'],
                 unit: " Kg"
             },
             indic_2: {
@@ -231,7 +231,7 @@ export const lang = [
         Transport: {
             name: "Transport",
             title: "Indicateur de transport",
-            desc: "Cet indicateur a pour objectif de définir le degré de la contribution des moyens de transport dans la pollution de l'air",
+            desc: "Cet indicateur a pour objectif de définir le degré de contribution des moyens de transport dans la pollution de l'air",
             indic_1: {
                 title: "Bilan carbone du transport",
                 desc: "Bilan carbone du transport (Kg équi. CO2)",
@@ -312,20 +312,20 @@ export const lang = [
             desc: "Le radar des performances donne une vue globale sur le bilan Carbon des différentes activités du centre de l'éducation à l'environnement",
             indic_1: {
                 title: "Radar des performances",
-                Element_1: {
-                    label: "Transport",
-                    unit: " KgCO2"
-                },
-                Element_2: {
-                    label: "Energie",
+                Element_4: {
+                    label: "Déchets",
                     unit: " KgCO2"
                 },
                 Element_3: {
                     label: "Eau",
                     unit: " KgCO2"
                 },
-                Element_4: {
-                    label: "Déchets",
+                Element_2: {
+                    label: "Energie",
+                    unit: " KgCO2"
+                },
+                Element_1: {
+                    label: "Transport",
                     unit: " KgCO2"
                 },
                 Element_5: {
@@ -344,19 +344,18 @@ export const lang = [
                 title: "Le jardin botanique du Centre de l’éducation à l’environnement contient différentes espèces végétales identifiées en collection. Ce jardin a pour mission principale la conservation de la biodiversité, notamment des espèces locales, l'amélioration de la qualité de l'air en absorbant les GES, ainsi qu'une mission d'information et de sensibilisation à la protection de l'environnement du public",
             },
             indic_5: {
-                title: "Bilan GES total du CEE",
+                title: "Total GES",
             },
         },
 
         Faune: {
             name: "Faune",
-            biodiv: "Indicateurs de la Biodiversité",
             title: "Indicateur de la Faune",
             desc: "L’environnement naturel du CEE abrite plusieurs espèces animales existantes dans la région. Ci-dessous quelques informations et statistiques des espèces animales et leurs statuts de conservation",
-            indic_1: "Espèces à préoccupation mineur",
+            indic_1: "Espèces à préoccupation mineure",
             indic_2: "Espèces en vulnérabilité",
             indic_3: "Espèces menacés d'extinction",
-            state_0: 'Préoccupation mineur',
+            state_0: 'Préoccupation mineure',
             state_1: 'Vulnérable',
             state_2: 'En danger',
             state_3: 'Non évalué',
@@ -366,10 +365,10 @@ export const lang = [
             name: "Flore",
             title: "Indicateur de la Flore",
             desc: "Le CEE a adopté une démarche écologique afin de protéger les espèces végétales locales. Ci-dessous quelques statistiques des espèces végétales au niveau du CEE et leurs statuts de conservation",
-            indic_1: "Espèces à préoccupation mineur",
+            indic_1: "Espèces à préoccupation mineure",
             indic_2: "Espèces en vulnérabilité",
             indic_3: "Espèces menacés d'extinction",
-            state_0: 'Préoccupation mineur',
+            state_0: 'Préoccupation mineure',
             state_1: 'Vulnérable',
             state_2: 'En danger',
         },
@@ -378,7 +377,7 @@ export const lang = [
             {
                 id: 1,
                 title: "Aire de stationnement & Transport",
-                desc: "L'aire de stationnement du Centre d'éducation à l'environnement est aménagée en espace vert, doté d’équipements modernes: bornes de recharge pour véhicules électriques, application dédiée, calcul et compensation volontaire du bilan carbone … Un parking au sol perméable à l’eau, des matériaux recyclables, de la verdure et des zones de stationnement ombragées pour un accueil agréable de nos visiteurs. Calcul de votre bilan CO2: La compensation volontaire carbone est un moyen de participation à l’effort collectif de lutte contre la pollution atmosphérique et le changement climatique. Vous pouvez compensez votre bilan carbone, via  le lien suivant :  http://calculateurco2.org/",
+                desc: "L'aire de stationnement du Centre d'éducation à l'environnement est aménagée en espace vert, doté d’équipements modernes: bornes de recharge pour véhicules électriques, application dédiée, calcul et compensation volontaire du bilan carbone … Un parking au sol perméable à l’eau, des matériaux recyclables, de la verdure et des zones de stationnement ombragées pour un accueil agréable de nos visiteurs. Calcul de votre bilan CO2: La compensation volontaire carbone est un moyen de participation à l’effort collectif de lutte contre la pollution atmosphérique et le changement climatique.",
                 picture: "/images/ressources/res_03.jpg",
             },
             {
@@ -391,7 +390,7 @@ export const lang = [
                 id: 3,
                 title: "Station de traitement des eaux",
                 desc: "L’EAU, une ressource naturelle, une denrée vitale et précieuse qui se fait de plus en plus rare à l’état pure. Sa gestion exige un soin particulier, des plus rigoureux, et son économie et son traitement systématique deviennent une urgence absolue. Afin d’intégrer cette exigence, le CEE s’est équipé d’une station d’épuration des eaux usées. Grâce à un procédé naturel, la station permet de fournir une eau propre à l’arrosage pour les espaces verts du CEE. A l’eau traitée vient s’ajouter l'eau de pluie collectée (par infiltration dans les sols et par ruissellement) ce qui permet de fournir la totalité des besoins en eau d’arrosage des espaces verts et permet ainsi de limiter la consommation d’eau potable au strict nécessaire",
-                picture: "/images/ressources/res_04.jpg",
+                picture: "/images/ressources/res_0.jpg",
             },
             // {
             //     id: 4,
@@ -401,7 +400,7 @@ export const lang = [
             // },
             {
                 id: 4,
-                title: "Espaces verts et Biodiversité",
+                title: "Espaces verts et Biodiversité ",
                 desc: "Le CEE dispose d’espaces verts conçues sur le relief initial du site, favorisant ainsi l’installation et la préservation d’une biodiversité locale riche, variée et équilibrée. Ces espaces verts se caractérisent par un aménagement durable: Des espaces aménagés de manière à préserver leur aspect naturel et les caractéristiques initiales du site: sol, relief, espèces végétales, … ; Des prairies fleuries, riches, variées et équilibrées ; Des jardins pédagogiques illustrant la diversité biologique, notamment les espèces locales ; Un sol respectueux de l’environnement et fertilisé au composte produit in-situ ; Une faible consommation en eau : économie d’eau et arrosage par eau récupérée et recyclée ;\nLes espaces verts du CEE contribuent positivement à la performance environnementale du CEE",
                 picture: "/images/ressources/res_06.jpg",
             },
@@ -424,7 +423,7 @@ export const lang = [
             {
                 id: 1,
                 title: "Inauguration du Centre d'Education à l'Environnement",
-                desc: "L’inauguration du centre d’éducation à l’environnement aura lieu le 01 Mars 2019 à partir de 15h00 sur les lieux par son altesse royale la princesse Lalla Hasnae",
+                desc: "L’inauguration du centre d’éducation à l’environnement aura lieu le JJ MM 2019 à partir de (heure) sur les lieux par son altesse royale la princesse Lalla Hasnae",
                 picture: "/images/home/home1.png",
             },
             {
@@ -441,13 +440,49 @@ export const lang = [
             },
         ],
 
+
+        rapport: {
+            partie1: {
+                title1: "Informations générales",
+                desc1: "Le rapport de performance environnementale donne un aperçu général sous forme de bilans sur la gestion des ressources relatives à un ensemble d’indicateurs pertinents. Ce rapport a pour but d’améliorer et/ou de corriger les diverses actions d’utilisation et de consommation des ressources pour atteindre et respecter lesobjectifs de l’établissement du centre d’éducation à l’environnement.",
+                title2: "Avant-props",
+                desc2: "Sous le haut Patronage de Sa Majesté le Roi Mohammed VI, la fondation Mohammed VI pour la protection de l'environnement sous la présidence de son altesse Lalla Hasnae a bâti le centre d’éducation à l’environnement qui s’inscrit dans le cadre de sa stratégie nationale de la protection environnementale.",
+                title3: "Le centre d'éducation à l'environnement",
+                desc3: "Le centre de l'éducation à l'environnement offre un ensemble d'activités dans le cadre de la protection de l'environnement. Ces activités sont organisées se forme de formations, de visites pédagogiques, d’événements et conférences ... Le Centre présente aux gens un nouveau modèle de la construction durable d'un bâtiment écologique.",
+                title4: "Le système de monitoring intelligent",
+                desc4: "Le système de monitoring intelligent du centre de l’éducation à l’environnement permet d’évaluer l’ensemble des indicateurs environnementaux liés aux ressources du centre par des chiffres et des graphiques. Selon les résultats affichés, une ou plusieurs actions pourra s’effectuer pour réduire nos activités inappropriées à l’environnement.",
+            },
+            partie2: {
+                title: "Identité du rapport",
+                option1: "Référence",
+                option2: "Date de génération",
+                option31: "Durée d'activité",
+                option32: "Jours",
+                option41: "Lieu",
+                option42: "Le centre de l'éducation à l'environnement",
+            },
+            partie3: {
+                title: "Diffusion",
+                option1: {
+                    diff_1: "Confidentiel",
+                    diff_2: "Diffusion restreinte",
+                    diff_3: "Diffusion publique",
+                    diff_4: "Autre",
+                },
+                option2: "Remarque",
+                option3: "Généré par",
+                option4: "Autorisé par",
+            },
+            Element_1: "Indicateurs inclus dans le rapport",
+            Element_2: "Imprimer le rapport",
+        },
     },
 
 
     // AR -----------
 
     {
-        title: "تتبع ومراقبة المركز التربوي للبيئة – مؤسسة محمد السادس لحماية البيئة",
+        title: "تتبع ومراقبة مركز التربية البيئية – مؤسسة محمد السادس لحماية البيئة",
 
         indicatorsNames: [
             "الطاقات",
@@ -494,7 +529,7 @@ export const lang = [
                 unit: " m3"
             },
             indic_3: {
-                title: "الطاقة :",
+                title: "الطاقة",
                 unit: " KWh"
             },
             indic_4: {
@@ -524,11 +559,11 @@ export const lang = [
             title: "مؤشرات الطاقات",
             desc: "توفر مؤشرات الطاقات معلومات عن كمية الطاقة المستهلكة من معدات المركز. كما أنها تشير إلى كمية الطاقة المتجددة التي تنتجها المزرعة الشمسية للمركز",
             indic_1: {
-                title: "مجموع الطاقة المستهلكة (كيلووات ساعة)",
+                title: "مجموع الطاقة المستهلكة - كيلووات ساعة",
                 unit: " kWh"
             },
             indic_2: {
-                title: "مجموع الطاقة المتجددة المستهلكة (كيلوواط ساعة)",
+                title: "مجموع الطاقة المتجددة المستهلكة - كيلوواط ساعة",
                 unit: " kWh"
             },
             indic_3: {
@@ -548,7 +583,7 @@ export const lang = [
             },
             indic_4: {
                 title: "الأداء",
-                desc: "طاقة شبكة التوزيع المستهلكة ضد. الطاقة المتجددة المستهلكة",
+                desc: "طاقة شبكة التوزيع المستهلكة مقابل الطاقة المتجددة المستهلكة",
                 Element_1: {
                     label: "الطاقة المتجددة",
                     unit: " %"
@@ -565,12 +600,12 @@ export const lang = [
             title: "مؤشرات المياه",
             desc: "يبين هذا المؤشر كمية المياه الصالحة للشرب المستهلكة بالمركز، وكذلك كمية المياه التي تم تدويرها في محطة معالجة المياه العادمة والمتجمعة",
             indic_1: {
-                title: "كمية الماء الصالح للشرب المستهلكة (متر مكعب)",
+                title: "كمية الماء الصالح للشرب المستهلكة - متر مكعب",
                 unit: " m3"
             },
             indic_2: {
                 title: "الأداء",
-                desc: "الماء المستهلك ضد. الماء المعالج",
+                desc: "الماء المستهلك مقابل الماء المعالج",
                 Element_1: {
                     label: "الماء المستهلك",
                     unit: " %"
@@ -581,18 +616,18 @@ export const lang = [
                 },
             },
             indic_3: {
-                title: "الماء المعالج (متر مكعب)",
+                title: "الماء المعالج - متر مكعب",
                 unit: " m3"
 
             },
 
             indic_4: {
-                title: "جودة مياه القادمة من محطة معالجة المياه",
-                comment: "غير صالحة للشرب لكنها جيدة للسقي"
+                title: "جودة المياه القادمة من محطة معالجة المياه",
+                comment: "غير صالحة للشرب، لكنها جيدة للسقي"
             },
 
             indic_5: {
-                title: "جودة مياه القادمة من شبكة التوزيع الوطنية",
+                title: "جودة المياه القادمة من شبكة التوزيع الوطنية",
                 comment: "صالحة للشرب، جيدة جدا للإستهلاك اليومي"
             },
         },
@@ -603,13 +638,13 @@ export const lang = [
             desc: "تمكن الحاوية من فرز نفايات المركز حسب فئاتها ونوعها. يساعد هذا الفرز على جمع المعلومات المختلفة أدناه",
             indic_1: {
                 title: "القابلة لإعادة للتدوير",
-                desc: "وزن النفايات القابلة لإعادة التدوير (بالكيلوغرام)",
+                desc: "وزن النفايات القابلة لإعادة التدوير - بالكيلوغرام",
                 list: ['الزجاج', 'الحديد', 'البلاستيك'],
                 unit: " Kg"
             },
             indic_2: {
                 title: "السماد",
-                desc: "وزن النفايات القابلة للتسميد (بالكيلوغرام)",
+                desc: "وزن النفايات القابلة للتسميد - بالكيلوغرام",
                 list: ['العضوية', 'الورق'],
                 unit: " Kg"
             },
@@ -636,13 +671,13 @@ export const lang = [
             desc: "يتم تحويل النفايات العضوية إلى سماد طبيعي، بينما يتم إرسال باقي النفايات الى الشركات والمختصين لإعادة تدويرها",
             indic_1: {
                 title: "تم إعادة التدوير",
-                desc: "النفايات المعاد تدويرها (بالكيلوغرام",
+                desc: "النفايات المعاد تدويرها - بالكيلوغرام",
                 list: ['الزجاج', 'الحديد', 'البلاستيك'],
                 unit: " Kg"
             },
             indic_2: {
                 title: "السماد",
-                desc: "وزن النفايات المحولة للسماد (بالكيلوغرام)",
+                desc: "وزن النفايات المحولة للسماد - بالكيلوغرام",
                 list: ['العضوية', 'الورق'],
                 unit: " Kg"
             },
@@ -674,7 +709,7 @@ export const lang = [
             desc: "يهدف هذا المؤشر إلى تحديد نسبة مساهمة وسائل النقل في تلوث الهواء",
             indic_1: {
                 title: "حصيلة البصمة الكربونية للنقل",
-                desc: "حصيلة البصمة الكربونية للنقل (الكيلوغرام المعادل للكربون",
+                desc: "حصيلة البصمة الكربونية للنقل - الكيلوغرام المعادل للكربون",
                 list: ['السيارة', 'القطار', 'الترامواي', 'الحافلة الحضرية', 'الدراجة النارية'],
                 unit: " Kg"
             },
@@ -752,20 +787,20 @@ export const lang = [
             desc: "يقدم رادار الأداء رؤية عامة لحصيلة البصمة الكربونية لمختلف أنشطة مركز التربية البيئية",
             indic_1: {
                 title: "ردار الأداء",
-                Element_1: {
-                    label: "النقل",
-                    unit: " KgCO2"
-                },
-                Element_2: {
-                    label: "الطاقة",
+                Element_4: {
+                    label: "النفايات",
                     unit: " KgCO2"
                 },
                 Element_3: {
                     label: "الماء",
                     unit: " KgCO2"
                 },
-                Element_4: {
-                    label: "النفايات",
+                Element_2: {
+                    label: "الطاقة",
+                    unit: " KgCO2"
+                },
+                Element_1: {
+                    label: "النقل",
                     unit: " KgCO2"
                 },
                 Element_5: {
@@ -784,13 +819,12 @@ export const lang = [
                 title: "تحتوي الحديقة النباتية التابعة لمركز التربية البيئية على أنواع نباتية مختلفة مرتبة في مجموعات. وتتمثل المهمة الرئيسية لهذه الحديقة في الحفاظ على التنوع البيولوجي، بما في ذلك للأنواع المحلية، وتحسين نوعية الهواء عن طريق امتصاص الغازات الدفيئة، وكذلك توفير المعلومات والرفع من الوعي لحماية البيئة",
             },
             indic_5: {
-                title: "إجمالي الانبعاثات",
+                title: "مجموع الغازات الدفيئة",
             },
         },
 
         Faune: {
             name: "الحيوانات",
-            biodiv: "مؤشر التنوع البيولوجي",
             title: "مؤشر التنوع البيولوجي - الحياة البرية",
             desc: "تعد البيئة الطبيعية لمركز التربية البيئية موطنا لعدة أنواع من الحيوانات الموجودة في المنطقة. فيما يلي بعض المعلومات والإحصائيات عن الأنواع الحيوانية وحالة حفظها",
             indic_1: "أنواع غير مهددة بالإنقراض",
@@ -989,7 +1023,7 @@ export const lang = [
                 [
                     "Flore",
                     "Faux-poivrier odorant",
-                    "uploads/Schinus_terebinthifolia,jpg",
+                    "uploads/Schinus_terebinthifolia.jpg",
                     "Arbre à feuilles persistantes à croissance rapide qui pousse à 15m. Les fruits rose vif sont souvent vendus comme ''Baies de poivre'', bien qu'il n'ait aucun lien avec le vrai poivrier. Feuilles pennées de 8 à 25 cm. L'arbre est dioique, les fleurs mâles et femelles poussent sur des ports séparés.",
                     "3",
                     "فلفل بيروفي",
@@ -1033,19 +1067,19 @@ export const lang = [
             //     picture: "/images/ressources/pure.jpg",
             // },
             {
-                id: 4,
+                id: 5,
                 title: "المساحات الخضراء والتنوع البيولوجي",
                 desc: "يحتوي مركز التربية البيئية على مساحات خضراء مصممة على مرتفع الموقع، مما يؤهله لتبيت والحفاظ على التنوع البيولوجي المحلي الغني والمتنوع والمتوازن. تتميز هذه المساحات الخضراء بالتنمية المستدامة: هيئت الفضاءات الخضراء بطريقة طبيعية مع الحفاظ على الخصائص الأولية للموقع: التربة، المرتفعات، والأنواع النباتية...؛ المروج المزهرة، الغنية، المتنوعة والمتوازنة؛ الحدائق البيداغوجية ذات التنوع البيولوجي خاصة الأنواع المحلية؛ التربة المحترمة للبيئة التي يتم تسميدها بالسماد المنتج محليًا؛ البصمة المنخفضة للماء: توفير المياه، والسقي بالمياه التي يتم إعادة تدويرها... تساهم المساحات الخضراء بشكل إيجابي في الأداء البيئي لمركز التربية البيئية",
                 picture: "/images/ressources/res_06.jpg",
             },
             {
-                id: 5,
+                id: 6,
                 title: "Energie photovoltaïque",
                 desc: "اعتمد مركز التربية البيئية المزيج الطاقي لتعزيز الطاقات النظيفة، وتحقيق هدفه من حيث الأداء البيئي. وهكذا تمكن منطقة الطاقة الشمسية (المنطقة الضوئية) التابعة لمركز التربية البيئية من تلبية جزءً كبيرً من احتياجات الطاقة في المركز، مع الحد من انبعاثات الكربون. تعد منطقة الألواح الشمسية تجسيدا مثالياً لمهمة المركز والهدف التربوي لإنشائه، لأنها تتيح الوصول إلى الكثير من المعلومات المفيدة في ظروف الاستخدام الفعلية. يمكنكم زيارة أيضا التطبيق المخصص لمنطقة الألواح الضوئية",
                 picture: "/images/ressources/res_05.jpg",
             },
             {
-                id: 6,
+                id: 7,
                 title: "تدبير النفايات",
                 desc: "من أجل تقليل أثرها البيئي، تبنى مركز التربية البيئية إجراءات وقائية من خلال التدبير الصارم للنفايات، بهدف الحد من آثارها الضارة على الصحة البشرية والبيئة، وكذلك على إطار الحياة العامة. اعتمد مركز التربية البيئية مبدأ 4R-V لتدبير النفايات: إعادة التفكير؛ التقليص من النفايات؛ إعادة الاستخدام؛ إعادة التدوير؛ تثمين النفايات.  وهكذا تم وضع منهجية للحد من مصادر النفايات، للفرز الانتقائي لها، إعادة استخدامها وتدويرها. تفرز النفايات حسب نوعها: الورق المقوى/الورق، المعدن، البلاستيك والنفايات العضوية. ملاحظة: يتم فصل النفايات الخطرة مثل المصابيح والبطاريات عن النفايات الأخرى القابلة لإعادة التدوير. يتم تحويل النفايات العضوية (ن.ع) إلى سماد طبيعي داخل مركز التربية البيئية لاستخدامها في الحديقة النباتية. تعرف على عملية التسميد بالتفصيل عبر التطبيق المخصص لتدبير النفايات",
                 picture: "/images/ressources/res_01.jpg",
@@ -1056,7 +1090,7 @@ export const lang = [
             {
                 id: 1,
                 title: "افتتاح وتدشين مركز التربية البيئية",
-                desc: "يقام حفل تدشين وافتتاح مركز التربية البيئية يوم الجمعة 1 مارس 2019 على الساعة 15:00 مساءً في المركز من طرف صاحب السمو الملكي الأميرة للا حسناء",
+                desc: "يقام حفل تدشين وافتتاح مركز التربية البيئية يوم 00 00 00 2019 على الساعة 00:00 مساءً في المركز من طرف صاحبة السمو الملكي الأميرة للا حسناء",
                 picture: "/images/home/home1.png",
             },
             {
@@ -1072,5 +1106,41 @@ export const lang = [
                 picture: "/images/home/home3.png",
             },
         ],
+
+        rapport: {
+            partie1: {
+                title1: "معلومات عامة",
+                desc1: "يقدم تقرير الأداء البيئي نظرة عامة على شكل حصيلة تدبير الموارد المتعلقة بمجموعة من المؤشرات الهامة. يهدف هذا التقرير إلى تحسين و/أو تصحيح مختلف إجراءات استخدام واستهلاك الموارد، من أجل تحقيق واحترام أهداف بناء مركز التربية البيئية.",
+                title2: "مقدمة",
+                desc2: "تحت الرعاية السامية لصاحب الجلالة الملك محمد السادس، شيدت مؤسسة محمد السادس لحماية البيئة برئاسة صاحبة السمو الأميرة للا حسناء مركز التربية البيئية الذي يندرج ضمن استراتيجيتها الوطنية لحماية البيئة.",
+                title3: "مركز التربية البيئية",
+                desc3: "يقدم مركز التربية البيئية مجموعة من الأنشطة في إطار حماية البيئة. وتنظم هذه الأنشطة على شكل دورات تدريبية وزيارات تعليمية بيداغوجية، فعاليات ومؤتمرات ... يقدم المركز لعموم الناس نموذج جديد للبناء المستدام لمبنى إيكولوجي",
+                title4: "آلية التتبع و المراقبة",
+                desc4: "يسمح نظام المراقبة الذكي لمركز التربية البيئية بتقييم مختلف المؤشرات البيئية المرتبطة بموارد المركز عبر عدة مخططات. كما يمكن هذا التقييم من اتخاذ إجراءات مناسبة للحد من الأنشطة المضرة بالبيئة",
+            },
+            partie2: {
+                title: "تعريف التقرير",
+                option1: "المرجع",
+                option2: "تاريخ الإصدار",
+                option31: "مدة النشاط",
+                option32: "أيـام",
+                option41: "المكان",
+                title3: "مركز التربية البيئية",
+            },
+            partie3: {
+                title: "التوزيع",
+                option1: {
+                    diff_1: "سري",
+                    diff_2: "توزيع محدود",
+                    diff_3: "توزيع عمومي",
+                    diff_4: "اخر",
+                },
+                option2: "ملاحظة",
+                option3: "صدر من طرف",
+                option4: "مرخص ل",
+            },
+            Element_1: "مؤشرات ضمن التقرير",
+            Element_2: "نسخ التقرير",
+        },
     },
 ]

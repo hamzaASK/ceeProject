@@ -18,10 +18,13 @@ class Waste extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            weightsSolid: [],
-            weightsComposte: [],
+            weightsSolid: [0.8, 1.75, 2.2],
+            weightsComposte: [4.6, 1.1],
             totalLevel: 0,
             totalWeight: 0,
+            waste: [7, 15, 19, 10, 40],
+            totalRecycledLevel: '--',
+            totalRecycledWeight: '--'            
         }
         this.refreshValues = this.refreshValues.bind(this) /* jshint expr: true */
     }
@@ -156,9 +159,9 @@ class Waste extends Component {
                                 <BarChart
                                     items={3}
                                     barWidth='15%'
-                                    data1={[this.state.weightsSolid[0]]}
-                                    data2={[this.state.weightsSolid[1]]}
-                                    data3={[this.state.weightsSolid[2]]}
+                                    data1={[this.state.waste[0]]}
+                                    data2={[this.state.waste[1]]}
+                                    data3={[this.state.waste[2]]}
                                     color1={'#92D050'}
                                     color2={'#FF0000'}
                                     color3={'#EBEB35'}
@@ -180,8 +183,8 @@ class Waste extends Component {
                                 <BarChart
                                     items={2}
                                     barWidth='15%'
-                                    data1={[this.state.weightsComposte[0]]}
-                                    data2={[this.state.weightsComposte[1]]}
+                                    data1={[this.state.waste[3]]}
+                                    data2={[this.state.waste[4]]}
                                     color1={'#C55A11'}
                                     color2={'#5B9BD5'}
                                     legend1='Organique'
@@ -212,7 +215,8 @@ class Waste extends Component {
                         <Card title={lang[x].Waste.indic_5.title}
                             content={
                                 <Information
-                                    info={this.state.totalRecycledWeight + " kg"}
+                                    // info={this.state.totalRecycledWeight + " kg"}
+                                    info={(this.state.waste.reduce((pv, cv) => pv + cv, 0)) + " kg"}
                                     icon="/images/indicators/waste/weight.png"
                                     measure={true}
                                 />

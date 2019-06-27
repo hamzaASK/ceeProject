@@ -19,7 +19,7 @@ class Transport extends Component {
         super(props);
 
         this.state = {
-            transport: [],
+            transport: [78, 66, 3, 12, 6],
         }
         this.refreshValues = this.refreshValues.bind(this) /* jshint expr: true */
     }
@@ -68,7 +68,7 @@ class Transport extends Component {
         var dates = this.calculateDates(days)
         var date0 = dates.d0
         var date1 = dates.d1
-        this.getTransport(date0, date1)
+        //this.getTransport(date0, date1)
     }
 
     render() {

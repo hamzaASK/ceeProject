@@ -23,9 +23,10 @@ class Sidebar extends Component {
             recycledWater: 0,
             consumedEnergy: 0,
             consumedPV: 0,
-            totalWaste: 0,
-            totalRecycled: 0,
-            transport: 0
+            totalWaste: 91,
+            totalRecycled: 50,
+            transport: 165,
+            recycled: [0, 0, 0, 10, 40],
         }
     }
 
@@ -50,8 +51,8 @@ class Sidebar extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ recycledWater: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ recycledWater: 21000 })
                 } else {
                     this.setState({ recycledWater: res[0] })
                 }
@@ -82,10 +83,11 @@ class Sidebar extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedPV: 90000 * days })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ consumedPV: 42000 * days })
                 } else {
-                    this.setState({ consumedPV: res[0] })
+                    // this.setState({ consumedPV: res[0] })
+                    this.setState({ consumedPV: 42000 * days })
                 }
             })
             .catch((error) => {
@@ -185,11 +187,23 @@ class Sidebar extends Component {
 
     componentDidMount() {
         // this.refreshValues(7)
-        timer = setInterval(() => { this.refreshValues(7) }, 6000);
+        timer = setInterval(() => { this.refreshValues(7) }, 10000);
     }
 
     componentWillUnmount() {
         clearInterval(timer)
+    }
+
+    avoidedCarbon() {
+        let s =
+            Math.round((this.state.consumedPV / 1000) * 0.784 * 10) / 10 +
+            Math.round((this.state.recycledWater / 1000) * 0.5 * 10) / 10 +
+            (this.state.recycled[0]) * 1 +
+            (this.state.recycled[0]) * 6 +
+            (this.state.recycled[0]) * 33 +
+            (this.state.recycled[0]) * 0 +
+            (this.state.recycled[0]) * 2296
+        return s
     }
 
     render() {
@@ -209,8 +223,8 @@ class Sidebar extends Component {
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={Math.round((this.state.consumedWater / 1000) * 10) / 10} max={10} icon={'/images/sidebar/water.png'} title={lang[x].SideBar.indic_1.title} unit={' m3'} />
-                            <Progress value={Math.round((this.state.recycledWater / 1000) * 10) / 10} max={10} icon={'/images/sidebar/water_.png'} title={lang[x].SideBar.indic_2.title} unit={' m3'} />
+                            <Progress value={Math.round((this.state.consumedWater / 1000) * 10) / 10} max={50} icon={'/images/sidebar/water.png'} title={lang[x].SideBar.indic_1.title} unit={' m3'} />
+                            <Progress value={Math.round((this.state.recycledWater / 1000) * 10) / 10} max={100} icon={'/images/sidebar/water_.png'} title={lang[x].SideBar.indic_2.title} unit={' m3'} />
                         </Content>
                     }
                 />
@@ -225,16 +239,16 @@ class Sidebar extends Component {
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={this.state.totalWaste} max={100} icon={'/images/sidebar/waste.png'} title={lang[x].SideBar.indic_5.title} unit={' kg'} />
-                            <Progress value={this.state.totalRecycled} max={100} icon={'/images/sidebar/waste_.png'} title={lang[x].SideBar.indic_6.title} unit={' kg'} />
+                            <Progress value={this.state.totalWaste} max={200} icon={'/images/sidebar/waste.png'} title={lang[x].SideBar.indic_5.title} unit={' kg'} />
+                            <Progress value={this.state.totalRecycled} max={200} icon={'/images/sidebar/waste_.png'} title={lang[x].SideBar.indic_6.title} unit={' kg'} />
                         </Content>
                     }
                 />
                 <Card title={null}
                     content={
                         <Content>
-                            <Progress value={58} max={100} icon={'/images/sidebar/ges.png'} title={lang[x].SideBar.indic_7.title} unit={' kgCO2'} />
-                            <Progress value={this.state.transport} max={100} icon={'/images/sidebar/transport.png'} title={lang[x].SideBar.indic_8.title} unit={' kgCO2'} />
+                            <Progress value={this.avoidedCarbon()} max={1000} icon={'/images/sidebar/ges.png'} title={lang[x].SideBar.indic_7.title} unit={' kgCO2'} />
+                            <Progress value={this.state.transport} max={500} icon={'/images/sidebar/transport.png'} title={lang[x].SideBar.indic_8.title} unit={' kgCO2'} />
                         </Content>
                     }
                 />

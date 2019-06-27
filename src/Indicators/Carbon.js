@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
+var moment = require('moment')
 
 // const t0 = new Date(2019, 0, 1) // instant 0: CEE opening day
 
@@ -27,23 +28,49 @@ class Carbon extends Component {
             consumedPV: 0,
             consumedWater: 0,
             recycledWater: 0,
-            transport: 0,
+            transport: [78, 66, 3, 12, 6],
             totalWeight: 0,
-            waste: 0,
+            waste: [7, 15, 19, 10, 40],
+            recycled: [0, 0, 0, 10, 40],
             days: 7
         }
         this.refreshValues = this.refreshValues.bind(this)
+    }
+
+    recyclingPerformance() {
+        let w = this.state.waste.reduce((pv, cv) => pv + cv, 0)
+        let r = this.state.recycled.reduce((pv, cv) => pv + cv, 0)
+        return Math.round((r / w) * 1000) / 10
+    }
+
+    otherPerformance() {
+        let t0 = moment([2019, 0, 1])
+        var tx = moment()
+        let days = tx.diff(t0, 'days')
+        return 50 + Math.round(((2000 / 365) * days) / 5000) / 10
+    }
+
+    wasteFootprint() {
+        let s =
+            (this.state.waste[0] - this.state.recycled[0]) * 1 +
+            (this.state.waste[0] - this.state.recycled[0]) * 6 +
+            (this.state.waste[0] - this.state.recycled[0]) * 33 +
+            (this.state.waste[0] - this.state.recycled[0]) * 0 +
+            (this.state.waste[0] - this.state.recycled[0]) * 0
+        return s
     }
 
     refreshValues(days) {
         this.getConsumedEnergy(days)
         this.getConsumedPV(days)
         this.getConsumedWater(days)
-        var dates = this.calculateDates(days)
-        var date0 = dates.d0
-        var date1 = dates.d1
+        this.getRecycledWater(days)
+        this.otherPerformance()
+        // var dates = this.calculateDates(days)
+        // var date0 = dates.d0
+        // var date1 = dates.d1
         // this.getTransport(date0, date1)
-        this.getWasteTotal(date0, date1)
+        // this.getWasteTotal(date0, date1)
         this.setState({ days })
     }
 
@@ -107,10 +134,11 @@ class Carbon extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedPV: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ consumedPV: 42000 * days })
                 } else {
-                    this.setState({ consumedPV: res[0] })
+                    // this.setState({ consumedPV: res[0] })
+                    this.setState({ consumedPV: 42000 * days })
                 }
             })
             .catch((error) => {
@@ -158,8 +186,8 @@ class Carbon extends Component {
         return fetch(url)
             .then(res => res.json())
             .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ recycledWater: 0 })
+                if (res[0] == null || res[0] === 0) {
+                    this.setState({ recycledWater: 3000 * days })
                 } else {
                     this.setState({ recycledWater: res[0] })
                 }
@@ -174,6 +202,7 @@ class Carbon extends Component {
     // }
 
     render() {
+        console.log(this.otherPerformance())
         let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator" >
@@ -197,18 +226,25 @@ class Carbon extends Component {
                                             lang[x].GES.indic_1.Element_5.label,
                                         ]}
                                         data={[
-                                            this.state.transport,
-                                            Math.round((this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 * 10) / 10,
-                                            Math.round((this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 * 10) / 10,
-                                            this.state.waste,
-                                            Math.round(83 * this.state.days) / 10
+                                            50,
+                                            Math.round((this.state.consumedPV / this.state.consumedEnergy) * 1000) / 10,
+                                            Math.round((this.state.recycledWater / (this.state.recycledWater + this.state.consumedWater)) * 1000) / 10,
+                                            this.recyclingPerformance(),
+                                            this.otherPerformance()
                                             // Fix: Autres : Construction du batiment, les effets benefiques des espaces verts...
                                             // Fix: water to CO2 coef
                                         ]}
+                                        data2={[
+                                            this.state.transport.reduce((pv, cv) => pv + cv, 0),
+                                            Math.round((this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 * 10) / 10,
+                                            Math.round(this.state.consumedWater * 0.001 * 0.5 * 10) / 10,
+                                            this.wasteFootprint(),
+                                            Math.round(83 * this.state.days) / 10
+                                        ]}
                                     />
-                                    <div className="just" style={{ width: 'inherit', height: 50 }} >
+                                    {/* <div className="just" style={{ width: 'inherit', height: 50 }} >
                                         Autres : Construction du CEE, jardin botanique ...
-                                    </div>
+                                    </div> */}
                                 </div>
                             }
                         />
@@ -233,8 +269,8 @@ class Carbon extends Component {
                                         Math.round((
                                             (this.state.consumedEnergy / 1000 - this.state.consumedPV / 1000) * 0.784 +
                                             (this.state.consumedWater / 1000 - this.state.recycledWater / 1000) * 0.5 +
-                                            this.state.transport +
-                                            8.3 * this.state.days)
+                                            this.state.transport.reduce((pv, cv) => pv + cv, 0) +
+                                            this.wasteFootprint())
                                             * 10) / 10
                                         // Fix: add waste carbon footprint to the total
                                     ] + ' kgCO2'}

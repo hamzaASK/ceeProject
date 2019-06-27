@@ -66,12 +66,12 @@ class App extends Component {
         <HashRouter>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex' }} >
             <AppBar admin={this.props.admin.status}
-              version={this.props.admin.status ? 'CEE Monitor v1.0' : 'CEE Monitor Autodisplay v1.0'}
+              version={this.props.admin.status ? 'Monitoring v1.0' : 'Monitoring Autodisplay v1.0'}
               menu={[
                 { label: lang[x].AppBar.Menu[0].label, link: "/" },
                 { label: lang[x].AppBar.Menu[1].label, link: "/indicators" },
                 { label: lang[x].AppBar.Menu[2].label, link: "/ressources" },
-                !this.props.admin.status ? { label: lang[x].AppBar.Menu[3].label, link: "/reports" } : null
+                this.props.admin.status ? { label: lang[x].AppBar.Menu[3].label, link: "/reports" } : null
               ]} />
 
             <Body>
@@ -84,7 +84,7 @@ class App extends Component {
                 <Route component={Homescreen} path="/" exact />
                 <Route component={Indicators} path="/indicators" />
                 <Route component={Ressources} path="/ressources" />
-                {!this.props.admin.status ? <Route component={PDFReports} path="/reports" /> : null}
+                {this.props.admin.status ? <Route component={PDFReports} path="/reports" /> : null}
                 <Route component={Adminspace} path="/ceeadmin" />
               </Content>
             </Body>

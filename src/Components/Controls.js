@@ -103,7 +103,7 @@ class Controls extends Component {
                     //         </Button>
                     //     </div>
                     //     :
-                    //     null
+                    // null
                 }
             </Container >
         )
@@ -152,31 +152,32 @@ display: flex;
 padding: 10px;
 margin-left: 20px;
 `;
-// const Button = styled.button`
-// @media (max-width: 767px) {
-//     flex: 0;
-//     display: flex;
-// }
-// @media (min-width: 768px) {
-//     flex: 1;
-//     max-width: 80px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background: none;
-//     border: none;
-//     margin: 5px;
-//     border-radius: 50px;
-//     cursor: 'pointer';
-//     transition: all 0.03s ease-in-out;
-//     &:hover {
-//         box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-//     }
-// }
-// `;
 
-// const Icon = styled.img`
-// border-radius: 50px;
-// width: 35px;
-// height: 35px;
-// `;
+const Button = styled.button`
+@media (max-width: 767px) {
+    flex: 0;
+    display: flex;
+}
+@media (min-width: 768px) {
+    flex: 1;
+    max-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: 'pointer';
+    transition: all 0.03s ease-in-out;
+    &:hover {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+`;
+
+const Icon = styled.img`
+border-radius: 50px;
+width: 35px;
+height: 35px;
+`;
