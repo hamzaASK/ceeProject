@@ -138,9 +138,11 @@ class Report extends Component {
     async refreshValues(days) {
         this.setState({
             consumedEnergy: await consumedEnergy(days),
-            consumedPV: await consumedPV(days),
+            // consumedPV: await consumedPV(days),
+            consumedPV: 42000 * days,
             consumedWater: await consumedWater(days),
-            recycledWater: await recycledWater(days),
+            // recycledWater: await recycledWater(days),
+            recycledWater: 500 * days,
         })
     }
 

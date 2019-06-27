@@ -34,7 +34,8 @@ class Energy extends Component {
     async refreshValues(days) {
         this.setState({
             consumedEnergy: await consumedEnergy(days),
-            consumedPV: await consumedPV(days),
+            // consumedPV: await consumedPV(days),
+            consumedPV: 42000 * days,
             consumedCVC: await consumedCVC(days),
             consumedEclairage: await consumedEclairage(days),
             consumedPlugs: await consumedPlugs(days),

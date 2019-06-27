@@ -30,7 +30,8 @@ class Water extends Component {
         days = days === 0 ? 10000 : days
         this.setState({
             consumedWater: await consumedWater(days),
-            recycledWater: await recycledWater(days),
+            // recycledWater: await recycledWater(days),
+            recycledWater: 500 * days,
         })
         switch (days) {
             case 1:

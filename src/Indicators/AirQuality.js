@@ -151,7 +151,7 @@ class AirQuality extends Component {
     }
 
     async refreshValues() {
-        this.setState({ airquality: await airQuality })
+        this.setState({ airquality: await airQuality() })
     }
 
     componentDidMount() {
