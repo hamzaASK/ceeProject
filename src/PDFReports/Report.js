@@ -12,6 +12,12 @@ import {
     Identity, People, General, Remarks, Waste, Recycle,
     Water, Energy, Fauna, Flora, Carbon, Transport
 } from './Details'
+
+import {
+    consumedEnergy, consumedPV,
+    consumedWater, recycledWater,
+} from '../APIRequests'
+
 var moment = require('moment')
 
 class Report extends Component {
@@ -30,71 +36,6 @@ class Report extends Component {
             recycled: [0, 0, 0, 10, 40],
             elements: []
         }
-    }
-
-    getConsumedEnergy(days) {
-        const url = `${URL}/energy/getConsumedEnergy.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedEnergy: 0 })
-                } else {
-                    this.setState({ consumedEnergy: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedPV(days) {
-        const url = `${URL}/energy/getConsumedPV.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ consumedPV: 42000 * days })
-                } else {
-                    // this.setState({ consumedPV: res[0] })
-                    this.setState({ consumedPV: 42000 * days })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedWater(days) {
-        const url = `${URL}/water/getConsumedWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedWater: 0 })
-                } else {
-                    this.setState({ consumedWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getRecycledWater(days) {
-        const url = `${URL}/water/getRecycledWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ recycledWater: 3000 * days })
-                } else {
-                    this.setState({ recycledWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
     }
 
     setElements() {
@@ -194,11 +135,13 @@ class Report extends Component {
         // this.forceUpdate()
     }
 
-    refreshValues(days) {
-        this.getConsumedEnergy(days)
-        this.getConsumedPV(days)
-        this.getConsumedWater(days)
-        this.getRecycledWater(days)
+    async refreshValues(days) {
+        this.setState({
+            consumedEnergy: await consumedEnergy(days),
+            consumedPV: await consumedPV(days),
+            consumedWater: await consumedWater(days),
+            recycledWater: await recycledWater(days),
+        })
     }
 
     componentDidMount() {

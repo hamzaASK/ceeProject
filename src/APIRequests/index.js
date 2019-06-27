@@ -49,3 +49,15 @@ export function recycledWater(days) {
     const url = `${URL}/water/getRecycledWater.php?days=${days}`;
     return apiReponse(url)
 }
+
+export function airQuality() {
+    const url = `${URL}/air/airquality.php`
+    return fetch(url)
+        .then(res => res.json())
+        .then((res) => {
+            return res
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+}

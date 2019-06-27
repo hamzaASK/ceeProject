@@ -11,6 +11,12 @@ import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
+
+import {
+    consumedEnergy, consumedPV,
+    consumedWater, recycledWater,
+} from '../APIRequests'
+
 var moment = require('moment')
 
 // const t0 = new Date(2019, 0, 1) // instant 0: CEE opening day
@@ -60,11 +66,13 @@ class Carbon extends Component {
         return s
     }
 
-    refreshValues(days) {
-        this.getConsumedEnergy(days)
-        this.getConsumedPV(days)
-        this.getConsumedWater(days)
-        this.getRecycledWater(days)
+    async refreshValues(days) {
+        this.setState({
+            consumedEnergy: await consumedEnergy(days),
+            consumedPV: await consumedPV(days),
+            consumedWater: await consumedWater(days),
+            recycledWater: await recycledWater(days),
+        })
         this.otherPerformance()
         // var dates = this.calculateDates(days)
         // var date0 = dates.d0
@@ -113,39 +121,6 @@ class Carbon extends Component {
         return dates
     }
 
-    getConsumedEnergy(days) {
-        const url = `${URL}/energy/getConsumedEnergy.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedEnergy: 0 })
-                } else {
-                    this.setState({ consumedEnergy: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedPV(days) {
-        const url = `${URL}/energy/getConsumedPV.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ consumedPV: 42000 * days })
-                } else {
-                    // this.setState({ consumedPV: res[0] })
-                    this.setState({ consumedPV: 42000 * days })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
     getWasteTotal(d0, d1) {
         // Weights
         const url = `${URL}/dechets/getWasteTotal.php?dateStart=${d1}&dateEnd=${d0}`;
@@ -165,44 +140,11 @@ class Carbon extends Component {
             });
     }
 
-    getConsumedWater(days) {
-        const url = `${URL}/water/getConsumedWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedWater: 0 })
-                } else {
-                    this.setState({ consumedWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getRecycledWater(days) {
-        const url = `${URL}/water/getRecycledWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ recycledWater: 3000 * days })
-                } else {
-                    this.setState({ recycledWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
     // componentDidMount() {
     // 	this.refreshValues(7)
     // }
 
     render() {
-        console.log(this.otherPerformance())
         let x = this.props.lang === 'fr' ? 0 : 1
         return (
             <div className="indicator" >
