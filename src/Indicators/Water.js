@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
-import { URL } from '../Settings/Server'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
@@ -12,6 +11,8 @@ import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
+
+import { consumedWater, recycledWater } from '../APIRequests'
 
 class Water extends Component {
 
@@ -25,10 +26,13 @@ class Water extends Component {
         this.refreshValues = this.refreshValues.bind(this) /* jshint expr: true */
     }
 
-    refreshValues(days) {
+    async refreshValues(days) {
         days = days === 0 ? 10000 : days
-        this.getConsumedWater(days)
-        this.getRecycledWater(days)
+        this.setState({
+            consumedWater: await consumedWater(days),
+            // recycledWater: await recycledWater(days),
+            recycledWater: 500 * days,
+        })
         switch (days) {
             case 1:
                 this.setState({ max: 10 })
@@ -46,47 +50,6 @@ class Water extends Component {
                 this.setState({ max: 1000 })
                 break;
         }
-    }
-
-    componentDidMount() {
-        // this.refreshValues(7)
-        // timer = setInterval(() => { this.update() }, 2000);
-    }
-
-    componentWillUnmount() {
-        // clearInterval(timer)
-    }
-
-    getConsumedWater(days) {
-        const url = `${URL}/water/getConsumedWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedWater: 0 })
-                } else {
-                    this.setState({ consumedWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getRecycledWater(days) {
-        const url = `${URL}/water/getRecycledWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ recycledWater: 3000 * days })
-                } else {
-                    this.setState({ recycledWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
     }
 
     consumedPercent() {

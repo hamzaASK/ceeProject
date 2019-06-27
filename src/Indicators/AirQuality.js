@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
-import { URL } from '../Settings/Server'
 import styled from 'styled-components'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
@@ -9,6 +8,8 @@ import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
+
+import { airQuality } from '../APIRequests'
 
 class AirQuality extends Component {
 
@@ -149,17 +150,8 @@ class AirQuality extends Component {
         )
     }
 
-    refreshValues() {
-        const url = `${URL}/air/airquality.php`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                console.log(res)
-                this.setState({ airquality: res })
-            })
-            .catch((error) => {
-                console.log(error)
-            });
+    async refreshValues() {
+        this.setState({ airquality: await airQuality() })
     }
 
     componentDidMount() {

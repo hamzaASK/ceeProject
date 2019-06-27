@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import Information from '../Charts/Information'
-import { URL } from '../Settings/Server'
-
 import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
@@ -11,6 +9,11 @@ import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
 import Card from '../Components/Card'
 
 import Progress from './Progress'
+
+import {
+    consumedEnergy, consumedPV,
+    consumedWater, recycledWater,
+} from '../APIRequests'
 
 var timer = 0
 
@@ -28,71 +31,6 @@ class Sidebar extends Component {
             transport: 165,
             recycled: [0, 0, 0, 10, 40],
         }
-    }
-
-    getConsumedWater(days) {
-        const url = `${URL}/water/getConsumedWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedWater: 0 })
-                } else {
-                    this.setState({ consumedWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getRecycledWater(days) {
-        const url = `${URL}/water/getRecycledWater.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ recycledWater: 21000 })
-                } else {
-                    this.setState({ recycledWater: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedEnergy(days) {
-        const url = `${URL}/energy/getConsumedEnergy.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedEnergy: 0 })
-                } else {
-                    this.setState({ consumedEnergy: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedPV(days) {
-        const url = `${URL}/energy/getConsumedPV.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ consumedPV: 42000 * days })
-                } else {
-                    // this.setState({ consumedPV: res[0] })
-                    this.setState({ consumedPV: 42000 * days })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
     }
 
     getWasteTotal(d0, d1) {
@@ -172,11 +110,15 @@ class Sidebar extends Component {
         return dates;
     }
 
-    refreshValues(days) {
-        this.getConsumedWater(days)
-        this.getRecycledWater(days)
-        this.getConsumedEnergy(days)
-        this.getConsumedPV(days)
+    async refreshValues(days) {
+        this.setState({
+            consumedEnergy: await consumedEnergy(days),
+            // consumedPV: await consumedPV(days),
+            consumedPV: 42000 * days,
+            consumedWater: await consumedWater(days),
+            // recycledWater: await recycledWater(days),
+            recycledWater: 500 * days,
+        })
         var dates = this.calculateDates(days)
         var date0 = dates.d0
         var date1 = dates.d1

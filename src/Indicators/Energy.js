@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../Style/custom/indic-commonx.css'
 import '../Style/custom/indic-dynamic.css'
-import { URL } from '../Settings/Server'
 import Card from '../Components/Card'
 import Identity from '../Components/Identity'
 import Controls from '../Components/Controls'
@@ -11,6 +10,11 @@ import { connect } from 'react-redux'
 import { lang } from '../Settings/Lang'
 import { mapDispatchToProps } from '../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../Settings/ReduxStore/stateReducer'
+
+import {
+    consumedEnergy, consumedPV, consumedCVC,
+    consumedEclairage, consumedPlugs
+} from '../APIRequests'
 
 class Energy extends Component {
 
@@ -27,110 +31,15 @@ class Energy extends Component {
         this.refreshValues = this.refreshValues.bind(this) /* jshint expr: true */
     }
 
-    getConsumedEnergy(days) {
-        const url = `${URL}/energy/getConsumedEnergy.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedEnergy: 0 })
-                } else {
-                    this.setState({ consumedEnergy: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedPV(days) {
-        const url = `${URL}/energy/getConsumedPV.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ consumedPV: 42000 * days })
-                } else {
-                    // this.setState({ consumedPV: res[0] })
-                    this.setState({ consumedPV: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getProducedEnergy(days) {
-        const url = `${URL}/energy/getProducedEnergy.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null || res[0] === 0) {
-                    this.setState({ producedEnergy: 0 * days })
-                } else {
-                    this.setState({ producedEnergy: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedEclairage(days) {
-        const url = `${URL}/energy/getConsumedEclairage.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedEclairage: 0 })
-                } else {
-                    this.setState({ consumedEclairage: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedCVC(days) {
-        let url = `${URL}/energy/getConsumedCVC.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedCVC: 0 })
-                } else {
-                    this.setState({ consumedCVC: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    getConsumedPlugs(days) {
-        const url = `${URL}/energy/getConsumedPlugs.php?days=${days}`;
-        return fetch(url)
-            .then(res => res.json())
-            .then((res) => {
-                if (res[0] == null) {
-                    this.setState({ consumedPlugs: 0 })
-                } else {
-                    this.setState({ consumedPlugs: res[0] })
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-
-    refreshValues(days) {
-        this.getConsumedCVC(days)
-        this.getConsumedEclairage(days)
-        this.getConsumedPlugs(days)
-        this.getConsumedEnergy(days)
-        this.getConsumedPV(days)
-        this.getProducedEnergy(days)
+    async refreshValues(days) {
+        this.setState({
+            consumedEnergy: await consumedEnergy(days),
+            // consumedPV: await consumedPV(days),
+            consumedPV: 42000 * days,
+            consumedCVC: await consumedCVC(days),
+            consumedEclairage: await consumedEclairage(days),
+            consumedPlugs: await consumedPlugs(days),
+        })
         switch (days) {
             case 1:
                 this.setState({ max: 10 })
@@ -174,10 +83,6 @@ class Energy extends Component {
         var total = this.state.consumedPlugs + this.state.consumedEclairage + this.state.consumedCVC
         return total === 0 ? 0 + ' %' : Math.round((this.state.consumedCVC / total) * 1000) / 10 + ' %'
     }
-
-    // componentDidMount() {
-    //     this.refreshValues(7)
-    // }
 
     render() {
         let x = this.props.lang === 'fr' ? 0 : 1
