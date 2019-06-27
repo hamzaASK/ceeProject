@@ -12,7 +12,7 @@ function apiReponse(url) {
         })
         .catch((error) => {
             console.log(error)
-        });
+        })
 }
 
 export function consumedEnergy(days) {
@@ -21,21 +21,31 @@ export function consumedEnergy(days) {
 }
 
 export function consumedPV(days) {
-    const url = `${URL}/energy/getConsumedPV.php?days=${days}`;
+    const url = `${URL}/energy/getConsumedPV.php?days=${days}`
     return apiReponse(url)
 }
 
 export function consumedEclairage(days) {
-    const url = `${URL}/energy/getConsumedEclairage.php?days=${days}`;
+    const url = `${URL}/energy/getConsumedEclairage.php?days=${days}`
     return apiReponse(url)
 }
 
 export function consumedCVC(days) {
-    let url = `${URL}/energy/getConsumedCVC.php?days=${days}`;
+    let url = `${URL}/energy/getConsumedCVC.php?days=${days}`
     return apiReponse(url)
 }
 
 export function consumedPlugs(days) {
-    const url = `${URL}/energy/getConsumedPlugs.php?days=${days}`;
+    const url = `${URL}/energy/getConsumedPlugs.php?days=${days}`
+    return apiReponse(url)
+}
+
+export function consumedWater(days) {
+    const url = `${URL}/water/getConsumedWater.php?days=${days}`
+    return apiReponse(url)
+}
+
+export function recycledWater(days) {
+    const url = `${URL}/water/getRecycledWater.php?days=${days}`;
     return apiReponse(url)
 }
