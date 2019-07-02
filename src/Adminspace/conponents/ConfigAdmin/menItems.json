@@ -1,0 +1,104 @@
+
+
+{
+    "data" : [
+      {
+          "name": "Articles Accueil",
+          "url": "/item1",
+          "icon": "PhotoSizeSelectLarge",
+          "id":0,
+          "component":"HomeManagement/tableHome.js"
+        
+      },{
+        "name": "Articles Ressources",
+        "url": "/item1",
+        "icon": "TabUnselected",
+        "id":0,
+        "component":"RessourcesManagement/tableHome.js"
+    },
+    {
+        "name": "Adminstrateurs",
+        "url": "/item1",
+        "icon": "Group",
+        "id":0,
+        "component":"administrateur/ValidationAdmin.js"
+    },
+  {
+      "name": "Déchets",
+      "url": "/item1",
+      "icon": "NewReleases",
+      "id":0,
+      "component":"waste/tableDechets.js"  
+  }
+  ,
+  
+  {
+    "name": "Indicateurs",
+    "children": [
+                  {
+                    "name": "L'Eau",
+                    "url": "/child31",
+                    "icon": "Opacity",
+                    "id":2,
+                    "component":"backup/eau.js"
+                  },
+                  {
+                    "name": "Qualité d'Air",
+                    "url": "/child32",
+                    "icon": "Toys",
+                    "id":3,
+                    "component":"backup/air.js"
+                  },
+                  {
+                    "name": "Energies",
+                    "url": "/child32",
+                    "icon": "Power",
+                    "id":4,
+                    "component":"backup/energie.js"
+                  }
+                ]
+  }
+,
+    {
+      "name": "Recyclage ",
+      "url": "/item1",
+      "icon": "SettingsBackupRestore",
+      "id":0,
+      "component":"recycling/tableDechets.js"
+  }
+  ,
+    {
+      "name": "Transport",
+      "url": "/item1",
+      "icon": "DriveEta",
+      "id":0,
+      "component":"transport/tableLinks.js"
+  }
+  ,
+    {
+      "name": "Faune",
+      "url": "/item1",
+      "icon": "Pets",
+      "id":0,
+      "component":"wildlife/tableHome.js"
+      
+  }
+  ,
+    {
+      "name": "Flore",
+      "url": "/item1",
+      "icon": "FilterVintage",
+      "id":0,
+      "component":"flora/tableHome.js"
+      
+  },
+  {
+    "name": "Videos",
+    "url": "/item1",
+    "icon": "OndemandVideo",
+    "id":0,
+    "component":"video/tableVideo.js"
+}
+
+    ]
+  }

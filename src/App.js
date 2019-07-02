@@ -20,6 +20,14 @@ import Ressources from './Ressources'
 import PDFReports from './PDFReports'
 import Adminspace from './Adminspace'
 
+/*******-----Espace Admin------*******/
+import Inscription from './Adminspace/card-Utils/cardInscription'
+import Forgotpassword from './Adminspace/card-Utils/cardPassword'
+import Notification from './Adminspace/card-Utils/cardNotification'
+import Thanksmessage from './Adminspace/card-Utils/cardMessage'
+
+
+
 let timer = 0
 
 class App extends Component {
@@ -86,6 +94,10 @@ class App extends Component {
                 <Route component={Ressources} path="/ressources" />
                 {this.props.admin.status ? <Route component={PDFReports} path="/reports" /> : null}
                 <Route component={Adminspace} path="/ceeadmin" />
+                <Route component={Inscription} path="/inscription" />
+                <Route component={Forgotpassword} path="/forgotpassword" />
+                <Route component={Notification} path="/notification" />
+                <Route component={Thanksmessage} path="/thanksmessage" />              
               </Content>
             </Body>
           </div>
