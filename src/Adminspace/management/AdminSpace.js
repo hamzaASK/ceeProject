@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import { mapDispatchToProps } from '../../Settings/ReduxStore/langActions'
 import { mapStateToProps } from '../../Settings/ReduxStore/stateReducer'
 
-const styles = theme => ({
+const styles = theme => ( {
   root: {
     flexGrow: 1,
   },
@@ -22,51 +22,54 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-});
+} );
 
-class CenteredGrid extends React.Component {
-  constructor(props){
-    super(props)
-this.state = {
-    open: true,
-  };
+class CenteredGrid extends React.Component
+{
+  constructor ( props )
+  {
+    super( props )
+    this.state = {
+      open: true,
+    };
 
   }
-  
-  render(){
-  const { classes } = this.props;
-  return (
-    
-    <div className={classes.root} >
-      <Grid container spacing={8}>
-      {/* Barre Top */}
-        <Grid item xs={12} >
-          <Paper className={classes.paper}>
-          <Appbar />
-          </Paper>
+
+  render ()
+  {
+    const { classes } = this.props;
+    return (
+
+      <div className={ classes.root } >
+        <Grid container spacing={ 8 }>
+          {/* Barre Top */ }
+          <Grid item xs={ 12 } >
+            <Paper className={ classes.paper }>
+              <Appbar />
+            </Paper>
+          </Grid>
+          {/* Side bar */ }
+          <Grid container xs={ 3 } style={ { alignItems: "stretch" } }>
+            <Paper className={ classes.paper } style={ { width: '100%', } } alignItems="stretch">
+              <SideBar />
+            </Paper>
+          </Grid>
+          {/* Body */ }
+          <Grid container xs={ 9 } style={ { alignItems: "stretch" } }>
+            <Paper className={ classes.paper } style={ { width: '100%' } } alignItems="stretch" id="PaperTable">
+              <Video />
+            </Paper>
+          </Grid>
         </Grid>
-     {/* Side bar */}
-        <Grid container xs={3} style={{ alignItems:"stretch"}}>
-          <Paper className={classes.paper} style={{width: '100%',}} alignItems="stretch">
-            <SideBar />
-          </Paper>
-        </Grid>
-        {/* Body */}
-        <Grid container xs={9} style={{ alignItems:"stretch"}}>
-          <Paper className={classes.paper}  style={{width: '100%'}} alignItems="stretch" id="PaperTable">
-          <Video  />
-          </Paper>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 CenteredGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(CenteredGrid));
+export default withStyles( styles )( connect( mapStateToProps, mapDispatchToProps )( CenteredGrid ) );
 
 
 
@@ -102,7 +105,7 @@ export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(C
 
 // const styles = theme => ({
 //   root: {
-   
+
 //     maxWidth: 200,
 //     backgroundColor: theme.palette.background.paper,
 //   },

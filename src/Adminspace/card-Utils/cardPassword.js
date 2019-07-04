@@ -10,9 +10,11 @@ import { mapStateToProps } from '../../Settings/ReduxStore/stateReducer'
 import FrPasswd from '../login/ForgotPasswd'
 //import { Spring } from 'react-spring/renderprops'
 
-class Checkout extends React.Component {
- 
-  render() {
+class Checkout extends React.Component
+{
+
+  render ()
+  {
 
     return (
 
@@ -20,21 +22,21 @@ class Checkout extends React.Component {
       // to={{opacity:1, }}
       // config={{delay:1100,duration:1100}}>
       //             {props=>(
-        <div className="indicator">
-            <Identity title={"Récupération Du Mot De Passe"}
-                      description={"Votre Email ..."}
-                                                      />
-            <div className="row-1" >
-              <div className="el-1" style={{ padding: 76,margin:0 }}>
-                <Card title="Saisir Votre Email" style={{}}
-                  content={
-                    this.props.admin.status ? <h1>Vous devez vous déconnecter pour voir cette page</h1>  :<FrPasswd />
-                  } 
-                                                >
-                </Card>
-              </div>
-            </div>
-        </div>      
+      <div className="indicator">
+        <Identity title={ "Récupération Du Mot De Passe" }
+          description={ "Votre Email ..." }
+        />
+        <div className="row-1" >
+          <div className="el-1" style={ { padding: 76, margin: 0 } }>
+            <Card title="Saisir Votre Email" style={ {} }
+              content={
+                this.props.admin.status ? <h1>Vous devez vous déconnecter pour voir cette page</h1> : <FrPasswd />
+              }
+            >
+            </Card>
+          </div>
+        </div>
+      </div>
       //     )}
       //  </Spring>
     );
@@ -43,4 +45,4 @@ class Checkout extends React.Component {
 Checkout.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect( mapStateToProps, mapDispatchToProps )( Checkout );

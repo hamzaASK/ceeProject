@@ -1,4 +1,4 @@
-import React ,{Component} from 'react'
+import React, { Component } from 'react'
 import 'react-image-crop/dist/ReactCrop.css';
 import Grid from '@material-ui/core/Grid'
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -17,103 +17,108 @@ import TrendingDown from '@material-ui/icons/TrendingDown';
 
 
 
-class ImgDropAndCrop extends Component{
-constructor(props){
-    super(props)
-    this.imagePreviewCanvasRef=React.createRef()
-    this.state={
-          nomParcours:'',
-          etat:'',
-          date:''
-                }
-                }
-handleChange = prop => event => {
-                                  this.setState({ [prop]: event.target.value });
-                                  console.log(this.state)
-    };
-    
-
-addParcours = ()=>{
-  const fd =new FormData(); 
-  const url = 'http://localhost:8000/api/createparcours';
-  let h = new Headers();  
-  let req = new Request(url, {method: 'POST',headers: h,mode: 'no-cors',body: fd});
-
-  fd.append('nomParcours',this.state.nomParcours);
-  fd.append('etat',this.state.etat);
-  fd.append('date',this.state.date);
-  h.append('Accept', 'application/text'); 
-
-  fetch(req).then( (response)=>{console.log("Response received from server  "+response);})
-            .catch( (err) =>{console.log('ERROR:', err.message);});
+class ImgDropAndCrop extends Component
+{
+  constructor ( props )
+  {
+    super( props )
+    this.imagePreviewCanvasRef = React.createRef()
+    this.state = {
+      nomParcours: '',
+      etat: '',
+      date: ''
     }
+  }
+  handleChange = prop => event =>
+  {
+    this.setState( { [ prop ]: event.target.value } );
+    console.log( this.state )
+  };
 
 
-render (){
+  addParcours = () =>
+  {
+    const fd = new FormData();
+    const url = 'http://localhost:8000/api/createparcours';
+    let h = new Headers();
+    let req = new Request( url, { method: 'POST', headers: h, mode: 'no-cors', body: fd } );
+
+    fd.append( 'nomParcours', this.state.nomParcours );
+    fd.append( 'etat', this.state.etat );
+    fd.append( 'date', this.state.date );
+    h.append( 'Accept', 'application/text' );
+
+    fetch( req ).then( ( response ) => { console.log( "Response received from server  " + response ); } )
+      .catch( ( err ) => { console.log( 'ERROR:', err.message ); } );
+  }
+
+
+  render ()
+  {
     const { classes } = this.props;
 
-return (
-  <div className="App container" style={{    minWidth: '100%'}}>
-   <Buttons />
-      <Grid item xs={12}>
-    <MuiThemeProvider theme={theme} >
-    <Grid item xs={12} className={classNames(classes.fullWidth, classes.textField,classes.noPaddingMargin)} >
-          <Typography  component="h4" variant="headline" gutterBottom align="left"  className={classNames(classes.fullWidth, classes.textField)}>
-          Nom Parcours
+    return (
+      <div className="App container" style={ { minWidth: '100%' } }>
+        <Buttons />
+        <Grid item xs={ 12 }>
+          <MuiThemeProvider theme={ theme } >
+            <Grid item xs={ 12 } className={ classNames( classes.fullWidth, classes.textField, classes.noPaddingMargin ) } >
+              <Typography component="h4" variant="headline" gutterBottom align="left" className={ classNames( classes.fullWidth, classes.textField ) }>
+                Nom Parcours
           </Typography>
-        </Grid>
-        <Grid item xs={12} className={classNames(classes.fullWidth, classes.textField,classes.noPaddingMargin)}   >
-          <Typography variant="Title" gutterBottom align="left" className={classNames(classes.fullWidth, classes.textField)} >
-          Le chemin Parcouru
+            </Grid>
+            <Grid item xs={ 12 } className={ classNames( classes.fullWidth, classes.textField, classes.noPaddingMargin ) }   >
+              <Typography variant="Title" gutterBottom align="left" className={ classNames( classes.fullWidth, classes.textField ) } >
+                Le chemin Parcouru
           </Typography>
-        </Grid>
-        <Grid item xs={12}>
-        <TextField
-                      id="outlined-simple-start-adornment"
-                      className={classNames(classes.fullWidth, classes.textField)}
-                      variant="outlined" label="Exemple:Rabat-Salé"
-                      InputProps={{
-                        startAdornment: <InputAdornment position="start"><LocalMall /></InputAdornment>,
-                      }} value={this.state.etat}
-                      onChange={this.handleChange('etat')}
-                    />
-        </Grid>
-        {/*******/}
-        <Grid item xs={12} alignContent="center" className={classNames(classes.fullWidth, classes.textField,classes.noPaddingMargin)} >
-          <Typography variant="Title" gutterBottom align="left"  className={classNames(classes.fullWidth, classes.textField)}>
-          Etat du Parcours
+            </Grid>
+            <Grid item xs={ 12 }>
+              <TextField
+                id="outlined-simple-start-adornment"
+                className={ classNames( classes.fullWidth, classes.textField ) }
+                variant="outlined" label="Exemple:Rabat-Salé"
+                InputProps={ {
+                  startAdornment: <InputAdornment position="start"><LocalMall /></InputAdornment>,
+                } } value={ this.state.etat }
+                onChange={ this.handleChange( 'etat' ) }
+              />
+            </Grid>
+            {/*******/ }
+            <Grid item xs={ 12 } alignContent="center" className={ classNames( classes.fullWidth, classes.textField, classes.noPaddingMargin ) } >
+              <Typography variant="Title" gutterBottom align="left" className={ classNames( classes.fullWidth, classes.textField ) }>
+                Etat du Parcours
           </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-                        select className={classNames(classes.fullWidth, classes.textField,classes.noPaddingMargin)} variant="outlined" label="With Select"
-                        value={this.state.nomParcours} onChange={this.handleChange('nomParcours')}
-                        InputProps={{
-                          startAdornment: <InputAdornment position="start">      <TrendingDown />
-                          </InputAdornment>,
-                        }}>
-                        {ranges.map(option => (
-                          <MenuItem key={option.id} value={option.value}>
-                            {option.value}
-                          </MenuItem>
-                        ))}
-                    </TextField>  
-        </Grid>
-        {/*******/}
-        <Grid item xs={12} justify="left" className={classNames(classes.fullWidth, classes.textField,classes.noPaddingMargin)} >
-          <Button variant="outlined" color="primary" className={classes.button} onClick={this.addParcours.bind(this)}>
-            Primary
+            </Grid>
+            <Grid item xs={ 12 }>
+              <TextField
+                select className={ classNames( classes.fullWidth, classes.textField, classes.noPaddingMargin ) } variant="outlined" label="With Select"
+                value={ this.state.nomParcours } onChange={ this.handleChange( 'nomParcours' ) }
+                InputProps={ {
+                  startAdornment: <InputAdornment position="start">      <TrendingDown />
+                  </InputAdornment>,
+                } }>
+                { ranges.map( option => (
+                  <MenuItem key={ option.id } value={ option.value }>
+                    { option.value }
+                  </MenuItem>
+                ) ) }
+              </TextField>
+            </Grid>
+            {/*******/ }
+            <Grid item xs={ 12 } justify="left" className={ classNames( classes.fullWidth, classes.textField, classes.noPaddingMargin ) } >
+              <Button variant="outlined" color="primary" className={ classes.button } onClick={ this.addParcours.bind( this ) }>
+                Primary
           </Button>
+            </Grid>
+
+          </MuiThemeProvider>
+
         </Grid>
 
-    </MuiThemeProvider>
-   
-  </Grid>
-    
-                            </div>)
+      </div> )
+  }
 }
-}
-const styles = theme => ({
+const styles = theme => ( {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -127,10 +132,10 @@ const styles = theme => ({
   marginTop: {
     marginTop: '20px',
   },
-  textAlign:{    textAlign: 'Left',padding:0,margin:0},
+  textAlign: { textAlign: 'Left', padding: 0, margin: 0 },
   noPaddingMargin: {
-    marginTop: '5px',marginBottom: '5px',
-    paddingTop: '5px',paddingBottom: '5px',
+    marginTop: '5px', marginBottom: '5px',
+    paddingTop: '5px', paddingBottom: '5px',
     marginLeft: 'auto',
     marginRight: 'auto',
 
@@ -140,18 +145,18 @@ const styles = theme => ({
   },
   cssLabel: {
     '&$cssFocused': {
-      color: purple[500],
+      color: purple[ 500 ],
     },
   },
   cssFocused: {},
   cssUnderline: {
     '&:after': {
-      borderBottomColor: purple[500],
+      borderBottomColor: purple[ 500 ],
     },
   },
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
-      borderColor: purple[500],
+      borderColor: purple[ 500 ],
     },
   },
   notchedOutline: {},
@@ -168,7 +173,7 @@ const styles = theme => ({
     fontSize: 16,
     width: 'auto',
     padding: '10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    transition: theme.transitions.create( [ 'border-color', 'box-shadow' ] ),
     // Use the system font instead of the default Roboto font.
     fontFamily: [
       '-apple-system',
@@ -181,41 +186,41 @@ const styles = theme => ({
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(','),
+    ].join( ',' ),
     '&:focus': {
       borderRadius: 4,
-       background:'#383234'  ,
+      background: '#383234',
       boxShadow: '0 0 0 0.2rem rgba(0,255,0,.25)',
     },
   },
   bootstrapFormLabel: {
     fontSize: 25,
-    textAlign:'left',
-       display: 'table-cell', 
-          paddingLeft: '10px'
+    textAlign: 'left',
+    display: 'table-cell',
+    paddingLeft: '10px'
   },
-});
+} );
 
-const theme = createMuiTheme({
+const theme = createMuiTheme( {
   palette: {
     primary: green,
   },
   typography: { useNextVariants: true },
-});
+} );
 const ranges = [
   {
     value: 'Simple',
     label: 'Simple',
-    id:1
+    id: 1
   },
   {
     value: 'Composé',
     label: 'Composé',
-    id:2
+    id: 2
   }
 ];
 
 
 
 
-export default withStyles(styles)(ImgDropAndCrop);
+export default withStyles( styles )( ImgDropAndCrop );

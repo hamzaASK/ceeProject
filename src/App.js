@@ -30,57 +30,66 @@ import Thanksmessage from './Adminspace/card-Utils/cardMessage'
 
 let timer = 0
 
-class App extends Component {
+class App extends Component
+{
 
-  constructor(props) {
-    super(props)
+  constructor ( props )
+  {
+    super( props )
     this.state = {
       width: 0,
     }
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind( this );
   }
 
-  changeLang() {
+  changeLang ()
+  {
     this.props.lang === 'fr' ? this.props.AR() : this.props.FR()
   }
 
-  componentWillReceiveProps() {
-    if (this.props.admin.status) {
-      clearInterval(timer)
+  componentWillReceiveProps ()
+  {
+    if ( this.props.admin.status )
+    {
+      clearInterval( timer )
     }
   }
 
-  componentDidMount() {
+  componentDidMount ()
+  {
     this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-    timer = setInterval(() => this.changeLang(), Timers.lang / 10)
+    window.addEventListener( 'resize', this.updateWindowDimensions );
+    timer = setInterval( () => this.changeLang(), Timers.lang / 10 )
   }
 
-  componentWillUnmount() {
-    clearInterval(timer)
+  componentWillUnmount ()
+  {
+    clearInterval( timer )
   }
 
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
+  updateWindowDimensions ()
+  {
+    this.setState( { width: window.innerWidth } );
   }
 
-  render() {
+  render ()
+  {
     let x = this.props.lang === 'fr' ? 0 : 1
     return (
       <div className="viewport">
 
-        <Header text={lang[x].title} />
+        <Header text={ lang[ x ].title } />
 
         <HashRouter>
-          <div style={{ flex: 1, flexDirection: 'column', display: 'flex' }} >
-            <AppBar admin={this.props.admin.status}
-              version={this.props.admin.status ? 'Monitoring v1.0' : 'Monitoring Autodisplay v1.0'}
-              menu={[
-                { label: lang[x].AppBar.Menu[0].label, link: "/" },
-                { label: lang[x].AppBar.Menu[1].label, link: "/indicators" },
-                { label: lang[x].AppBar.Menu[2].label, link: "/ressources" },
-                this.props.admin.status ? { label: lang[x].AppBar.Menu[3].label, link: "/reports" } : null
-              ]} />
+          <div style={ { flex: 1, flexDirection: 'column', display: 'flex' } } >
+            <AppBar admin={ this.props.admin.status }
+              version={ this.props.admin.status ? 'Monitoring v1.0' : 'Monitoring Autodisplay v1.0' }
+              menu={ [
+                { label: lang[ x ].AppBar.Menu[ 0 ].label, link: "/" },
+                { label: lang[ x ].AppBar.Menu[ 1 ].label, link: "/indicators" },
+                { label: lang[ x ].AppBar.Menu[ 2 ].label, link: "/ressources" },
+                this.props.admin.status ? { label: lang[ x ].AppBar.Menu[ 3 ].label, link: "/reports" } : null
+              ] } />
 
             <Body>
               {
@@ -89,15 +98,15 @@ class App extends Component {
                   : null
               }
               <Content>
-                <Route component={Homescreen} path="/" exact />
-                <Route component={Indicators} path="/indicators" />
-                <Route component={Ressources} path="/ressources" />
-                {this.props.admin.status ? <Route component={PDFReports} path="/reports" /> : null}
-                <Route component={Adminspace} path="/ceeadmin" />
-                <Route component={Inscription} path="/inscription" />
-                <Route component={Forgotpassword} path="/forgotpassword" />
-                <Route component={Notification} path="/notification" />
-                <Route component={Thanksmessage} path="/thanksmessage" />              
+                <Route component={ Homescreen } path="/" exact />
+                <Route component={ Indicators } path="/indicators" />
+                <Route component={ Ressources } path="/ressources" />
+                { this.props.admin.status ? <Route component={ PDFReports } path="/reports" /> : null }
+                <Route component={ Adminspace } path="/ceeadmin" />
+                <Route component={ Inscription } path="/inscription" />
+                <Route component={ Forgotpassword } path="/forgotpassword" />
+                <Route component={ Notification } path="/notification" />
+                <Route component={ Thanksmessage } path="/thanksmessage" />
               </Content>
             </Body>
           </div>
@@ -112,7 +121,7 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect( mapStateToProps, mapDispatchToProps )( App )
 
 const Body = styled.div`
 flex: 1;

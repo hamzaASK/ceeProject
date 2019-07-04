@@ -1,26 +1,28 @@
 const createImage = url =>
-  new Promise((resolve, reject) => {
+  new Promise( ( resolve, reject ) =>
+  {
     const image = new Image()
-    image.addEventListener('load', () => resolve(image))
-    image.addEventListener('error', error => reject(error))
-    image.setAttribute('crossOrigin', 'anonymous') // needed to avoid cross-origin issues on CodeSandbox
+    image.addEventListener( 'load', () => resolve( image ) )
+    image.addEventListener( 'error', error => reject( error ) )
+    image.setAttribute( 'crossOrigin', 'anonymous' ) // needed to avoid cross-origin issues on CodeSandbox
     image.src = url
-  })
+  } )
 
 /**
  * This function was adapted from the one in the ReadMe of https://github.com/DominicTobias/react-image-crop
  * @param {File} image - Image File url
  * @param {Object} pixelCrop - pixelCrop Object provided by react-easy-crop
  */
-export default async function getCroppedImg(imageSrc, pixelCrop) {
-  const image = await createImage(imageSrc)
-  const canvas = document.createElement('canvas')
+export default async function getCroppedImg ( imageSrc, pixelCrop )
+{
+  const image = await createImage( imageSrc )
+  const canvas = document.createElement( 'canvas' )
   canvas.width = pixelCrop.width
   canvas.height = pixelCrop.height
-  const ctx = canvas.getContext('2d')
+  const ctx = canvas.getContext( '2d' )
 
   ctx.fillStyle = '#ffffff'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.fillRect( 0, 0, canvas.width, canvas.height )
   ctx.drawImage(
     image,
     pixelCrop.x,
@@ -37,9 +39,11 @@ export default async function getCroppedImg(imageSrc, pixelCrop) {
   // return canvas.toDataURL('image/jpeg');
 
   // As a blob
-  return new Promise((resolve, reject) => {
-    canvas.toBlob(file => {
-      resolve(URL.createObjectURL(file))
-    }, 'image/jpeg')
-  })
+  return new Promise( ( resolve, reject ) =>
+  {
+    canvas.toBlob( file =>
+    {
+      resolve( URL.createObjectURL( file ) )
+    }, 'image/jpeg' )
+  } )
 }

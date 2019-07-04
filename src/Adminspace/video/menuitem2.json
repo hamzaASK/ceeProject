@@ -1,135 +1,125 @@
 {
-    "data" : [
-      {
-          "name": "Articles Accueil",
+  "data": [
+    {
+      "name": "Articles Accueil",
+      "url": "/item1",
+      "icon": "PhotoSizeSelectLarge",
+      "id": 0,
+      "component": "HomeManagement/crouselHome.js",
+      "children": [
+        {
+          "name": "Lister",
           "url": "/item1",
           "icon": "PhotoSizeSelectLarge",
-          "id":0,
-          "component":"HomeManagement/crouselHome.js",
-          "children": [
-                          {
-                            "name": "Lister",
-                            "url": "/item1",
-                            "icon": "PhotoSizeSelectLarge",
-                            "id":0,
-                            "component":"HomeManagement/tableHome.js"
-                        },
-                        {
-                          "name": "Ajouter",
-                          "url": "/item1",
-                          "icon": "AddCircleOutline",
-                          "id":0,
-                          "component":"HomeManagement/Steppers.js"
-                        }
-                      ]
-      },{
-        "name": "Articles Ressources",
-        "url": "/item1",
-        "icon": "TabUnselected",
-        "id":0,
-        "component":"RessourcesManagement/tableHome.js",
-        "children":
-                   [
-                    {
-                      "name": "Lister",
-                      "url": "/item1",
-                      "icon": "TabUnselected",
-                      "id":0,
-                      "component":"RessourcesManagement/tableHome.js"
-                  },
-                  {
-                    "name": "Ajouter",
-                    "url": "/item1",
-                    "icon": "AddCircleOutline",
-                    "id":0,
-                    "component":"RessourcesManagement/Steppers.js"
-                  }
-                  ]
+          "id": 0,
+          "component": "HomeManagement/tableHome.js"
+        },
+        {
+          "name": "Ajouter",
+          "url": "/item1",
+          "icon": "AddCircleOutline",
+          "id": 0,
+          "component": "HomeManagement/Steppers.js"
+        }
+      ]
     },
-     
-      {
-        "name": "Indicateurs",
-        "children": [
-          {
-            "name": "L'Eau",
-            "url": "/child31",
-            "icon": "Opacity",
-            "id":2,
-            "component":"HomeManagement/crouselHome.js"
-          },
-          {
-            "name": "Qualité d'Air",
-            "url": "/child32",
-            "icon": "Toys",
-            "id":3,
-            "component":"waterIndicators/crouselWaterIndicators.js"
-            
-          },
-          {
-            "name": "Energies",
-            "url": "/child32",
-            "icon": "Power",
-            "id":4,
-            "component":"RessourcesManagement/crouselRessources.js"
-          }
-        ]
-      }, 
     {
-        "name": "Adminstrateurs",
-        "url": "/item1",
-        "icon": "Group",
-        "id":0,
-        "component":"administrateur/ValidationAdmin.js"
+      "name": "Articles Ressources",
+      "url": "/item1",
+      "icon": "TabUnselected",
+      "id": 0,
+      "component": "RessourcesManagement/tableHome.js",
+      "children": [
+        {
+          "name": "Lister",
+          "url": "/item1",
+          "icon": "TabUnselected",
+          "id": 0,
+          "component": "RessourcesManagement/tableHome.js"
+        },
+        {
+          "name": "Ajouter",
+          "url": "/item1",
+          "icon": "AddCircleOutline",
+          "id": 0,
+          "component": "RessourcesManagement/Steppers.js"
+        }
+      ]
+    },
+    {
+      "name": "Indicateurs",
+      "children": [
+        {
+          "name": "L'Eau",
+          "url": "/child31",
+          "icon": "Opacity",
+          "id": 2,
+          "component": "HomeManagement/crouselHome.js"
+        },
+        {
+          "name": "Qualité d'Air",
+          "url": "/child32",
+          "icon": "Toys",
+          "id": 3,
+          "component": "waterIndicators/crouselWaterIndicators.js"
+        },
+        {
+          "name": "Energies",
+          "url": "/child32",
+          "icon": "Power",
+          "id": 4,
+          "component": "RessourcesManagement/crouselRessources.js"
+        }
+      ]
+    },
+    {
+      "name": "Adminstrateurs",
+      "url": "/item1",
+      "icon": "Group",
+      "id": 0,
+      "component": "administrateur/ValidationAdmin.js"
     },
     {
       "name": "Déchets",
       "url": "/item1",
       "icon": "NewReleases",
-      "id":0,
-      "component":"waste/textfields.js"
-      
-  }
-  ,
+      "id": 0,
+      "component": "waste/textfields.js"
+    },
     {
       "name": "Recyclage ",
       "url": "/item1",
       "icon": "SettingsBackupRestore",
-      "id":0,
-      "component":"recycling/textfields.js"
-      
-  }
-  ,
+      "id": 0,
+      "component": "recycling/textfields.js"
+    },
     {
       "name": "Transport",
       "url": "/item1",
       "icon": "DriveEta",
-      "id":0,
-      "component":"transport/addLink.js"
-  }
-  ,
+      "id": 0,
+      "component": "transport/addLink.js"
+    },
     {
       "name": "Faune",
       "url": "/item1",
       "icon": "Pets",
-      "id":0,
-      "component":"wildlife/tableHome.js"
-      
-  }
-  ,
+      "id": 0,
+      "component": "wildlife/tableHome.js"
+    },
     {
       "name": "Flore",
       "url": "/item1",
       "icon": "FilterVintage",
-      "id":0,
-      "component":"flora/Steppers.js"
-      
-  },
-  {
-    "name": "Videos",
-    "url": "/item1",
-    "icon": "OndemandVideo",
-    "id":0,
-    "component":"video/tableVideo.js"
+      "id": 0,
+      "component": "flora/Steppers.js"
+    },
+    {
+      "name": "Videos",
+      "url": "/item1",
+      "icon": "OndemandVideo",
+      "id": 0,
+      "component": "video/tableVideo.js"
+    }
+  ]
 }
-    ]
-  }

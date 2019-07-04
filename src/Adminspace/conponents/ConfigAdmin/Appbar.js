@@ -15,10 +15,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 //import { Spring } from 'react-spring/renderprops'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { mapStateToProps } from '../../../Settings/ReduxStore/stateReducer'
 import { mapDispatchToProps } from '../../../Settings/ReduxStore/adminActions'
-const styles = theme => ({
+const styles = theme => ( {
   root: {
     width: '100%',
   },
@@ -31,21 +31,21 @@ const styles = theme => ({
   },
   title: {
     display: 'none',
-    [theme.breakpoints.up('sm')]: {
+    [ theme.breakpoints.up( 'sm' ) ]: {
       display: 'block',
     },
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade( theme.palette.common.white, 0.15 ),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade( theme.palette.common.white, 0.25 ),
     },
     marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    [ theme.breakpoints.up( 'sm' ) ]: {
       marginLeft: theme.spacing.unit * 3,
       width: 'auto',
     },
@@ -68,96 +68,103 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
     paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create('width'),
+    transition: theme.transitions.create( 'width' ),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
+    [ theme.breakpoints.up( 'md' ) ]: {
       width: 200,
     },
   },
   sectionDesktop: {
     display: 'none',
-    [theme.breakpoints.up('md')]: {
+    [ theme.breakpoints.up( 'md' ) ]: {
       display: 'flex',
     },
   },
   sectionMobile: {
     display: 'flex',
-    [theme.breakpoints.up('md')]: {
+    [ theme.breakpoints.up( 'md' ) ]: {
       display: 'none',
     },
   },
-});
+} );
 
-class PrimarySearchAppBar extends React.Component {
+class PrimarySearchAppBar extends React.Component
+{
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
   };
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
+  handleProfileMenuOpen = event =>
+  {
+    this.setState( { anchorEl: event.currentTarget } );
   };
 
-  handleMenuClose = (event,index) => {
-    this.setState({ anchorEl: null });
+  handleMenuClose = ( event, index ) =>
+  {
+    this.setState( { anchorEl: null } );
     this.handleMobileMenuClose();
-    if(index===0){  
+    if ( index === 0 )
+    {
       this.props.AdminOFF()
-  }
+    }
   };
 
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
+  handleMobileMenuOpen = event =>
+  {
+    this.setState( { mobileMoreAnchorEl: event.currentTarget } );
   };
 
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
+  handleMobileMenuClose = () =>
+  {
+    this.setState( { mobileMoreAnchorEl: null } );
   };
 
-  render() {
+  render ()
+  {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const isMenuOpen = Boolean( anchorEl );
+    const isMobileMenuOpen = Boolean( mobileMoreAnchorEl );
 
     const renderMenu = (
       <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
+        anchorEl={ anchorEl }
+        anchorOrigin={ { vertical: 'top', horizontal: 'right' } }
+        transformOrigin={ { vertical: 'top', horizontal: 'right' } }
+        open={ isMenuOpen }
+        onClose={ this.handleMenuClose }
       >
-        <MenuItem onClick={event => this.handleMenuClose(event,0)}>Deconnexion</MenuItem>
-        <MenuItem onClick={event => this.handleMenuClose(event,1)}>My account</MenuItem>
+        <MenuItem onClick={ event => this.handleMenuClose( event, 0 ) }>Deconnexion</MenuItem>
+        <MenuItem onClick={ event => this.handleMenuClose( event, 1 ) }>My account</MenuItem>
       </Menu>
     );
 
     const renderMobileMenu = (
       <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
+        anchorEl={ mobileMoreAnchorEl }
+        anchorOrigin={ { vertical: 'top', horizontal: 'right' } }
+        transformOrigin={ { vertical: 'top', horizontal: 'right' } }
+        open={ isMobileMenuOpen }
+        onClose={ this.handleMenuClose }
       >
-        <MenuItem onClick={this.handleMobileMenuClose}>
+        <MenuItem onClick={ this.handleMobileMenuClose }>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={ 4 } color="secondary">
               <MailIcon />
             </Badge>
           </IconButton>
           <p>Messages</p>
         </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
+        <MenuItem onClick={ this.handleMobileMenuClose }>
           <IconButton color="inherit">
-            <Badge badgeContent={11} color="secondary">
+            <Badge badgeContent={ 11 } color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
+        <MenuItem onClick={ this.handleProfileMenuOpen }>
           <IconButton color="inherit">
             <AccountCircle />
           </IconButton>
@@ -167,20 +174,20 @@ class PrimarySearchAppBar extends React.Component {
     );
 
     return (
-//       <Spring     from={{opacity:0,}}
-//       to={{opacity:1, }}
-//       config={{delay:1100,duration:1100}}>
-// {props=>(
-      <div className={classes.root} 
+      //       <Spring     from={{opacity:0,}}
+      //       to={{opacity:1, }}
+      //       config={{delay:1100,duration:1100}}>
+      // {props=>(
+      <div className={ classes.root }
       //style={props}
       >
-        <AppBar position="static" style={{background: 'linear-gradient(to right bottom, #98D150,#26A29E)'}}>
+        <AppBar position="static" style={ { background: 'linear-gradient(to right bottom, #98D150,#26A29E)' } }>
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+            <IconButton className={ classes.menuButton } color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Espace Administrateur 
+            <Typography className={ classes.title } variant="h6" color="inherit" noWrap>
+              Espace Administrateur
             </Typography>
             {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -194,36 +201,36 @@ class PrimarySearchAppBar extends React.Component {
                 }}
               />
             </div> */}
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
+            <div className={ classes.grow } />
+            <div className={ classes.sectionDesktop }>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={ 4 } color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>
               <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary" >
+                <Badge badgeContent={ 17 } color="secondary" >
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
               <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                aria-owns={ isMenuOpen ? 'material-appbar' : undefined }
                 aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
+                onClick={ this.handleProfileMenuOpen }
                 color="inherit"
               >
                 <AccountCircle />
               </IconButton>
             </div>
-            <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+            <div className={ classes.sectionMobile }>
+              <IconButton aria-haspopup="true" onClick={ this.handleMobileMenuOpen } color="inherit">
                 <MoreIcon />
               </IconButton>
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
+        { renderMenu }
+        { renderMobileMenu }
       </div>
       // )}
       // </Spring>
@@ -235,4 +242,4 @@ PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(connect(mapStateToProps,mapDispatchToProps)(PrimarySearchAppBar));
+export default withStyles( styles )( connect( mapStateToProps, mapDispatchToProps )( PrimarySearchAppBar ) );

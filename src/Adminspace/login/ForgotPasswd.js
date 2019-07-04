@@ -5,57 +5,57 @@ import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import {handleChangeLoginValue,handleClick} from '../events/eventsForgotPasswd'
+import { handleChangeLoginValue, handleClick } from '../events/eventsForgotPasswd'
 import TextField from '@material-ui/core/TextField';
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-      },
-      textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: '300px',
-        color : '#00F800'
-        
-      },
-    
-      cssLabel: {
-        color : '#00F800'
-      },
-      cssOutlinedInput: {
-        '&$cssFocused $notchedOutline': {
-          borderColor: '#00F800 !important',
-          color : '#00F800'
-        }
-      },
-    
-      cssFocused: { borderColor: '#00F800 !important',color : '#00F800'},
-    
-      notchedOutline: {
-        borderWidth: '2px',
-        borderColor: '#00F800 !important',
-        color : '#00F800'
+const styles = theme => ( {
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: '300px',
+    color: '#00F800'
 
-      },
-    Button:{
-        background: 
-        'radial-gradient(circle at 25% 0,#00F800,#000000 70.71%),radial-gradient(circle at 6.7% 75%,#00F800,#000000 70.71%),radial-gradient(circle at 93.3% 75%,#00F800,#000000 70.71%) beige'
-   
-    },
-root: {
-    background: 
-    'radial-gradient(circle at 20% 20%,rgba(30, 37, 30,1),rgba(33, 100, 34,0) 44.71%),radial-gradient(circle at 25.7% 60%,rgba(125, 180, 1,1),rgba(33, 100, 34,0) 30.71%),radial-gradient(circle at 80.3% 20%,rgba(125, 180, 1,1),rgba(33, 100, 34,1) 30.71%) beige',
-   height:'1080px'
+  },
+
+  cssLabel: {
+    color: '#00F800'
+  },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: '#00F800 !important',
+      color: '#00F800'
+    }
+  },
+
+  cssFocused: { borderColor: '#00F800 !important', color: '#00F800' },
+
+  notchedOutline: {
+    borderWidth: '2px',
+    borderColor: '#00F800 !important',
+    color: '#00F800'
+
+  },
+  Button: {
+    background:
+      'radial-gradient(circle at 25% 0,#00F800,#000000 70.71%),radial-gradient(circle at 6.7% 75%,#00F800,#000000 70.71%),radial-gradient(circle at 93.3% 75%,#00F800,#000000 70.71%) beige'
+
+  },
+  root: {
+    background:
+      'radial-gradient(circle at 20% 20%,rgba(30, 37, 30,1),rgba(33, 100, 34,0) 44.71%),radial-gradient(circle at 25.7% 60%,rgba(125, 180, 1,1),rgba(33, 100, 34,0) 30.71%),radial-gradient(circle at 80.3% 20%,rgba(125, 180, 1,1),rgba(33, 100, 34,1) 30.71%) beige',
+    height: '1080px'
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    height:500,
-    width:500
+    padding: `${ theme.spacing.unit * 2 }px ${ theme.spacing.unit * 3 }px ${ theme.spacing.unit * 3 }px`,
+    height: 500,
+    width: 500
 
   },
   control: {
@@ -66,14 +66,14 @@ root: {
     display: 'block', // Fix IE 11 issue.
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+    [ theme.breakpoints.up( 400 + theme.spacing.unit * 3 * 2 ) ]: {
       width: 400,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
-    
+
   },
- 
+
   avatar: {
     margin: theme.spacing.unit,
     backgroundColor: '#BD1A60',
@@ -85,7 +85,7 @@ root: {
   submit: {
     marginTop: theme.spacing.unit * 3,
   }
-});
+} );
 
 
 
@@ -97,57 +97,60 @@ root: {
 
 
 
-class GuttersGrid extends React.Component {
+class GuttersGrid extends React.Component
+{
   state = {
     spacing: '0',
   };
 
-  handleChange = key => (event, value) => {
-    this.setState({
-      [key]: value,
-    });
+  handleChange = key => ( event, value ) =>
+  {
+    this.setState( {
+      [ key ]: value,
+    } );
   };
 
-  
 
-  render() {
+
+  render ()
+  {
     const { classes } = this.props;
-    
-      
+
+
     return (
-                <Grid container justify="center" alignItems="center">
-                    <FormControl className="formControl">
-                    <TextField
-                                id="standard-name"
-                                label="Email"
-                                className={classes.textField}
-                                value={this.state.name}
-                                onChange={handleChangeLoginValue.bind(this)}
-                                margin="normal"
-                                variant="outlined"
-                                InputLabelProps={{
-                                    classes: {
-                                    root: classes.cssLabel,
-                                    focused: classes.cssLabel,
-                                    notchedOutline: classes.notchedOutline,
-                                    },
-                                }}
-                                InputProps={{
-                                    classes: {
-                                    root: classes.cssOutlinedInput,
-                                    focused: classes.cssFocused,
-                                    notchedOutline: classes.notchedOutline,
-                                    },
-                                    inputMode: "numeric"
-                                }}
-                                />
-                        <FormHelperText id="errorEmail" error={true}></FormHelperText>
-                        <br></br>
-                        <Button className={classes.Button} type="submit" variant="contained" size="large" color="primary" onClick={handleClick} >
-                            Récupérer le Mot de Passe
+      <Grid container justify="center" alignItems="center">
+        <FormControl className="formControl">
+          <TextField
+            id="standard-name"
+            label="Email"
+            className={ classes.textField }
+            value={ this.state.name }
+            onChange={ handleChangeLoginValue.bind( this ) }
+            margin="normal"
+            variant="outlined"
+            InputLabelProps={ {
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssLabel,
+                notchedOutline: classes.notchedOutline,
+              },
+            } }
+            InputProps={ {
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              inputMode: "numeric"
+            } }
+          />
+          <FormHelperText id="errorEmail" error={ true }></FormHelperText>
+          <br></br>
+          <Button className={ classes.Button } type="submit" variant="contained" size="large" color="primary" onClick={ handleClick } >
+            Récupérer le Mot de Passe
                         </Button>
-                    </FormControl>
-                </Grid>
+        </FormControl>
+      </Grid>
     );
   }
 }
@@ -156,7 +159,7 @@ GuttersGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(GuttersGrid);
+export default withStyles( styles )( GuttersGrid );
 
 
 
@@ -174,7 +177,7 @@ export default withStyles(styles)(GuttersGrid);
 // import { withStyles } from '@material-ui/core/styles';
 
 // const styles = theme => ({
-   
+
 //   root: {
 //     background: 
 //         'radial-gradient(circle at 20% 20%,rgba(30, 37, 30,1),rgba(33, 100, 34,0) 44.71%),radial-gradient(circle at 25.7% 60%,rgba(125, 180, 1,1),rgba(33, 100, 34,0) 30.71%),radial-gradient(circle at 80.3% 20%,rgba(125, 180, 1,1),rgba(33, 100, 34,1) 30.71%) beige'
@@ -183,11 +186,11 @@ export default withStyles(styles)(GuttersGrid);
 
 
 // class NavBar extends Component{
-    
+
 //        render(){
 
-    
-        
+
+
 //         return (
 //             <div className="root" >
 //                 <FormControl className="formControl">

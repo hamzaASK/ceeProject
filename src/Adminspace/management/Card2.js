@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-export default class Card extends Component {
-  
-    render() {
+export default class Card extends Component
+{
+
+    render ()
+    {
         return (
             <Container>
-                {this.props.title ?
+                { this.props.title ?
                     <Title>
-                        {this.props.title}
+                        { this.props.title }
                     </Title>
                     :
                     null
                 }
                 {
                     this.props.content ?
-                        <Body style={{ background: 'linear-gradient(to right bottom, white, ' + this.props.bg + ')' }} >
-                            {this.props.content}
+                        <Body style={ { background: 'linear-gradient(to right bottom, white, ' + this.props.bg + ')' } } >
+                            { this.props.content }
                         </Body>
                         :
                         null

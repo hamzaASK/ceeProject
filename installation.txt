@@ -1,0 +1,17 @@
+npm install --save @sendgrid/mail
+npm install express --save
+npm install --save-dev nodemon
+npm install -g nodemon
+npm install react-alice-carousel --save-dev
+npm install react-easy-crop --save
+npm install axios
+npm install --save material-ui-pickers
+//npm install --save date-fns
+npm install --save @date-io/date-fns
+npm install date-fns@2.0.0-beta.2
+npm i re-carousel
+npm install --save react-dropzone
+npm i react-image-crop --save
+npm i react-spring
+npm i reactstrap
+npm i recharts

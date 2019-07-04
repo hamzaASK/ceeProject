@@ -1,54 +1,61 @@
- import React from 'react';
- import Buttons from './buttonNavigationVideo'
- import axios from 'axios'
+import React from 'react';
+import Buttons from './buttonNavigationVideo'
+import axios from 'axios'
 
-class App extends React.Component {
- 
-state = {
+class App extends React.Component
+{
+
+  state = {
     currentUrlIdx: 1,
-    videos : [],
-    books:[]
+    videos: [],
+    books: []
   }
 
 
-  constructor (props) {
-    super(props)
-    this.handleEnded = this.handleEnded.bind(this);
+  constructor ( props )
+  {
+    super( props )
+    this.handleEnded = this.handleEnded.bind( this );
   }
 
-/***************************************/
-componentWillMount() {
-  axios.get('http://localhost:8000/api/showvideo').then((response) => {
-    const videos = response.data;
-    this.setState({videos})
-   });
-}
-/***************************************/
-  handleEnded(e) {
-    const nextUrlIdx = (this.state.currentUrlIdx + 1) % this.state.videos.length
-    this.setState({ currentUrlIdx: nextUrlIdx });
+  /***************************************/
+  componentWillMount ()
+  {
+    axios.get( 'http://localhost:8000/api/showvideo' ).then( ( response ) =>
+    {
+      const videos = response.data;
+      this.setState( { videos } )
+    } );
   }
-/***************************************/
+  /***************************************/
+  handleEnded ( e )
+  {
+    const nextUrlIdx = ( this.state.currentUrlIdx + 1 ) % this.state.videos.length
+    this.setState( { currentUrlIdx: nextUrlIdx } );
+  }
+  /***************************************/
 
-  render() {
-    console.log(this.state.videos)
+  render ()
+  {
+    console.log( this.state.videos )
 
 
     let myJson = {};
-    for (var k = 1; k <  this.state.videos.length; k++) {
-        var objValue ='videos/'+this.state.videos[k].video;
-        myJson[k] = objValue;
+    for ( var k = 1; k < this.state.videos.length; k++ )
+    {
+      var objValue = 'videos/' + this.state.videos[ k ].video;
+      myJson[ k ] = objValue;
     }
     // this.setState({
     //   videos:Object.values(myJson)
     // })
-    console.log(Object.values(myJson)[0]);
+    console.log( Object.values( myJson )[ 0 ] );
 
 
-    return  (<div>
-                <Buttons />
-                <video width="100%" height="400px" controls src={Object.values(myJson)[this.state.currentUrlIdx]} autoPlay onEnded={this.handleEnded}/>
-            </div>);
+    return ( <div>
+      <Buttons />
+      <video width="100%" height="400px" controls src={ Object.values( myJson )[ this.state.currentUrlIdx ] } autoPlay onEnded={ this.handleEnded } />
+    </div> );
   }
 }
 

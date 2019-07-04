@@ -18,16 +18,24 @@ import classNames from 'classnames';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import MenuItem from '@material-ui/core/MenuItem';
 import EvStation from '@material-ui/icons/EvStation'
-import { URL_Host1,URL_Host2 } from '../../Settings/Server'
-class App extends Component {
-    
+import { URL_Host1, URL_Host2 } from '../../Settings/Server'
+
+/*
+|--------------------------------------------------------------------------
+|
+|--------------------------------------------------------------------------
+*/
+
+class App extends Component
+{
+
   state = {
-    statistics:{ 
-      total:0,
-      valid:0,
-      invalid:0,
-      inThisMonth:0,
-    },  
+    statistics: {
+      total: 0,
+      valid: 0,
+      invalid: 0,
+      inThisMonth: 0,
+    },
     books: [],
     newBookData: {
       title: '',
@@ -41,188 +49,172 @@ class App extends Component {
     newBookModal: false,
     editBookModal: false
   }
-  componentWillMount() {
+  /*
+  |--------------------------------------------------------------------------
+  |
+  |--------------------------------------------------------------------------
+  */
+
+  _refreshBooks ()
+  {
+    axios.get( `${ URL_Host1 }/api/all` ).then( ( response ) =>
+    {
+      this.setState( { books: response.data } )
+      var total = this.state.books.length
+      this.setState(
+        {
+          statistics:
+          {
+            total,
+            valid: this.state.books.filter( function ( x ) { return x.validity === '1' } ).length,
+            invalid: this.state.books.filter( function ( x ) { return x.validity !== '1' } ).length
+          }
+        }
+      )
+    } );
+  }
+
+  componentWillMount ()
+  {
     this._refreshBooks();
   }
-  toggleNewBookModal() {
-    this.setState({
-      newBookModal: ! this.state.newBookModal
-    });
+  /*
+  |--------------------------------------------------------------------------
+  |
+  |--------------------------------------------------------------------------
+  */
+
+  toggleNewBookModal ()
+  {
+    this.setState(
+      {
+        newBookModal: !this.state.newBookModal
+      }
+    );
   }
-  toggleEditBookModal() {
-    this.setState({
-      editBookModal: ! this.state.editBookModal
-    });
+
+  toggleEditBookModal ()
+  {
+    this.setState( {
+      editBookModal: !this.state.editBookModal
+    } );
   }
-  
-  updateBook() {
+  /*
+  |--------------------------------------------------------------------------
+  |                       Action Update,Delete
+  |--------------------------------------------------------------------------
+  */
+
+  updateBook ()
+  {
     let { validity, lname } = this.state.editBookData;
+    axios.put( `${ URL_Host1 }/api/userupdate/` + this.state.editBookData.id, { validity, lname } )
+      .then( ( response ) =>
+      {
+        this._refreshBooks();
+        this.setState( { editBookModal: false, editBookData: { id: '', validity: '', lname: '' } } )
+      } );
+  }
 
-    axios.put(`${URL_Host1}/api/userupdate/` + this.state.editBookData.id, {
-      validity, lname
-    }).then((response) => {
+  editBook ( id, validity, lname )
+  {
+    this.setState( { editBookData: { id, validity, lname }, editBookModal: !this.state.editBookModal } );
+  }
+
+  deleteBook ( id )
+  {
+    axios.delete( `${ URL_Host1 }/api/delete/` + id ).then( ( response ) =>
+    {
       this._refreshBooks();
+    } );
+  }
 
-      this.setState({
-        editBookModal: false, editBookData: { id: '', validity: '', lname: '' }
-      })
-    });
-  }
-  editBook(id, validity, lname) {
-    this.setState({
-      editBookData: { id, validity, lname }, editBookModal: ! this.state.editBookModal
-    });
-  }
-  deleteBook(id) {
-    axios.delete( `${URL_Host1}/api/delete/`  + id).then((response) => {
-      this._refreshBooks();
-    });
-  }
-  _refreshBooks() {
-    axios.get(`${URL_Host1}/api/all`).then((response) => {
-      this.setState({
-        books: response.data
-      })
-      var total=this.state.books.length
-      this.setState({statistics:{
-        total,
-        valid:this.state.books.filter(function(x){return x.validity==='1'}).length,
-        invalid:this.state.books.filter(function(x){return x.validity!=='1'}).length
-      }})
-  
-  
-    });
-  }
-  render() {
-    let books = this.state.books.map((book) => {
-      return (
-        <tr key={book.id}>
-            <td>{book.id}</td>
-            <td>{book.nom}</td>
-            <td>{book.prenom}</td>
-            <td>{book.validity}</td>        
-            <td>
-                <IconButton className='button' onClick={this.deleteBook.bind(this, book.id)} aria-label="Delete">
-                    <DeleteIcon />
-                </IconButton>
-                <IconButton className='button' onClick={this.editBook.bind(this, book.id, book.validity, book.lname)} aria-label="Delete">
-                    <EditIcon />
-                </IconButton> 
-            </td>
-        </tr>
-            )
-    });
-    const CustomTableCell = withStyles(theme => ({
-        head: {
-          backgroundColor:  '#383234'  ,
-          color: theme.palette.common.white,
-        },
-        body: {
-          fontSize: 14,
-        },
-      }))(TableCell);
 
-     
-      const { classes } = this.props;
-
+  render ()
+  {
+    const { classes } = this.props;
     return (
-      <div className="App container" style={{    minWidth: '100%'}}>
-
-<Buttons  statistics={this.state.statistics} />
-    <br/>
-	<br/>
-
-
-      <Modal isOpen={this.state.editBookModal} toggle={this.toggleEditBookModal.bind(this)}>
-        <ModalHeader toggle={this.toggleEditBookModal.bind(this)}>Changer  l'Etat  De  Votre  Utilisateur</ModalHeader>
-        <ModalBody>
-          <FormGroup>
-            <Label for="validity">l'etat</Label>
-
-			            
-                  <TextField style={{width: '100%'}}
-                        select className={classNames(classes.fullWidth, classes.textField,classes.noPaddingMargin)} variant="outlined" label="With Select"
-                        value={this.state.editBookData.validity} onChange={(e) => {let { editBookData } = this.state; editBookData.validity = e.target.value;this.setState({ editBookData });}}
-                        InputProps={{startAdornment: <InputAdornment position="start"><EvStation /></InputAdornment>,}}>
-                      <MenuItem key={0} value={0}>Non Validé</MenuItem>
-                      <MenuItem key={1} value={1}>Validé</MenuItem>
-            </TextField>  
-
-
-
-
-		
-			
-			
-			
-          </FormGroup>
-         
-
-        </ModalBody>
-        <ModalFooter>
-          <Button2 color="primary" onClick={this.updateBook.bind(this)}>Update Book</Button2>{' '}
-          <Button2 color="secondary" onClick={this.toggleEditBookModal.bind(this)}>Cancel</Button2>
-        </ModalFooter>
-      </Modal>
-
-
-
-      <Spring     from={{opacity:0,}}
-                to={{opacity:1, }}
-                config={{delay:1100,duration:1100}}>{props=>(
-
-        <Table2 className={classes.table} style={props}>
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>#</CustomTableCell>
-            <CustomTableCell align="center">Nom</CustomTableCell>
-            <CustomTableCell align="center">Prénom</CustomTableCell>
-            <CustomTableCell align="center">Validation</CustomTableCell>
-            <CustomTableCell align="center">Image</CustomTableCell>
-            <CustomTableCell align="center">Action</CustomTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>{this.state.books.map(row => (
-            <TableRow className={classes.row} key={row.id}>
-              <CustomTableCell align="center">{row.id}</CustomTableCell>
-              <CustomTableCell align="center">{row.nom}</CustomTableCell>
-              <CustomTableCell align="center">{row.prenom}</CustomTableCell>
-              <CustomTableCell align="center">{row.validity==='1'?'Validé':'Non validé'}</CustomTableCell>
-              <CustomTableCell align="center">
-                            <img alt='img' src={row.image==='WithoutImage' || !row.image ? 'images/flora/1.png' : "images/profil/"+row.image} style={{width:70,height:70,borderRadius:'50%'}}/>
-              </CustomTableCell>
-              <CustomTableCell align="center">
-              <IconButton className='button' onClick={this.deleteBook.bind(this, row.id)} aria-label="Delete">
-                    <DeleteIcon />
-                </IconButton>
-                <IconButton className='button' onClick={this.editBook.bind(this, row.id, row.validity, row.lname)} aria-label="Delete">
-                    <EditIcon />
-                </IconButton> 
-              </CustomTableCell>
-            </TableRow>))}
-          </TableBody>
-      
-      </Table2>
-
-)}
-</Spring>
-
-
-
-
-
-
-
+      <div className="App container" style={ { minWidth: '100%' } }>
+        <Buttons statistics={ this.state.statistics } />
+        <Modal isOpen={ this.state.editBookModal } toggle={ this.toggleEditBookModal.bind( this ) }>
+          <ModalHeader toggle={ this.toggleEditBookModal.bind( this ) }>Changer  l'Etat  De  Votre  Utilisateur</ModalHeader>
+          <ModalBody>
+            <FormGroup>
+              <Label for="validity">l'etat</Label>
+              <TextField style={ { width: '100%' } }
+                select className={ classNames( classes.fullWidth, classes.textField, classes.noPaddingMargin ) } variant="outlined" label="With Select"
+                value={ this.state.editBookData.validity } onChange={ ( e ) => { let { editBookData } = this.state; editBookData.validity = e.target.value; this.setState( { editBookData } ); } }
+                InputProps={ { startAdornment: <InputAdornment position="start"><EvStation /></InputAdornment>, } }>
+                <MenuItem key={ 0 } value={ 0 }>Non Validé</MenuItem>
+                <MenuItem key={ 1 } value={ 1 }>Validé</MenuItem>
+              </TextField>
+            </FormGroup>
+          </ModalBody>
+          <ModalFooter>
+            <Button2 color="primary" onClick={ this.updateBook.bind( this ) }>Update Book</Button2>{ ' ' }
+            <Button2 color="secondary" onClick={ this.toggleEditBookModal.bind( this ) }>Cancel</Button2>
+          </ModalFooter>
+        </Modal>
+        <Spring from={ { opacity: 0, } }
+          to={ { opacity: 1, } }
+          config={ { delay: 1100, duration: 1100 } }>{ props => (
+            <Table2 className={ classes.table } style={ props }>
+              <TableHead>
+                <TableRow>
+                  <CustomTableCell>#</CustomTableCell>
+                  <CustomTableCell align="center">Nom</CustomTableCell>
+                  <CustomTableCell align="center">Prénom</CustomTableCell>
+                  <CustomTableCell align="center">Validation</CustomTableCell>
+                  <CustomTableCell align="center">Image</CustomTableCell>
+                  <CustomTableCell align="center">Action</CustomTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>{ this.state.books.map( row => (
+                <TableRow className={ classes.row } key={ row.id }>
+                  <CustomTableCell align="center">{ row.id }</CustomTableCell>
+                  <CustomTableCell align="center">{ row.nom }</CustomTableCell>
+                  <CustomTableCell align="center">{ row.prenom }</CustomTableCell>
+                  <CustomTableCell align="center">{ row.validity === '1' ? 'Validé' : 'Non validé' }</CustomTableCell>
+                  <CustomTableCell align="center">
+                    <img alt='img' src={ row.image === 'WithoutImage' || !row.image ? 'images/flora/1.png' : "images/profil/" + row.image } style={ { width: 70, height: 70, borderRadius: '50%' } } />
+                  </CustomTableCell>
+                  <CustomTableCell align="center">
+                    <IconButton className='button' onClick={ this.deleteBook.bind( this, row.id ) } aria-label="Delete">
+                      <DeleteIcon />
+                    </IconButton>
+                    <IconButton className='button' onClick={ this.editBook.bind( this, row.id, row.validity, row.lname ) } aria-label="Delete">
+                      <EditIcon />
+                    </IconButton>
+                  </CustomTableCell>
+                </TableRow> ) ) }
+              </TableBody>
+            </Table2>
+          ) }
+        </Spring>
       </div>
     );
   }
 }
-const styles = theme => ({
+/*
+|--------------------------------------------------------------------------
+|
+|--------------------------------------------------------------------------
+*/
+const CustomTableCell = withStyles( theme => ( {
+  head: {
+    backgroundColor: '#383234',
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+} ) )( TableCell );
+const styles = theme => ( {
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
-  }, 
+  },
   button: {
     margin: theme.spacing.unit,
   },
@@ -230,7 +222,7 @@ const styles = theme => ({
     minWidth: '100%',
   },
   row: {
-    '&:nth-of-type(odd)': {backgroundColor: theme.palette.background.default,},
+    '&:nth-of-type(odd)': { backgroundColor: theme.palette.background.default, },
   },
   container: {
     textAlign: 'center'
@@ -238,8 +230,7 @@ const styles = theme => ({
   input: {
     display: 'none',
   },
-    });
+} );
 
-  const A3 = withStyles(styles)(App);
-  export default A3
-  
+const A3 = withStyles( styles )( App );
+export default A3

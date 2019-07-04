@@ -6,25 +6,30 @@ import { Timers } from '../Settings/Timers'
 
 let timer = 0
 
-export default class Homescreen extends Component {
+export default class Homescreen extends Component
+{
 
-    constructor(props) {
-        super(props);
+    constructor ( props )
+    {
+        super( props );
         this.state = {
         }
     }
 
-    componentDidMount() {
-        timer = setTimeout(() => this.props.history.push(`/`), Timers.ressources)
+    componentDidMount ()
+    {
+        timer = setTimeout( () => this.props.history.push( `/` ), Timers.ressources )
     }
 
-    componentWillUnmount() {
-        clearTimeout(timer)
+    componentWillUnmount ()
+    {
+        clearTimeout( timer )
     }
 
-    render() {
+    render ()
+    {
         return (
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }} >
+            <div style={ { flex: 1, display: 'flex', flexDirection: 'column' } } >
                 <Slider />
                 {/* <Card // title=""
                     content={

@@ -32,37 +32,42 @@ const styles = {
   },
 }
 
-function Transition(props) {
-  return <Slide direction="up" {...props} />
+function Transition ( props )
+{
+  return <Slide direction="up" { ...props } />
 }
 
-class ImgDialog extends React.Component {
+class ImgDialog extends React.Component
+{
   state = {
     open: false,
   }
 
-  handleClickOpen = () => {
-    this.setState({ open: true })
+  handleClickOpen = () =>
+  {
+    this.setState( { open: true } )
   }
 
-  handleClose = () => {
-    this.setState({ open: false })
+  handleClose = () =>
+  {
+    this.setState( { open: false } )
   }
 
-  render() {
+  render ()
+  {
     const { classes } = this.props
     return (
       <Dialog
         fullScreen
-        open={!!this.props.img}
-        onClose={this.props.onClose}
-        TransitionComponent={Transition}
+        open={ !!this.props.img }
+        onClose={ this.props.onClose }
+        TransitionComponent={ Transition }
       >
-        <AppBar className={classes.appBar}>
+        <AppBar className={ classes.appBar }>
           <Toolbar>
             <IconButton
               color="inherit"
-              onClick={this.props.onClose}
+              onClick={ this.props.onClose }
               aria-label="Close"
             >
               <CloseIcon />
@@ -70,18 +75,18 @@ class ImgDialog extends React.Component {
             <Typography
               variant="title"
               color="inherit"
-              className={classes.flex}
+              className={ classes.flex }
             >
               Cropped image
             </Typography>
           </Toolbar>
         </AppBar>
-        <div className={classes.imgContainer}>
-          <img src={this.props.img} alt="Cropped" className={classes.img} />
+        <div className={ classes.imgContainer }>
+          <img src={ this.props.img } alt="Cropped" className={ classes.img } />
         </div>
       </Dialog>
     )
   }
 }
 
-export default withStyles(styles)(ImgDialog)
+export default withStyles( styles )( ImgDialog )

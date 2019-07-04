@@ -164,13 +164,13 @@ export const lang = [
             indic_1: {
                 title: "Tri sélectif des déchets",
                 desc: "Poids des déchets recyclables (Kg)",
-                list: ['Verre', 'Metal', 'Plastique'],
+                list: [ 'Verre', 'Metal', 'Plastique' ],
                 unit: " Kg"
             },
             indic_2: {
                 title: "Compostage",
                 desc: "Poids des déchets compostables (Kg)",
-                list: ['Organique', 'Papier'],
+                list: [ 'Organique', 'Papier' ],
                 unit: " Kg"
             },
             indic_3: {
@@ -197,13 +197,13 @@ export const lang = [
             indic_1: {
                 title: "Recyclage",
                 desc: "Déchets recyclés (Kg)",
-                list: ['Verre', 'Metal', 'Plastique'],
+                list: [ 'Verre', 'Metal', 'Plastique' ],
                 unit: " Kg"
             },
             indic_2: {
                 title: "Compostage",
                 desc: "Déchets transformés en composte (Kg)",
-                list: ['Organique', 'Papier'],
+                list: [ 'Organique', 'Papier' ],
                 unit: " Kg"
             },
             indic_3: {
@@ -235,7 +235,7 @@ export const lang = [
             indic_1: {
                 title: "Bilan carbone du transport",
                 desc: "Bilan carbone du transport (Kg équi. CO2)",
-                list: ['Voiture', 'Train', 'tramway', 'Bus urbain', 'Deux roues'],
+                list: [ 'Voiture', 'Train', 'tramway', 'Bus urbain', 'Deux roues' ],
                 unit: " Kg"
             },
         },
@@ -378,43 +378,43 @@ export const lang = [
                 id: 1,
                 title: "Aire de stationnement & Transport",
                 desc: "L'aire de stationnement du Centre International Hassan II de Formation à l'Environnement est aménagée en espace vert, doté d’équipements modernes: bornes de recharge pour véhicules électriques, application dédiée, calcul et compensation volontaire du bilan carbone … Un parking au sol perméable à l’eau, des matériaux recyclables, de la verdure et des zones de stationnement ombragées pour un accueil agréable de nos visiteurs. Calcul de votre bilan CO2: La compensation volontaire carbone est un moyen de participation à l’effort collectif de lutte contre la pollution atmosphérique et le changement climatique.",
-                picture: "/images/ressources/res_03.jpg",
+                picture: "home2.png",
             },
             {
                 id: 2,
                 title: "Bâtiment - NB : source du contenu : l’application bâtiment des outils pédagogiques",
                 desc: "Le centre est un modèle et exemple concrets de projets innovants favorisant le déploiement d’une nouvelle démarche d’éco-construction sur l’ensemble du territoire national. Le bâtiment du centre est une structure écologique innovante, qui répond à des exigences environnementales. En plus de son infrastructure et ses équipements ultra-modernes, il est équipé d'un réseau électrique et informatique de commande et de monitoring intelligent des ressources. Le concept architectural du bâtiment propose une grande transparence avec des baies vitrées favorisant l’éclairement naturel, protégées par une végétation extérieure qui participe à la régulation thermique, selon les exigences des études thermodynamiques, des volumes modulables, des hauteurs optimisées pour le confort thermique et la qualité de l’air ainsi qu’une fluidité des circuits d’accès. Tout en assurant modernisme, esthétisme et écologie, des savoir-faire ancestraux ont été mobilisés et des matériaux de construction et d’isolement naturels utilisés, comme la terre crue et le bois privilégiés pour leurs qualités environnementales, techniques et plastiques",
-                picture: "/images/ressources/res_01.jpg",
+                picture: "home1.png",
             },
             {
                 id: 3,
                 title: "Station de traitement des eaux",
                 desc: "L’EAU, une ressource naturelle, une denrée vitale et précieuse qui se fait de plus en plus rare à l’état pure. Sa gestion exige un soin particulier, des plus rigoureux, et son économie et son traitement systématique deviennent une urgence absolue. Afin d’intégrer cette exigence, le centre s’est équipé d’une station d’épuration des eaux usées. Grâce à un procédé naturel, la station permet de fournir une eau propre à l’arrosage pour les espaces verts du centre. A l’eau traitée vient s’ajouter l'eau de pluie collectée (par infiltration dans les sols et par ruissellement) ce qui permet de fournir la totalité des besoins en eau d’arrosage des espaces verts et permet ainsi de limiter la consommation d’eau potable au strict nécessaire",
-                picture: "/images/ressources/res_04.jpg",
+                picture: "home3.png",
             },
             // {
             //     id: 4,
             //     title: "Eolienne Agricole",
             //     desc: "Afin de consolider sa démarche éco-responsable par la réduction des émissions de gaz à effet de serre, le Centre International Hassan II de Formation à l'Environnement promeut la diversification des sources d’énergie renouvelable par le recours au mix énergétique. Dans un but pédagogique et pour la démonstration, le centre s’est équipé d’une éolienne agricole, adossée à une application ; un outil pédagogique qui permet d’expliquer d’une manière ludique le principe de fonctionnement, ainsi que la contribution de l’énergie éolienne à la réduction des émissions GES",
-            //     picture: "/images/ressources/pure.jpg",
+            //     picture: "pure.jpg",
             // },
             {
                 id: 4,
                 title: "Espaces verts et Biodiversité ",
                 desc: "Le centre dispose d’espaces verts conçues sur le relief initial du site, favorisant ainsi l’installation et la préservation d’une biodiversité locale riche, variée et équilibrée. Ces espaces verts se caractérisent par un aménagement durable: Des espaces aménagés de manière à préserver leur aspect naturel et les caractéristiques initiales du site: sol, relief, espèces végétales, … ; Des prairies fleuries, riches, variées et équilibrées ; Des jardins pédagogiques illustrant la diversité biologique, notamment les espèces locales ; Un sol respectueux de l’environnement et fertilisé au composte produit in-situ ; Une faible consommation en eau : économie d’eau et arrosage par eau récupérée et recyclée ;\nLes espaces verts du centre contribuent positivement à la performance environnementale du centre",
-                picture: "/images/ressources/res_06.jpg",
+                picture: "home1.png",
             },
             {
                 id: 5,
                 title: "Energie photovoltaïque",
                 desc: "Le Centre International Hassan II de Formation à l'Environnement a opté pour un mix énergétique afin de promouvoir les énergies propres, atteindre son objectif en terme de performance environnementale.\nAinsi la ferme solaire (Aire Photovoltaïque) du centre permet de subvenir à une majeure partie des besoins énergétique du Centre, tout en réduisant d’autant son bilan carbone. L’Aire photovoltaïque est la parfaite illustration de la mission et du propos pédagogique du centre puisqu’il permet l’accès à de nombreuses informations utiles dans les conditions réelles d’utilisation.\nVoir aussi l’application dédiée au point d’intérêt Aire Photovoltaïque",
-                picture: "/images/ressources/res_05.jpg",
+                picture: "res_05.pmg",
             },
             {
                 id: 6,
                 title: "Gestion des déchets",
                 desc: "Afin de minimiser son empreinte écologique, le centre a intégré des mesures préventives par une gestion rigoureuse de ses déchets, visant à réduire leurs effets nocifs sur la santé humaine et environnementale ainsi que sur le cadre de vie. Le centre a adopté la démarche éco-responsable 4R-V pour la gestion de ses déchets: Repenser, Réduire, Réutiliser, Recycler, Valoriser.\n    Ainsi une démarche de réduction à la source, de tri sélectif des déchets de réemploi et de recyclage est mise en place.\nLes déchets sont ainsi triés par types: carton/papier, Metal, plastique et déchets organiques.\nN.B. Les déchets dangereux comme les ampoules, les accumulateurs ou batteries sont séparés des autres déchets recyclables. Les déchets organiques (DO) quant à eux sont transformés en composte au sein même du centre pour une utilisation dans le jardin botanique. Voir tout le processus en détail via l’application dédiée",
-                picture: "/images/ressources/res_01.jpg",
+                picture: "home1.png",
             },
 
         ],
@@ -640,13 +640,13 @@ export const lang = [
             indic_1: {
                 title: "القابلة لإعادة للتدوير",
                 desc: "وزن النفايات القابلة لإعادة التدوير - بالكيلوغرام",
-                list: ['الزجاج', 'الحديد', 'البلاستيك'],
+                list: [ 'الزجاج', 'الحديد', 'البلاستيك' ],
                 unit: " Kg"
             },
             indic_2: {
                 title: "السماد",
                 desc: "وزن النفايات القابلة للتسميد - بالكيلوغرام",
-                list: ['العضوية', 'الورق'],
+                list: [ 'العضوية', 'الورق' ],
                 unit: " Kg"
             },
             indic_3: {
@@ -673,13 +673,13 @@ export const lang = [
             indic_1: {
                 title: "تم إعادة التدوير",
                 desc: "النفايات المعاد تدويرها - بالكيلوغرام",
-                list: ['الزجاج', 'الحديد', 'البلاستيك'],
+                list: [ 'الزجاج', 'الحديد', 'البلاستيك' ],
                 unit: " Kg"
             },
             indic_2: {
                 title: "السماد",
                 desc: "وزن النفايات المحولة للسماد - بالكيلوغرام",
-                list: ['العضوية', 'الورق'],
+                list: [ 'العضوية', 'الورق' ],
                 unit: " Kg"
             },
             indic_3: {
@@ -711,7 +711,7 @@ export const lang = [
             indic_1: {
                 title: "حصيلة البصمة الكربونية للنقل",
                 desc: "حصيلة البصمة الكربونية للنقل - الكيلوغرام المعادل للكربون",
-                list: ['السيارة', 'القطار', 'الترامواي', 'الحافلة الحضرية', 'الدراجة النارية'],
+                list: [ 'السيارة', 'القطار', 'الترامواي', 'الحافلة الحضرية', 'الدراجة النارية' ],
                 unit: " Kg"
             },
         },
@@ -1047,43 +1047,43 @@ export const lang = [
                 id: 1,
                 title: "منطقة وقوف السيارات ووسائل",
                 desc: "هيئت منطقة وقوف السيارات في المركز على شكل فضاءات خضراء مجهزة بمعدات حديثة: محطات شحن السيارات الكهربائية، التطبيقات المرافقة، الحساب والتعويض التطوعي للبصمة الكربونية ... جهز موقف السيارات بقاعدة تتيح تسرب المياه، وبمواد قابلة لإعادة التدوير، مساحات خضراء ومناطق وقوف مظللة من أجل استقبال رائع لزوارنا. حساب البصمة الكربونية: التعويض التطوعي للكربون وسيلة للمشاركة في الجهود الجماعية لمكافحة تلوث الهواء وتغير المناخ. يمكنكم تعويض البصمة الكربونية الخاصة بكم عبر الرابط التالي: http://calculateurco2.org/",
-                picture: "/images/ressources/res_03.jpg",
+                picture: "home2.png",
             },
             {
                 id: 2,
                 title: "المبنى -  ملاحظة: مصدر المحتوى: تطبيق 'المبنى' للوسائل البيداغوجية",
                 desc: "يعتبر المركز نموذجًا ومثالا حقيقيين للمشاريع المبتكرة التي تشجع على اعتماد منهجية جديدة في البناء الإيكولوجي على المستوى الوطني. يعتبر مبنى مركز الحسن الثاني الدولي للتكوين في البيئة منشأة إيكولوجية إبداعية، يحترم مجموعة من المعايير البيئية، بالإضافة الى بنيته التحتية ومعداته الحديثة، مجهز بشبكتين كهربائية ومعلوماتية متطورتين للتحكم والمراقبة الذكية لمختلف الموارد. يوفر الشكل الهندسي المعماري لمبنى المركز شفافية كبيرة، وذلك بفضل النوافذ الزجاجية التي تشجع الإضاءة الطبيعية، المحمية بنباتات خضراء خارجية والتي تساهم في تعديل الحرارة، حسب متطلبات دراسات الديناميكا الحرارية، أحجام على شكل وحدات وارتفاعات مثالية لضمان الارتياح الحراري للإنسان وجودة الهواء، ومرونة منافذ الدخول والخروج. مواد البناء والعوازل: ضمانا للحداثة، الجمالية والإيكولوجية، تم تسخير المهارات الحرفية العتيقة للأسلاف، ومواد بناء وعزل طبيعية مستعملة، مثل التربة الخام والخشب الممتاز لميزاتهم البيئية، التقنية والبلاستيكية",
-                picture: "/images/ressources/res_01.jpg",
+                picture: "home1.png",
             },
             {
                 id: 3,
                 title: "محطة معالجة المياه",
                 desc: "المياه، مورد طبيعي، مادة حيوية، ثمينة وأكثر ندرة في حالتها النقية. يحتم تدبيرها اليوم رعاية خاصة، وأكثر صرامة، إذ أن توفيرها ومعالجتها بشكل منهجي أمر مستعجل. ومن أجل إدماج هذ ه الضرورة، جهز مركز الحسن الثاني الدولي للتكوين في البيئة بمحطة لمعالجة المياه العادمة، بطريقة طبيعية، تمكن المحطة من توفير مياه ري المساحات الخضراء بالمركز. تضاف المياه المعالجة إلى مياه الأمطار التي يتم تجميعها (عن طريق الترشيح في التربة وعبر الجريان السطحي) مما يسمح بتوفير جميع احتياجات مياه الري للمساحات الخضراء، وبالتالي الحد من استهلاك المياه الصالحة للشرب إلا للضروريات الملحة فقط",
-                picture: "/images/ressources/res_04.jpg",
+                picture: "home3.png",
             },
             // {
             //     id: 4,
             //     title: "الطاحونة الهوائية الزراعية",
             //     desc: "لترسيخ المنهجية الايكولوجية المسؤولة عن التقليل من انبعاثات غازات الاحتباس الحراري، يشجع مركز الحسن الثاني الدولي للتكوين في البيئة تنوع المصادر الطاقية المتجددة عن طريق استخدام مزيج الطاقة. ولأغراض بيداغوجية وتوضيحية، جهز المركز بطاحونة هوائية زراعية معززة بتطبيق؛ إنها أداة بيداغوجية تمكن من الشرح بطريقة ممتعة مبدأ التشغيل، وكذلك مساهمة الطاقة الريحية في الحد من انبعاثات ثاني أكسيد الكربون",
-            //     picture: "/images/ressources/pure.jpg",
+            //     picture: "pure.png",
             // },
             {
                 id: 5,
                 title: "المساحات الخضراء والتنوع البيولوجي",
                 desc: "يحتوي مركز الحسن الثاني الدولي للتكوين في البيئة على مساحات خضراء مصممة على مرتفع الموقع، مما يؤهله لتبيت والحفاظ على التنوع البيولوجي المحلي الغني والمتنوع والمتوازن. تتميز هذه المساحات الخضراء بالتنمية المستدامة: هيئت الفضاءات الخضراء بطريقة طبيعية مع الحفاظ على الخصائص الأولية للموقع: التربة، المرتفعات، والأنواع النباتية...؛ المروج المزهرة، الغنية، المتنوعة والمتوازنة؛ الحدائق البيداغوجية ذات التنوع البيولوجي خاصة الأنواع المحلية؛ التربة المحترمة للبيئة التي يتم تسميدها بالسماد المنتج محليًا؛ البصمة المنخفضة للماء: توفير المياه، والسقي بالمياه التي يتم إعادة تدويرها... تساهم المساحات الخضراء بشكل إيجابي في الأداء البيئي لمركز الحسن الثاني الدولي للتكوين في البيئة",
-                picture: "/images/ressources/res_06.jpg",
+                picture: "home1.png",
             },
             {
                 id: 6,
                 title: "Energie photovoltaïque",
                 desc: "اعتمد مركز الحسن الثاني الدولي للتكوين في البيئةالمزيج الطاقي لتعزيز الطاقات النظيفة، وتحقيق هدفه من حيث الأداء البيئي. وهكذا تمكن منطقة الطاقة الشمسية (المنطقة الضوئية) التابعة للمركز من تلبية جزءً كبيرً من احتياجات الطاقة في المركز، مع الحد من انبعاثات الكربون. تعد منطقة الألواح الشمسية تجسيدا مثالياً لمهمة المركز والهدف التربوي لإنشائه، لأنها تتيح الوصول إلى الكثير من المعلومات المفيدة في ظروف الاستخدام الفعلية. يمكنكم زيارة أيضا التطبيق المخصص لمنطقة الألواح الضوئية",
-                picture: "/images/ressources/res_05.jpg",
+                picture: "res_05.png",
             },
             {
                 id: 7,
                 title: "تدبير النفايات",
                 desc: "من أجل تقليل أثرها البيئي، تبنى مركز الحسن الثاني الدولي للتكوين في البيئة إجراءات وقائية من خلال التدبير الصارم للنفايات، بهدف الحد من آثارها الضارة على الصحة البشرية والبيئة، وكذلك على إطار الحياة العامة. اعتمد مركز الحسن الثاني الدولي للتكوين في البيئة مبدأ 4R-V لتدبير النفايات: إعادة التفكير؛ التقليص من النفايات؛ إعادة الاستخدام؛ إعادة التدوير؛ تثمين النفايات.  وهكذا تم وضع منهجية للحد من مصادر النفايات، للفرز الانتقائي لها، إعادة استخدامها وتدويرها. تفرز النفايات حسب نوعها: الورق المقوى/الورق، المعدن، البلاستيك والنفايات العضوية. ملاحظة: يتم فصل النفايات الخطرة مثل المصابيح والبطاريات عن النفايات الأخرى القابلة لإعادة التدوير. يتم تحويل النفايات العضوية (ن.ع) إلى سماد طبيعي داخل مركز الحسن الثاني الدولي للتكوين في البيئة لاستخدامها في الحديقة النباتية. تعرف على عملية التسميد بالتفصيل عبر التطبيق المخصص لتدبير النفايات",
-                picture: "/images/ressources/res_01.jpg",
+                picture: "home1.png",
             },
         ],
 
