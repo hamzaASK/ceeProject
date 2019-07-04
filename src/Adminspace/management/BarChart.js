@@ -19,8 +19,6 @@ export default class Example2 extends PureComponent
 
   render ()
   {
-
-
     const data = [
       {
         name: 'Plastique', uv: this.props.statistics.plastique
